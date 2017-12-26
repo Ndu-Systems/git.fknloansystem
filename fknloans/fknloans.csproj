@@ -94,6 +94,21 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="angularjs\app.js" />
+    <Content Include="angularjs\config.js" />
+    <Content Include="api\conn.php" />
+    <Content Include="api\Get.php" />
+    <Content Include="api\Login.php" />
+    <Content Include="api\logLogin.php" />
+    <Content Include="controllers\accountController.js" />
+    <Content Include="controllers\customerController.js" />
+    <Content Include="controllers\loanController.js" />
+    <Content Include="controllers\paymentController.js" />
+    <Content Include="controllers\homeController.js" />
+    <Content Include="db\fknloansdb.sql" />
+    <Content Include="images\Logo.png" />
+    <Content Include="js\angular-route.js" />
+    <Content Include="js\angular.min.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -145,6 +160,14 @@
     <Content Include="js\lightbox-plus-jquery.min.js" />
     <Content Include="js\move-top.js" />
     <Content Include="js\numscroller-1.0.js" />
+    <Content Include="pages\account\login.html" />
+    <Content Include="pages\account\logout.html" />
+    <Content Include="pages\customer\customers.html" />
+    <Content Include="pages\home\home.html" />
+    <Content Include="pages\home\nav.html" />
+    <Content Include="pages\loan\loans.html" />
+    <Content Include="pages\payment\payments.html" />
+    <Content Include="routes\routes.js" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Web.config" />
@@ -152,7 +175,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="api\uploads\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
