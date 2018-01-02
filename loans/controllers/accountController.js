@@ -22,7 +22,7 @@
                 if (response.length !== 0) {
                     var user = response.user[0];
                     localStorage.setItem("userId", user.UserId);
-                    localStorage.setItem("surname", user.Username);
+                    localStorage.setItem("usurname", user.Username);
                     localStorage.setItem("isLoggedIn", true);
                     me.message = undefined;
                                      
