@@ -5,6 +5,7 @@
     $scope.numCustomers = 0;
     $scope.numLoans = 0;
     //Get Customers
+    
     var data = {
         table: "customer",
         condition: " IsActive = 1 "
@@ -18,6 +19,21 @@
                 numC++;             
             });
             $scope.numCustomers = numC;
+
+            $scope.totalItems = $scope.customers.length;
+            $scope.currentPage = 1;
+            $scope.itemsPerPage = 5;
+
+            $scope.$watch("currentPage", function () {
+                setPagingData($scope.currentPage);
+            });
+
+            function setPagingData(page) {
+                var pageData = $scope.customers.slice(
+                    (page - 1) * $scope.itemsPerPage,
+                    page * $scope.itemsPerPage);
+                $scope.aCustomers = pageData;
+            }
         }
     });
 
