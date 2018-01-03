@@ -94,6 +94,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\angular-material.min.css" />
+    <Content Include="js\angular-material.min.js" />
     <Content Include="js\ui-bootstrap-tpls-2.5.0.min.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -171,6 +173,10 @@
     <Content Include="pages\account\login.html" />
     <Content Include="pages\account\logout.html" />
     <Content Include="pages\customer\addCustomer.html" />
+    <Content Include="pages\customer\customers.html" />
+    <Content Include="pages\customer\details.html" />
+    <Content Include="pages\customer\edit.html" />
+    <Content Include="pages\customer\index.html" />
     <Content Include="pages\home\index.html" />
     <Content Include="pages\home\nav.html" />
     <Content Include="routes\routes.js" />

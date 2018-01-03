@@ -12,13 +12,17 @@
              controller: 'homeController'
         })         
     .when('/customers', {
-        templateUrl: 'pages/home/customers.html',
+        templateUrl: 'pages/customer/index.html',
         controller: 'homeController'
     })
     .when('/addCustomer', {
         templateUrl: 'pages/customer/addCustomer.html',
         controller: 'customerController'
     })
+    .when('/viewCustomer', {
+            templateUrl: 'pages/customer/details.html',
+            controller: 'customerController'
+     })
     .when('/loans', {
         templateUrl: 'pages/home/loans.html',
         controller: 'loanController'

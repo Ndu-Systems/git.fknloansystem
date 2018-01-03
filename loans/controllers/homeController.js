@@ -2,10 +2,10 @@
     if (localStorage.getItem("isLoggedIn") !== "true") {
         $window.location.href = "#/";
     }
+  
+ 
+    //Get Customers 
     $scope.numCustomers = 0;
-    $scope.numLoans = 0;
-    //Get Customers
-    
     var data = {
         table: "customer",
         condition: " IsActive = 1 "
@@ -38,10 +38,34 @@
     });
 
     //Selected Customer
+    $scope.GetCustomer = function (cus) {
+        localStorage.setItem("CustomerId", cus.CustomerId);
+        localStorage.setItem("FirstName", cus.FirstName);
+        localStorage.setItem("LastName", cus.LastName);
+        localStorage.setItem("CellNumber", cus.CellNumber);
 
+        localStorage.setItem("EmailAddress", cus.EmailAddress);
+        localStorage.setItem("IdNumber", cus.IdNumber);
+        localStorage.setItem("Location", cus.Location);
+        localStorage.setItem("Address", cus.Address);
+
+        localStorage.setItem("BankName", cus.BankName);
+        localStorage.setItem("AccountNumber", cus.AccountNumber);
+        localStorage.setItem("BranchCode", cus.BranchCode);
+        localStorage.setItem("AccountType", cus.AccountType);
+
+        localStorage.setItem("IsActive", cus.IsActive);
+        localStorage.setItem("CreateDate", cus.CreateDate);
+        localStorage.setItem("CreateUserId", cus.CreateUserId);
+        localStorage.setItem("ModifyDate", cus.ModifyDate);
+
+        localStorage.setItem("ModifyUserId", cus.ModifyUserId);
+        $window.location.href = "#viewCustomer";
+    }
 
 
     //Get Loans
+    $scope.numLoans = 0;
     var data = {
         table: "loan",
         condition: " IsActive = 1 "

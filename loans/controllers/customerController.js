@@ -2,6 +2,7 @@
     if (localStorage.getItem("isLoggedIn") !== "true") {
         $window.location.href = "#/";
     }
+    //Add Customer
     $scope.message = undefined;
     var userId = localStorage.getItem("userId");
     $scope.reset = function () {
@@ -45,7 +46,17 @@
         }
     }
 
+    //Tab for Finance
+    $scope.tab = 1;
+    $scope.setTab = function (newTab) {
+        $scope.tab = newTab;
+    };
+    $scope.isSet = function (tabNum) {
+        return $scope.tab === tabNum;
+    };
+
 });
 app.controller('updateController', function ($http, $scope, $window) {
 
 });
+ 
