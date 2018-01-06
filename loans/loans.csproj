@@ -94,6 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="api\EditCustomer.php" />
     <Content Include="css\angular-material.min.css" />
     <Content Include="js\angular-material.min.js" />
     <Content Include="js\ui-bootstrap-tpls-2.5.0.min.js" />

@@ -46,17 +46,103 @@
         }
     }
 
-    //Tab for Finance
-    $scope.tab = 1;
-    $scope.setTab = function (newTab) {
-        $scope.tab = newTab;
-    };
-    $scope.isSet = function (tabNum) {
-        return $scope.tab === tabNum;
-    };
+    //Customer Details to Display
+    $scope.CustomerId = localStorage.getItem("CustomerId");
+    $scope.FirstName = localStorage.getItem("FirstName");
+    $scope.LastName = localStorage.getItem("LastName");
+    $scope.CellNumber = localStorage.getItem("CellNumber");
+    $scope.EmailAddress = localStorage.getItem("EmailAddress");
+    $scope.IdNumber = localStorage.getItem("IdNumber");
+    $scope.Location = localStorage.getItem("Location");
+    $scope.Address = localStorage.getItem("Address");
+    $scope.BankName = localStorage.getItem("BankName");
+    $scope.AccountNumber = localStorage.getItem("AccountNumber");
+    $scope.BranchCode = localStorage.getItem("BranchCode");
+    $scope.AccountType = localStorage.getItem("AccountType");
+    $scope.IsActive = localStorage.getItem("IsActive");
+    $scope.status = "Not Alegible for Loan";
+    if ($scope.IsActive === "1") {
+        $scope.status = "Alegible for Loan";
+    }        
+  
 
 });
-app.controller('updateController', function ($http, $scope, $window) {
+app.controller('editController', function ($http, $scope, $window, $route) {
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+        $window.location.href = "#/";
+    }
+    $scope.reset = function () {
+        $scope.message = undefined
+        $route.reload();
+    };
+
+    $scope.CustomerId = localStorage.getItem("CustomerId");
+    $scope.FirstName = localStorage.getItem("FirstName");
+    $scope.LastName = localStorage.getItem("LastName");
+    $scope.CellNumber = localStorage.getItem("CellNumber");
+    $scope.EmailAddress = localStorage.getItem("EmailAddress");
+    $scope.IdNumber = localStorage.getItem("IdNumber");
+    $scope.Location = localStorage.getItem("Location");
+    $scope.Address = localStorage.getItem("Address");
+    $scope.BankName = localStorage.getItem("BankName");
+    $scope.AccountNumber = localStorage.getItem("AccountNumber");
+    $scope.BranchCode = localStorage.getItem("BranchCode");
+    $scope.AccountType = localStorage.getItem("AccountType");
+    $scope.IsActive = localStorage.getItem("IsActive");    
+    //var ModifyDate = localStorage.getItem("ModifyDate");
+    //var ModifyUserId = localStorage.getItem("ModifyUserId");
+    //var CreateDate = localStorage.getItem("CreateDate");
+    //var CreateUserId = localStorage.getItem("CreateUserId");
+    var userId = localStorage.getItem("userId");
+    $scope.editCustomer = function () {
+        var data = {
+            CustomerId: $scope.CustomerId,
+            FirstName: $scope.FirstName,
+            LastName: $scope.LastName,
+            CellNumber: $scope.CellNumber,
+            EmailAddress: $scope.EmailAddress,
+            IdNumber: $scope.IdNumber,
+            Location: $scope.Location,
+            Address: $scope.Address,
+            BankName: $scope.BankName,
+            AccountNumber: $scope.AccountNumber,
+            BranchCode: $scope.BranchCode,
+            AccountType: $scope.AccountType,
+            IsActive: 1,
+            userId: userId
+        };
+        if (data!==undefined) {
+            $http.post(GetApiUrl("EditCustomer"), data).success(function (data, status) {
+                if (parseFloat(data) === 1) {
+
+                    localStorage.setItem("CustomerId", $scope.CustomerId);
+                    localStorage.setItem("FirstName", $scope.FirstName);
+                    localStorage.setItem("LastName", $scope.LastName);
+                    localStorage.setItem("CellNumber", $scope.CellNumber);
+
+                    localStorage.setItem("EmailAddress", $scope.EmailAddress);
+                    localStorage.setItem("IdNumber", $scope.IdNumber);
+                    localStorage.setItem("Location", $scope.Location);
+                    localStorage.setItem("Address", $scope.Address);
+
+                    localStorage.setItem("BankName", $scope.BankName);
+                    localStorage.setItem("AccountNumber", $scope.AccountNumber);
+                    localStorage.setItem("BranchCode", $scope.BranchCode);
+                    localStorage.setItem("AccountType", $scope.AccountType);
+
+                    $window.location.href = "#viewCustomer";
+                    $scope.error = undefined;
+                }
+                else {
+                    $scope.error = "Something Went Wrong, Please Try Again";
+                }
+            })
+
+        }
+        else {
+            $scope.error = "Please do not submit EMPTY forms";
+        }
+    }
 
 });
  

@@ -22,7 +22,11 @@
     .when('/viewCustomer', {
             templateUrl: 'pages/customer/details.html',
             controller: 'customerController'
-     })
+    })
+   .when('/editCustomer', {
+            templateUrl: 'pages/customer/edit.html',
+            controller: 'editController'
+        })
     .when('/loans', {
         templateUrl: 'pages/home/loans.html',
         controller: 'loanController'
