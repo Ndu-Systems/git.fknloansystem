@@ -3,7 +3,12 @@
          .when('/', {
              templateUrl: 'pages/account/login.html',
              controller: 'loginController'
-         }).when('/logout', {
+         })
+        .when('/updatepassword', {
+             templateUrl: 'pages/account/updatePassword.html',
+             controller: 'updatepasswordController'
+         })
+        .when('/logout', {
              templateUrl: 'pages/account/logout.html',
              controller: 'logoutController'
          })
@@ -38,5 +43,13 @@
     .when('/configurations', {
         templateUrl: 'pages/configuration/configurations.html',
         controller: 'configurationController'
+    })
+    .when('/systemusers', {
+        templateUrl: 'pages/configuration/users.html',
+        controller: 'userController'
+    })
+    .when('/adduser', {
+        templateUrl: 'pages/configuration/AddUser.html',
+        controller: 'userController'
     });
 });

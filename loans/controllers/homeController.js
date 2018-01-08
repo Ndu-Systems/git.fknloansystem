@@ -4,8 +4,7 @@
     }
   
  
-    //Get Customers 
-    $scope.numCustomers = 0;
+    //Get Customers    
     var data = {
         table: "customer",
         condition: " IsActive = 1 "

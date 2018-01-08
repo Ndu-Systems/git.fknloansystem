@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2018 at 08:36 PM
+-- Generation Time: Jan 08, 2018 at 11:04 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -152,6 +152,7 @@ CREATE TABLE `users` (
   `LastLoginDate` datetime DEFAULT NULL,
   `IsActive` int(11) NOT NULL,
   `EmailAddress` varchar(45) NOT NULL,
+  `url` varchar(225) NOT NULL,
   `CreateDate` datetime NOT NULL,
   `CreateUserId` int(11) NOT NULL,
   `ModifyDate` datetime NOT NULL,
@@ -162,10 +163,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Role`, `LastLoginDate`, `IsActive`, `EmailAddress`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
-(1, 'admin@mail.com', 'pass', 1, '2018-01-08 21:10:41', 1, 'admin@mail.com', '2017-12-26 00:00:00', 0, '2017-12-26 00:00:00', 0),
-(2, 'admin', 'pass', 1, '2018-01-06 23:36:00', 1, 'admin@mail.com', '2017-12-26 00:00:00', 0, '2017-12-26 00:00:00', 0),
-(3, 'freedom', 'pass', 1, '2018-01-08 21:34:25', 1, 'freedom@mail.com', '2018-01-08 21:34:06', 1, '2018-01-08 21:34:06', 1);
+INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Role`, `LastLoginDate`, `IsActive`, `EmailAddress`, `url`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
+(1, 'admin@mail.com', 'pass', 1, '2018-01-08 23:17:15', 1, 'admin@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2017-12-26 00:00:00', 0, '2017-12-26 00:00:00', 0),
+(2, 'admin', 'pass', 1, '2018-01-06 23:36:00', 1, 'admin@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2017-12-26 00:00:00', 0, '2017-12-26 00:00:00', 0),
+(3, 'freedom', 'pass', 1, '2018-01-08 22:32:41', 1, 'freedom@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2018-01-08 21:34:06', 1, '2018-01-08 21:34:06', 1),
+(4, 'King', 'pass', 1, '2018-01-09 00:01:50', 1, 'king@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2018-01-08 22:36:06', 3, '2018-01-09 00:01:32', 4),
+(5, 'systemuser', 'pass', 1, '2018-01-09 00:02:44', 1, 'systemuser@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2018-01-09 00:02:14', 4, '2018-01-09 00:02:36', 5);
 
 --
 -- Indexes for dumped tables
@@ -233,7 +236,7 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -9,7 +9,7 @@
                     <h1><b>System Users</b></h1>
                     <div class="row" style="padding: 2%;">
                         <div class="col-md-4">
-                            <a href="#/addUser" style="color:white;"><button type="button" class="btn btn-primary">Register Customer</button></a>
+                            <a href="#/adduser" style="color:white;"><button type="button" class="btn btn-primary">Register User</button></a>
                         </div>
                         <div class="col-md-8">
                             <b>Search </b>: <input type="text" ng-model="search" placeholder="Search by FullName, Email and Location" style="width:90%; padding:1%" />
@@ -18,28 +18,22 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Customer #</th>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Surname</th>
-                                <th scope="col">Contact Number</th>
+                                <th scope="col">User #</th>
+                                <th scope="col">User Name</th>
                                 <th scope="col">Email Address</th>
-                                <th scope="col">Province</th>
-                                <th scope="col">Physical Address</th>
+                                <th scope="col">LastLoginDate</th>                               
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!--<tr ng-repeat="cus in aCustomers | filter:search">
-                                <th scope="row">{{cus.CustomerId}}</th>
-                                <td>{{cus.FirstName}}</td>
-                                <td>{{cus.LastName}}</td>
-                                <td>{{cus.CellNumber}}</td>
-                                <td>{{cus.EmailAddress}}</td>
-                                <td>{{cus.Location}}</td>
-                                <td>{{cus.Address}}</td>
+                            <tr ng-repeat="user in aUsers | filter:search">
+                                <th scope="row">{{user.UserId}}</th>
+                                <td>{{user.UserName}}</td>
+                                <td>{{user.EmailAddress}}</td>
+                                <td>{{user.LastLoginDate}}</td>     
                                 <td><button type="button" class="btn btn-info" ng-click="GetCustomer(cus)">More Details</button></td>
                                 <td><button type="button" class="btn btn-success">Transactions</button></td>
-                            </tr>-->
+                            </tr>
                         </tbody>
                     </table>
                     <ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage"></ul>

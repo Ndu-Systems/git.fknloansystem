@@ -94,7 +94,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="api\AddUser.php" />
     <Content Include="api\EditProfile.php" />
+    <Content Include="api\EditUser.php" />
     <Content Include="api\uploadProfile.php" />
     <Content Include="api\EditCustomer.php" />
     <Content Include="api\uploads\profiles\5.png" />
@@ -176,6 +178,7 @@
     <Content Include="js\rickshaw.js" />
     <Content Include="js\site.js" />
     <Content Include="js\underscore-min.js" />
+    <Content Include="pages\account\updatePassword.html" />
     <Content Include="pages\account\login.html" />
     <Content Include="pages\account\logout.html" />
     <Content Include="pages\configuration\AddUser.html" />

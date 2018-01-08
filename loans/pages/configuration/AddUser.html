@@ -10,33 +10,17 @@
                     <div class="row">                      
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
-                                <b>Enter Location</b>
-                                <input required type="text" ng-model="location" placeholder="Province" style="width:90%; padding:1%">
+                                <b>Enter UserName</b>
+                                <input required type="text" ng-model="UserName" placeholder="UserName Used to Login" style="width:90%; padding:1%">
                             </div>
                             <div class="form-group">
-                                <b>Enter Physical Address</b>
-                                <input required type="text" ng-model="address" placeholder="Physical Address" style="width:90%; padding:1%">
+                                <b>Email Address</b>
+                                <input required type="text" ng-model="EmailAddress" placeholder="Email Address" style="width:90%; padding:1%">
                             </div>
-                            <div class="form-group">
-                                <b>Enter BankName</b>
-                                <input required type="text" ng-model="bankname" placeholder="Bank Name" style="width:90%; padding:1%">
+                           <div class="form-group">
+                                <button type="submit" class="btn btn-primary" ng-click="addUser()">Register</button> <button type="reset" class="btn btn-warning" ng-click="reset()">Reset</button>
                             </div>
-                            <div class="form-group">
-                                <b>Enter Account Number</b>
-                                <input required type="number" ng-model="accountnumber" placeholder="Account Number" style="width:90%; padding:1%">
-                            </div>
-                            <div class="form-group">
-                                <b>Enter Branch Code</b>
-                                <input required type="text" ng-model="branchcode" placeholder="Branch Code" style="width:90%; padding:1%">
-                            </div>
-                            <div class="form-group">
-                                <b>Enter Account Type</b>
-                                <input required type="text" ng-model="accounttype" placeholder="Account Type" style="width:90%; padding:1%">
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary" ng-click="addCustomer()">Register</button> <button type="reset" class="btn btn-warning" ng-click="reset()">Reset</button>
-                            </div>
-                            <p><a href="#/home">Abort</a></p>
+                            <p><a href="#/systemusers">Abort</a></p>
                         </div>
                     </div>
                     <p style="color:red;">{{message}}</p>
