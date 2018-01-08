@@ -1,4 +1,4 @@
-﻿ <?php
+ <?php
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
@@ -19,9 +19,10 @@ if (isset($data->EmailAddress) ){
     $AccountType = $data->AccountType;
 	$IsActive = $data->IsActive;
     $userId = $data->userId;
+    $url = $data->url;
     
-        $sql = "INSERT INTO `customer`( `FirstName`, `LastName`, `CellNumber`, `EmailAddress`, `IdNumber`, `Location`, `Address`, `BankName`, `AccountNumber`, `BranchCode`, `AccountType`, `IsActive`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`)
-                VALUES ('$FirstName','$LastName',$CellNumber,'$EmailAddress','$IdNumber','$Location','$Address','$BankName',$AccountNumber,'$BranchCode','$AccountType',$IsActive,NOW(),$userId,NOW(),$userId)";        
+        $sql = "INSERT INTO `customer`( `FirstName`, `LastName`, `CellNumber`, `EmailAddress`, `IdNumber`, `Location`, `Address`, `BankName`, `AccountNumber`, `BranchCode`, `AccountType`, `IsActive`, `url`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`)
+                VALUES ('$FirstName','$LastName',$CellNumber,'$EmailAddress','$IdNumber','$Location','$Address','$BankName',$AccountNumber,'$BranchCode','$AccountType',$IsActive,'$url',NOW(),$userId,NOW(),$userId)";        
         
         if ($conn->query($sql) === TRUE) {
             echo 1;

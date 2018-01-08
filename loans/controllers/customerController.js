@@ -5,10 +5,6 @@
     //Add Customer
     $scope.message = undefined;
     var userId = localStorage.getItem("userId");
-    $scope.reset = function () {
-        $scope.message = undefined
-        $route.reload();
-    };
 
     $scope.addCustomer = function () {
         $scope.message = undefined;
@@ -25,6 +21,7 @@
             BranchCode: $scope.branchcode,
             AccountType: $scope.accounttype,
             IsActive: 1,
+            url:"http://localhost/git.fknloans/loans/api/uploads/profiles/5.png",
             userId: userId
         };
 
@@ -60,6 +57,7 @@
     $scope.BranchCode = localStorage.getItem("BranchCode");
     $scope.AccountType = localStorage.getItem("AccountType");
     $scope.IsActive = localStorage.getItem("IsActive");
+    $scope.url = localStorage.getItem("url");
     $scope.status = "Not Alegible for Loan";
     if ($scope.IsActive === "1") {
         $scope.status = "Alegible for Loan";
@@ -94,6 +92,60 @@ app.controller('editController', function ($http, $scope, $window, $route) {
     //var CreateDate = localStorage.getItem("CreateDate");
     //var CreateUserId = localStorage.getItem("CreateUserId");
     var userId = localStorage.getItem("userId");
+
+    //resets 
+    $scope.reset = function () {
+        $scope.message = undefined
+        $route.reload();
+    };
+    //Profile Pic Upload
+    $scope.filesChanged = function (eml) {
+        $scope.errorP = undefined;
+        $scope.files = eml.files;
+        $scope.filename = $scope.files[0].name;
+        //alert($scope.filename);
+        $scope.$apply();
+    };
+
+    $scope.SaveFile = function () {
+        if ($scope.filename !== undefined) {
+            var doc = "";
+            var formData = new FormData();
+            angular.forEach($scope.files, function (file) {
+                formData.append('file', file);
+                formData.append('name', file.name)
+            });
+            $http.post(GetApiUrl("uploadProfile"), formData, {
+                transformRequest: angular.identity,
+                headers: { 'Content-Type': undefined }
+            })
+            .success(function (resp) {
+                var expectedDate = new Date();
+                doc = GetHost(resp);
+                //  alert(doc);                
+                
+                var data = {
+                    doc: doc,
+                    CustomerId: $scope.CustomerId                    
+                };
+                $http.post(GetApiUrl("EditProfile"), data).success(function (data, status) {
+                    if (parseFloat(data) === 1) {
+                        localStorage.setItem("url", doc);
+                        $window.location.href = "#editCustomer";                       
+                        $scope.errorP = undefined;
+                    }
+                    else {
+                        $scope.errorP = "Something went wrong, please try again.";
+                    }
+                })
+            })
+        }
+        else {
+            $scope.errorP = "Please Upload Profile Picture format: PNG,JPEG,JPG,GIF!";
+        }
+    };
+
+
     $scope.editCustomer = function () {
         var data = {
             CustomerId: $scope.CustomerId,
@@ -120,6 +172,7 @@ app.controller('editController', function ($http, $scope, $window, $route) {
                     localStorage.setItem("LastName", $scope.LastName);
                     localStorage.setItem("CellNumber", $scope.CellNumber);
 
+
                     localStorage.setItem("EmailAddress", $scope.EmailAddress);
                     localStorage.setItem("IdNumber", $scope.IdNumber);
                     localStorage.setItem("Location", $scope.Location);
@@ -128,7 +181,7 @@ app.controller('editController', function ($http, $scope, $window, $route) {
                     localStorage.setItem("BankName", $scope.BankName);
                     localStorage.setItem("AccountNumber", $scope.AccountNumber);
                     localStorage.setItem("BranchCode", $scope.BranchCode);
-                    localStorage.setItem("AccountType", $scope.AccountType);
+                    localStorage.setItem("AccountType", $scope.AccountType);                
 
                     $window.location.href = "#viewCustomer";
                     $scope.error = undefined;

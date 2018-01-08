@@ -34,5 +34,9 @@
     .when('/transactions', {
         templateUrl: 'pages/transaction/transactions.html',
         controller: 'homeController'
+    })
+    .when('/configurations', {
+        templateUrl: 'pages/configuration/configurations.html',
+        controller: 'configurationController'
     });
 });

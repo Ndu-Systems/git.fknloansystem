@@ -94,8 +94,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="api\EditProfile.php" />
+    <Content Include="api\uploadProfile.php" />
     <Content Include="api\EditCustomer.php" />
+    <Content Include="api\uploads\profiles\5.png" />
+    <Content Include="controllers\configurationController.js" />
     <Content Include="css\angular-material.min.css" />
+    <Content Include="db\fknloansdb.sql" />
     <Content Include="js\angular-material.min.js" />
     <Content Include="js\ui-bootstrap-tpls-2.5.0.min.js" />
     <Content Include="packages.config" />
@@ -173,6 +178,9 @@
     <Content Include="js\underscore-min.js" />
     <Content Include="pages\account\login.html" />
     <Content Include="pages\account\logout.html" />
+    <Content Include="pages\configuration\AddUser.html" />
+    <Content Include="pages\configuration\configurations.html" />
+    <Content Include="pages\configuration\users.html" />
     <Content Include="pages\customer\addCustomer.html" />
     <Content Include="pages\customer\customers.html" />
     <Content Include="pages\customer\details.html" />
@@ -188,9 +196,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="api\uploads\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

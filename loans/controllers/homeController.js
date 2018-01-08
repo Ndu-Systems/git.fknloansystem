@@ -14,11 +14,11 @@
     .success(function (response, status) {
         if (response.data !== undefined) {
             $scope.customers = response.data;
-            var numC = 0;
-            angular.forEach($scope.customers, function (item) {                
-                numC++;             
-            });
-            $scope.numCustomers = numC;
+            //var numC = 0;
+            //angular.forEach($scope.customers, function (item) {                
+            //    numC++;             
+            //});
+            $scope.numCustomers = $scope.customers.length;
 
             $scope.totalItems = $scope.customers.length;
             $scope.currentPage = 1;
@@ -60,6 +60,7 @@
         localStorage.setItem("ModifyDate", cus.ModifyDate);
 
         localStorage.setItem("ModifyUserId", cus.ModifyUserId);
+        localStorage.setItem("url", cus.url);
         $window.location.href = "#viewCustomer";
     }
 
