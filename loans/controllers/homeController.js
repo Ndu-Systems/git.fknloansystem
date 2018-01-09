@@ -82,3 +82,10 @@
         }
     });
 });
+
+app.controller('successController', function ($http, $scope, $window) {
+    $scope.success = localStorage.getItem("success");
+    $scope.Ok = function () {
+        $window.location.href = "#home";
+    };
+});

@@ -51,5 +51,9 @@
     .when('/adduser', {
         templateUrl: 'pages/configuration/AddUser.html',
         controller: 'userController'
-    });
+    })
+     .when('/success', {
+         templateUrl: 'pages/home/success.html',
+         controller: 'successController'
+     })
 });

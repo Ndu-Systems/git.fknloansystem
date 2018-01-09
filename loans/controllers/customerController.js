@@ -63,6 +63,27 @@
         $scope.status = "Alegible for Loan";
     }        
   
+    $scope.Deactivate = function () {
+        Confirm("Confirm Deactivation", "Are you sure you want to deactivation " + $scope.FirstName, function (result) {
+            if (result) {
+                // Deactivate
+                var data = {
+                    CustomerId:$scope.CustomerId,
+                    ModifyUserId:1
+                };
+
+              
+                $http.post(GetApiUrl("Deactivate"), data)
+                .success(function (response, status) {
+                    if (parseInt(response)=== 1) {
+                        $window.location.href = "#success";
+                        localStorage.setItem("success", $scope.FirstName + " was  deactivated successfully!")
+                    }
+                });
+
+            }
+        });
+    }
 
 });
 app.controller('editController', function ($http, $scope, $window, $route) {
@@ -196,6 +217,7 @@ app.controller('editController', function ($http, $scope, $window, $route) {
             $scope.error = "Please do not submit EMPTY forms";
         }
     }
+   
 
 });
  

@@ -191,6 +191,7 @@
     <Content Include="pages\customer\index.html" />
     <Content Include="pages\home\index.html" />
     <Content Include="pages\home\nav.html" />
+    <Content Include="pages\home\success.html" />
     <Content Include="routes\routes.js" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
