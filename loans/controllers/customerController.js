@@ -93,10 +93,12 @@
     .success(function (response, status) {
         if (response.data !== undefined) {
             $scope.Loans = response.data;
+           
+            //Running Total for the loan for the customer
+            angular.forEach($scope.Loans, function (item) {
+                $scope.Total = item.Balance - item.PaidAmount;
+            });
             var numL = 0;
-            //angular.forEach($scope.customers, function (item) {                
-            //    numC++;             
-            //});
             numL = $scope.Loans.length;
             $scope.numLoans = numL;
             $scope.totalItems = $scope.Loans.length;
