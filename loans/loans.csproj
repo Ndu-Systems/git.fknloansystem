@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="api\AddUser.php" />
+    <Content Include="api\Deactivate.php" />
     <Content Include="api\EditProfile.php" />
     <Content Include="api\EditUser.php" />
     <Content Include="api\uploadProfile.php" />
