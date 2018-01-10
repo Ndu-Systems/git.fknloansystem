@@ -1,0 +1,88 @@
+﻿<div ng-include="'pages/home/nav.html'"></div>
+<div id="page-wrapper" style="min-height: 586px;">
+    <div class="graphs">
+        <div class="col_3">
+
+        </div>
+        <div class="content_bottom">
+            <div class="col-md-12 span_3">
+                <div class="bs-example1" data-example-id="contextual-table">
+                    <div class="row">
+                        <h1>Create <b>Loan</b> for {{FirstName}} {{LastName}}</h1>
+                        <div class="panel panel-default col-md-5 col-lg-5">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <td>Name(s):</td>
+                                                <td>{{FirstName}} {{LastName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cell Number:</td>
+                                                <td>{{CellNumber}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email:</td>
+                                                <td>{{EmailAddress}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Identity Number:</td>
+                                                <td>{{IdNumber}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <a href="#/editCustomer" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning">Edit Information<span class="glyphicon glyphicon-edit"></span></a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <b>Enter Loan Amount </b>
+                                <input required type="number" ng-model="LoanAmount" placeholder="Loan Amount" style="width:90%; padding:1%">
+                            </div>
+                            <div class="form-group">
+                                <b>Select Loan Term (i.e. 6 Months)</b>
+                                <!--<input required type="text" ng-model="LoanTerm" placeholder="Loan Term" style="width:90%; padding:1%">-->
+                            </div>
+                            <div class="form-group">                             
+                                    <select name="loanTerms" ng-model="LoanTerm" style="width:90%; padding:1%">
+                                        <option value="">Select Month(s)</option>
+                                        <option value="1">1 Month</option>
+                                        <option value="2">2 Months</option>
+                                        <option value="3">3 Months</option>
+                                        <option value="4">4 Months</option>
+                                        <option value="6">6 Months</option>
+                                        <option value="12">12 Months</option>
+                                    </select>                          
+                            </div>
+                            <div class="form-group">
+                                <b>Enter Interest On Loan %</b>
+                                <input required type="number" ng-model="Interest" placeholder="Interest" style="width:90%; padding:1%">
+                            </div>                            
+                            <div class="form-group">
+                                <div>
+                                    <h4>Amount <b>Payable</b> : {{total() | currency:'R'}} at an interest of {{Interest}} %</h4>
+                                    <br />
+                                    <h4>Over a period of {{LoanTerm}} Months</h4>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary" ng-click="addLoan()">Create Loan</button> <button type="reset" class="btn btn-warning" ng-click="reset()">Reset</button>
+                            </div>
+                            <p><a href="#/viewCustomer">Abort</a></p>
+                        </div>
+                    </div>                  
+                    <div class="row">                         
+                    </div>
+                    <p style="color:red;">{{message}}</p>
+                </div>
+
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>

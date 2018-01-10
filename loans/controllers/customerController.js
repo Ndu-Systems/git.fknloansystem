@@ -5,6 +5,10 @@
     //Add Customer
     $scope.message = undefined;
     var userId = localStorage.getItem("userId");
+    $scope.reset = function () {
+        $scope.message = undefined
+        $route.reload();
+    };
 
     $scope.addCustomer = function () {
         $scope.message = undefined;
@@ -87,7 +91,7 @@
     //Get Loan(s) For Customer
     var data = {
         table: "loan",
-        condition: "CustomerId = " + $scope.CustomerId
+        condition: "CustomerId = " + $scope.CustomerId +" AND Balance <> 0"
     };
     $http.post(GetApiUrl("Get"), data)
     .success(function (response, status) {
@@ -117,7 +121,10 @@
             }
         }
     });
-
+    //Create Loan redirects
+    $scope.createLoan = function () {
+      $window.location.href = "#addLoan";
+    };
 
 });
 
