@@ -63,16 +63,15 @@
         $scope.status = "Alegible for Loan";
     }        
   
+    //Deactivate Customer
     $scope.Deactivate = function () {
         Confirm("Confirm Deactivation", "Are you sure you want to deactivation " + $scope.FirstName, function (result) {
             if (result) {
                 // Deactivate
                 var data = {
                     CustomerId:$scope.CustomerId,
-                    ModifyUserId:1
-                };
-
-              
+                    ModifyUserId: userId
+                };              
                 $http.post(GetApiUrl("Deactivate"), data)
                 .success(function (response, status) {
                     if (parseInt(response)=== 1) {
@@ -85,7 +84,41 @@
         });
     }
 
+    //Get Loan(s) For Customer
+    var data = {
+        table: "loan",
+        condition: "CustomerId = " + $scope.CustomerId
+    };
+    $http.post(GetApiUrl("Get"), data)
+    .success(function (response, status) {
+        if (response.data !== undefined) {
+            $scope.Loans = response.data;
+            var numL = 0;
+            //angular.forEach($scope.customers, function (item) {                
+            //    numC++;             
+            //});
+            numL = $scope.Loans.length;
+            $scope.numLoans = numL;
+            $scope.totalItems = $scope.Loans.length;
+            $scope.currentPage = 1;
+            $scope.itemsPerPage = 5;
+
+            $scope.$watch("currentPage", function () {
+                setPagingData($scope.currentPage);
+            });
+
+            function setPagingData(page) {
+                var pageData = $scope.Loans.slice(
+                    (page - 1) * $scope.itemsPerPage,
+                    page * $scope.itemsPerPage);
+                $scope.aLoans = pageData;
+            }
+        }
+    });
+
+
 });
+
 app.controller('editController', function ($http, $scope, $window, $route) {
     if (localStorage.getItem("isLoggedIn") !== "true") {
         $window.location.href = "#/";
@@ -216,8 +249,6 @@ app.controller('editController', function ($http, $scope, $window, $route) {
         else {
             $scope.error = "Please do not submit EMPTY forms";
         }
-    }
-   
-
+    }  
 });
  
