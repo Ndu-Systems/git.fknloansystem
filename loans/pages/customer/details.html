@@ -108,10 +108,10 @@
                                         <tr ng-repeat="loan in aLoans">
                                             <td>{{loan.LoanId}}</td>
                                             <td>R{{loan.LoanAmount}}</td>
-                                            <td style="color:red">-R{{Total}}</td>
+                                            <td style="color:red">-R{{loan.Balance}}</td>
                                             <td>{{loan.LoanTerm}} Months to Pay</td>
                                              <td>{{loan.LoanDate}}</td>
-                                            <td><a href="" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary">View  <span class="fa fa-search-plus"></span></a></td>
+                                            <td> <button type="button" class="btn btn-sm btn-primary" ng-click="getLoan(loan)">Update Loan  <span class="fa fa-edit"></span></></button></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -119,28 +119,32 @@
                             </div>
                             <hr />
                             <div class="bs-example1" data-example-id="contextual-table">
-                                <h3>Documents</h3>
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Document #</th>
-                                            <th>Loan #</th>
-                                            <th>Description</th>
-                                            <th>View</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td><i>null</i></td>
-                                            <td>This is a Proof of Identification</td>
-                                            <td><a href="">View File</a></td>
-                                            <td>Authenticated</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                                <div class="col-md-4">
+                                    <h3>Documents</h3>
+                                    <a href="#/addDocument" style="color:white"><button type="button" class="btn btn-primary">Upload Document</button></a>
+                                    </div>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Document #</th>
+                                                <th>Loan #</th>
+                                                <th>Description</th>
+                                                <th>View</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="doc in aDocuments">
+                                                <td>{{doc.DocumentId}}</td>
+                                                <td><i>{{doc.LoanId}}</i></td>
+                                                <td>{{doc.Description}}</td>
+                                                <td><a href="{{doc.Url}}" target="_blank">View File</a></td>
+                                                <td>{{doc.Status}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <ul uib-pagination total-items="totalItems" ng-model="dcurrentPage" items-per-page="itemsPerPage"></ul>
+                                </div>
                         </div> 
                     </div> 
                                 

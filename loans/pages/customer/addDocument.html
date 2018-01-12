@@ -1,0 +1,88 @@
+﻿<div ng-include="'pages/home/nav.html'"></div>
+<div id="page-wrapper" style="min-height: 586px;">
+    <div class="graphs">
+        <div class="col_3">
+        </div>
+        <div class="content_bottom">
+            <div class="col-md-12 span_3">
+                <div class="bs-example1" data-example-id="contextual-table">
+                    <div class="row">
+                        <h1>Update <b>Loan</b> for {{FirstName}} {{LastName}}</h1>
+                        <div class="panel panel-default col-md-5 col-lg-5">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <td>Name(s):</td>
+                                                <td>{{FirstName}} {{LastName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cell Number:</td>
+                                                <td>{{CellNumber}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email:</td>
+                                                <td>{{EmailAddress}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Identity Number:</td>
+                                                <td>{{IdNumber}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <a href="#/editCustomer" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning">Edit Information<span class="glyphicon glyphicon-edit"></span></a>
+                            </div>
+                        </div>
+                        <div class="panel panel-default col-md-7 col-lg-7">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <td><h4>Enter Description</h4></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input required type="text" ng-model="docDescription" placeholder="Description For Document" style="width:90%; padding:1%">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h4>Upload Document</h4></td>
+                                                <td>
+                                                    <div>
+                                                        <span class="btn btn-default btn-file">
+                                                            Upload Document (Required) <i class="fa fa-files-o"></i>
+                                                            <input type="file" class="fileUpload" onchange="angular.element(this).scope().filesChanged(this)" />
+                                                        </span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="form-group">
+                                                            <br />
+                                                            <button type="button" class="btn btn-primary" ng-click="SaveFile()">Upload <span class="fa fa-upload"></span></button>
+                                                            <br><font color="black"><b>{{filename}}</b></font>
+                                                            <br><font color="green"><b>{{success}}</b></font>
+                                                            <br><font color="red"><b>{{errorP}}</b></font>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>                     
+                            <p><a href="#/viewCustomer">Abort</a></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                    </div>
+                    <p style="color:red;">{{message}}</p>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
