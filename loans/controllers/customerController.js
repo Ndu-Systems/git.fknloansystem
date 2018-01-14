@@ -5,6 +5,10 @@
     //Add Customer
     $scope.message = undefined;
     var userId = localStorage.getItem("userId");
+    $scope.reset = function () {
+        $scope.message = undefined
+        $route.reload();
+    };
 
     $scope.addCustomer = function () {
         $scope.message = undefined;
@@ -63,16 +67,15 @@
         $scope.status = "Alegible for Loan";
     }        
   
+    //Deactivate Customer
     $scope.Deactivate = function () {
         Confirm("Confirm Deactivation", "Are you sure you want to deactivation " + $scope.FirstName, function (result) {
             if (result) {
                 // Deactivate
                 var data = {
                     CustomerId:$scope.CustomerId,
-                    ModifyUserId:1
-                };
-
-              
+                    ModifyUserId: userId
+                };              
                 $http.post(GetApiUrl("Deactivate"), data)
                 .success(function (response, status) {
                     if (parseInt(response)=== 1) {
@@ -85,7 +88,137 @@
         });
     }
 
+    //Get Loan(s) For Customer
+    var data = {
+        table: "loan",
+        condition: "CustomerId = " + $scope.CustomerId +" AND Balance <> 0 AND Status = 1"
+    };
+    $http.post(GetApiUrl("Get"), data)
+    .success(function (response, status) {
+        if (response.data !== undefined) {
+            $scope.Loans = response.data;          
+          
+            var numL = 0;
+            numL = $scope.Loans.length;
+            $scope.numLoans = numL;
+            $scope.totalItems = $scope.Loans.length;
+            $scope.currentPage = 1;
+            $scope.itemsPerPage = 5;
+
+            $scope.$watch("currentPage", function () {
+                setPagingData($scope.currentPage);
+            });
+
+            function setPagingData(page) {
+                var pageData = $scope.Loans.slice(
+                    (page - 1) * $scope.itemsPerPage,
+                    page * $scope.itemsPerPage);
+                $scope.aLoans = pageData;
+            }
+        }
+    });
+    //Create Loan redirects
+    $scope.createLoan = function () {
+      $window.location.href = "#addLoan";
+    };
+
+    //Get loan Information
+    $scope.getLoan = function (loan) {
+        localStorage.setItem("LoanId", loan.LoanId);
+        localStorage.setItem("LoanAmount", loan.LoanAmount);
+        localStorage.setItem("Balance", loan.Balance);
+        localStorage.setItem("PaidAmount", loan.PaidAmount);
+        localStorage.setItem("LoanTerm", loan.LoanTerm);
+        localStorage.setItem("AmountPayable", loan.AmountPayable);
+        localStorage.setItem("Interest", loan.Interest);
+        localStorage.setItem("LoanDate", loan.LoanDate);
+        localStorage.setItem("Status", loan.Status);
+        $window.location.href = "#editLoan";
+    };
+
+    //Get documents(s) For Customer
+    var data = {
+        table: "documents",
+        condition: "CustomerId = " + $scope.CustomerId+ " AND Status = 1"
+    };
+    $http.post(GetApiUrl("Get"), data)
+    .success(function (response, status) {
+        if (response.data !== undefined) {
+            $scope.Documents = response.data;
+
+            $scope.numDocuments = $scope.Documents.length;;
+            $scope.totalItems = $scope.Documents.length;
+            $scope.dcurrentPage = 1;
+            $scope.ditemsPerPage = 5;
+
+            $scope.$watch("dcurrentPage", function () {
+                setPagingData($scope.dcurrentPage);
+            });
+
+            function setPagingData(page) {
+                var dpageData = $scope.Documents.slice(
+                    (page - 1) * $scope.ditemsPerPage,
+                    page * $scope.ditemsPerPage);
+                $scope.aDocuments = dpageData;
+            }
+        }
+    });
+
+    //Add Document For Customer
+    //Upload file
+    $scope.filesChanged = function (eml) {
+        $scope.errorP = undefined;
+        $scope.success = undefined;
+        $scope.files = eml.files;
+        $scope.filename = $scope.files[0].name;
+        alert($scope.filename);
+        $scope.$apply();
+    };
+ 
+    $scope.SaveFile = function () {
+        $scope.success = undefined;
+        $scope.errorP = undefined;
+        if ($scope.filename !== undefined) {
+            var doc = "";
+            var formData = new FormData();
+            angular.forEach($scope.files, function (file) {
+                formData.append('file', file);
+                formData.append('name', file.name)
+            });
+            $http.post(GetApiUrl("upload"), formData, {
+                transformRequest: angular.identity,
+                headers: { 'Content-Type': undefined }
+            })
+            .success(function (resp) {
+                var expectedDate = new Date();
+                doc = GetHost(resp);
+                //  alert(doc);               
+
+                var data = {
+                    Url: doc,
+                    CustomerId: $scope.CustomerId,
+                    LoanId: null,
+                    Description: $scope.docDescription +" for " + $scope.FirstName + " " + $scope.LastName,
+                    Status: 1,
+                    userId: userId
+                };
+                $http.post(GetApiUrl("putDoc"), data).success(function (data, status) {
+                    if (parseFloat(data) === 1) {
+                        $window.location.href = "#viewCustomer";
+                        $scope.errorP = undefined;
+                    }
+                    else {
+                        $scope.errorP = "Something went wrong, please try again.";
+                    }
+                })
+            })
+        }
+        else {
+            $scope.errorP = "Please Upload Profile Picture format: PNG,JPEG,JPG,GIF!";
+        }
+    };
 });
+
 app.controller('editController', function ($http, $scope, $window, $route) {
     if (localStorage.getItem("isLoggedIn") !== "true") {
         $window.location.href = "#/";
@@ -94,7 +227,6 @@ app.controller('editController', function ($http, $scope, $window, $route) {
         $scope.message = undefined
         $route.reload();
     };
-
     $scope.CustomerId = localStorage.getItem("CustomerId");
     $scope.FirstName = localStorage.getItem("FirstName");
     $scope.LastName = localStorage.getItem("LastName");
@@ -216,8 +348,6 @@ app.controller('editController', function ($http, $scope, $window, $route) {
         else {
             $scope.error = "Please do not submit EMPTY forms";
         }
-    }
-   
-
+    }  
 });
  

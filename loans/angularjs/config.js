@@ -1,5 +1,7 @@
 ﻿var extention = ".php";
-var host = "http://localhost:8080/git.fknloansystem/loans/api/";
+//var host = "http://localhost:8080/git.fknloansystem/loans/api/";
+var host = "http://localhost/git.fknloans/loans/api/";
+
 //var host = "http://ndu-systems.net/demo/fknloans/api/";
 
 function GetApiUrl(serviceName) {

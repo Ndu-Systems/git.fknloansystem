@@ -31,10 +31,21 @@
    .when('/editCustomer', {
             templateUrl: 'pages/customer/edit.html',
             controller: 'editController'
+   })
+        .when('/addDocument', {
+            templateUrl: 'pages/customer/addDocument.html',
+            controller: 'customerController'
         })
     .when('/loans', {
-        templateUrl: 'pages/home/loans.html',
+        templateUrl: 'pages/loan/loans.html',
         controller: 'loanController'
+    }).when('/editLoan', {
+        templateUrl: 'pages/loan/editLoan.html',
+        controller: 'editLoanController'
+    })
+   .when('/addLoan', {
+       templateUrl: 'pages/loan/addLoan.html',
+       controller: 'addLoanController'
     })
     .when('/transactions', {
         templateUrl: 'pages/transaction/transactions.html',
