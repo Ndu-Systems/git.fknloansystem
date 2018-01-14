@@ -63,7 +63,6 @@
         $window.location.href = "#viewCustomer";
     }
 
-
     //Get Loans
     $scope.numLoans = 0;
     var data = {
@@ -81,6 +80,14 @@
             $scope.numLoans = numL;
         }
     });
+
+
+    // get transictions
+ 
+    $scope.GetTransictions = function (cus) {
+       var url =  "http://localhost:8080/git.fknloansystem/loans/api/pdf_gen/mypdf.php?id="+ cus.CustomerId+"&name="+cus.FirstName;
+       window.open(url, '_blank');
+    }
 });
 
 app.controller('successController', function ($http, $scope, $window) {
