@@ -10,15 +10,21 @@ $name = $_GET['name'];
 $pdf = new PDF();
 // First page
 $pdf->AddPage();
+// add logo
+// Insert a logo in the top-left corner at 300 dpi
+$pdf->Image('logo.png',150,1,-450);
+
+// Insert a dynamic image from a URL
+
 $pdf->SetFont('Arial','',20);
-$pdf->Write(5,"Transictions for ".$name);
-$pdf->Write(5,"\n");
-$pdf->Write(5,"\n");
+
+$pdf->Write(50,"Transictions for ".$name);
+$pdf->Write(35,"\n");
 
 
 //get db data
 $pdf->SetFont('Arial','',11);
- $sql = "SELECT * FROM transaction WHERE 1";
+ $sql = "SELECT * FROM transaction WHERE CustomerId = $id";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {

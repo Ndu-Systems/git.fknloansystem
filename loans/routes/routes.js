@@ -67,4 +67,8 @@
          templateUrl: 'pages/home/success.html',
          controller: 'successController'
      })
+     .when('/transictions', {
+         templateUrl: 'pages/customer/transictions.html',
+         controller: 'transactionController'
+     })
 });

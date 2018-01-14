@@ -85,8 +85,10 @@
     // get transictions
  
     $scope.GetTransictions = function (cus) {
-       var url =  "http://localhost:8080/git.fknloansystem/loans/api/pdf_gen/mypdf.php?id="+ cus.CustomerId+"&name="+cus.FirstName;
-       window.open(url, '_blank');
+       
+        $window.location.href = "#transictions";
+        localStorage.setItem("transictionCustomerNumber", cus.CustomerId);
+
     }
 });
 

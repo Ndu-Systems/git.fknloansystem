@@ -31,30 +31,49 @@ app.controller('addLoanController', function ($http, $scope, $window, $route) {
         return amount;
     };
     $scope.addLoan = function () {
-        Confirm("Confirm Loan", "Are you sure you want Grant Loan of R" + $scope.LoanAmount + " To " + $scope.FirstName + " " + $scope.LastName, function (result) {
-            if (result) {
-                var data = {
-                    CustomerId: $scope.CustomerId,
-                    LoanAmount: $scope.LoanAmount,
-                    PaidAmount:0,
-                    Balance: $scope.total(),
-                    Interest: $scope.Interest,
-                    LoanTerm: $scope.LoanTerm,
-                    AmountPayable: $scope.total(),
-                    userId    : userId
-                };
-                $http.post(GetApiUrl("AddLoan"), data).success(function (data, status) {
-                    if (parseFloat(data) === 1) {                  
-                        $window.location.href = "#viewCustomer";                      
-                    }
-                    else {
-                        $scope.errorP = "Something went wrong, please try again.";
-                    }
-                })
+        //Confirm("Confirm Loan", "Are you sure you want Grant Loan of R" + $scope.LoanAmount + " To " + $scope.FirstName + " " + $scope.LastName, function (result) {
+        //    if (result) {
+        //        var data = {
+        //            CustomerId: $scope.CustomerId,
+        //            LoanAmount: $scope.LoanAmount,
+        //            PaidAmount:0,
+        //            Balance: $scope.total(),
+        //            Interest: $scope.Interest,
+        //            LoanTerm: $scope.LoanTerm,
+        //            AmountPayable: $scope.total(),
+        //            userId    : userId
+        //        };
+        //        $http.post(GetApiUrl("AddLoan"), data).success(function (data, status) {
+        //            if (parseFloat(data) === 1) {                  
+        //                $window.location.href = "#viewCustomer";                      
+        //            }
+        //            else {
+        //                $scope.errorP = "Something went wrong, please try again.";
+        //            }
+        //        })
 
 
+        //    }
+        //});
+        var data = {
+                        CustomerId: $scope.CustomerId,
+                        LoanAmount: $scope.LoanAmount,
+                        PaidAmount:0,
+                        Balance: $scope.total(),
+                        Interest: $scope.Interest,
+                        LoanTerm: $scope.LoanTerm,
+                        AmountPayable: $scope.total(),
+                        userId    : userId
+                    };
+        $http.post(GetApiUrl("AddLoan"), data).success(function (data, status) {
+            if (parseFloat(data) === 1) {
+                $window.location.href = "#viewCustomer";
+            }
+            else {
+                $scope.errorP = "Something went wrong, please try again.";
             }
         });
+
     };
 
 });
@@ -146,11 +165,39 @@ app.controller('editLoanController', function ($http, $scope, $window, $route) {
     };
 
     $scope.editLoan = function () {
-        Confirm("Update Loan", "You are about to pay R" + $scope.PaidAmount + " To " + $scope.FirstName + " " + $scope.LastName +"'s Loan", function (result) {
-            if (result) {
+        //Confirm("Update Loan", "You are about to pay R" + $scope.PaidAmount + " To " + $scope.FirstName + " " + $scope.LastName +"'s Loan", function (result) {
+        //    if (result) {
+
+        //        $scope.paidTotal = function () {
+        //            var sum = paid + $scope.PaidAmount;
+        //            return sum;
+        //        };
+        //        var data = {
+        //            CustomerId: $scope.CustomerId,
+        //            LoanAmount: $scope.LoanAmount,
+        //            PaidAmount: $scope.paidTotal(),
+        //            Balance: $scope.total(),
+        //            LoanId:$scope.LoanId,
+        //            Interest: $scope.Interest,
+        //            LoanTerm: $scope.LoanTerm,
+        //            Status: $scope.Status,
+        //            userId: userId
+        //        };
+        //        $http.post(GetApiUrl("EditLoan"), data).success(function (data, status) {
+        //            if (parseFloat(data) === 1) {
+        //                $window.location.href = "#viewCustomer";
+        //            }
+        //            else {
+        //                $scope.errorP = "Something went wrong, please try again.";
+        //            }
+        //        })
+
+
+        //    }
+        //});
 
                 $scope.paidTotal = function () {
-                    var sum = paid + $scope.PaidAmount;
+                    var sum = Number(paid || 0) + Number($scope.PaidAmount || 0);
                     return sum;
                 };
                 var data = {
@@ -171,11 +218,7 @@ app.controller('editLoanController', function ($http, $scope, $window, $route) {
                     else {
                         $scope.errorP = "Something went wrong, please try again.";
                     }
-                })
-
-
-            }
-        });
+                });
     };
 
 

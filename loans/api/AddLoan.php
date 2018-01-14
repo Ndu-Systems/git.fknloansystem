@@ -15,8 +15,8 @@ if (isset($data->CustomerId) ){
     $userId =$data ->userId;  
     $AmountPayable = $data -> AmountPayable;
     
-        $sql = "INSERT INTO `loan`(`CustomerId`, `LoanAmount`, `PaidAmount`, `Balance`,`LoanTerm`,`Interest`, `LoanDate`,`Status`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) 
-                VALUES ('$CustomerId','$LoanAmount','$PaidAmount','$Balance','$LoanTerm','$Interest',NOW(),1,NOW(),'$userId',NOW(),'$userId')";
+        $sql = "INSERT INTO `loan`(`CustomerId`, `LoanAmount`, `PaidAmount`, `Balance`, `AmountPayable`,`LoanTerm`,`Interest`, `LoanDate`,`Status`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) 
+                VALUES ('$CustomerId','$LoanAmount','$PaidAmount','$Balance','$AmountPayable','$LoanTerm','$Interest',NOW(),1,NOW(),'$userId',NOW(),'$userId')";
 
         if ($conn->query($sql) === TRUE) {
             echo 1;

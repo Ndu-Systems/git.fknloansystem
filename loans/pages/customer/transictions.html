@@ -1,0 +1,127 @@
+﻿<div ng-include="'pages/home/nav.html'"></div>
+<div id="page-wrapper" style="min-height: 586px;">
+    <div class="graphs">
+        <div class="content_bottom">
+            <div class="col-md-12 span_3">
+                <div class="bs-example1" data-example-id="contextual-table">
+                    <div class="col-md-6">
+                        <h1><b>Customer Number : {{CustomerId}}</b></h1>
+                    </div>
+                  
+                    <div class="row" style="padding: 2%;">
+                        <div class="col-md-12">
+                            <h3>Customer Information</h3>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h1 class="panel-title">{{status}}</h1>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-3 col-lg-3" align="center"><img src="{{url}}" class="img-circle img-responsive" /></div>
+                                        <div class="col-md-5 col-lg-5">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Name(s):</td>
+                                                        <td>{{FirstName}} {{LastName}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Cell Number:</td>
+                                                        <td>{{CellNumber}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Email:</td>
+                                                        <td>{{EmailAddress}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Identity Number:</td>
+                                                        <td>{{IdNumber}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Address:</td>
+                                                        <td>{{Location}}, {{Address}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-md-4 col-lg-4">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                    <tr>
+                                                        <td><b>Bank</b></td>
+                                                        <td><b>Information</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Bank Name:</td>
+                                                        <td>{{BankName}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Account Number:</td>
+                                                        <td>{{AccountNumber}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Branch-Code:</td>
+                                                        <td>{{BranchCode}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Account Type:</td>
+                                                        <td>{{AccountType}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="bs-example1" data-example-id="contextual-table">
+                                <div class="col-md-4">
+                                    <h3>Transictions</h3>
+                                </div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Loan #</th>
+                                            <th>Loan Amount</th>
+                                            <th>Balance</th>
+                                            <th>Loan Term</th>
+                                            <th>Description</th>
+                                            <th>Transiction Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="loan in aLoans">
+                                            <td>{{loan.LoanId}}</td>
+                                            <td>R{{loan.LoanAmount}}</td>
+                                            <td style="color:red">-R{{loan.Balance}}</td>
+                                            <td>{{loan.LoanTerm}} Months to Pay</td>
+                                            <td>{{loan.Description}}</td>
+                                            <td>{{loan.CreateDate}}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tr>
+                                        <td>
+                                        <td align="left">
+                                         <button type="button" class="btn btn-sm btn-primary" ng-click="Print()">Print Transictions <span class="fa fa-edit"></span></></button></td>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                                <ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage"></ul>
+                            </div>
+                            <hr />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
