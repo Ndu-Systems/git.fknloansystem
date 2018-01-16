@@ -17,7 +17,7 @@
              controller: 'homeController'
         })         
     .when('/customers', {
-        templateUrl: 'pages/customer/index.html',
+        templateUrl: 'pages/customer/customerList.html',
         controller: 'homeController'
     })
     .when('/addCustomer', {

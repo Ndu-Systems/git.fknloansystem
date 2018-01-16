@@ -323,6 +323,7 @@
     <Content Include="pages\configuration\users.html" />
     <Content Include="pages\customer\addCustomer.html" />
     <Content Include="pages\customer\addDocument.html" />
+    <Content Include="pages\customer\customerList.html" />
     <Content Include="pages\customer\customers.html" />
     <Content Include="pages\customer\details.html" />
     <Content Include="pages\customer\edit.html" />
