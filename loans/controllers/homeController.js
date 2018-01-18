@@ -63,7 +63,6 @@
         $window.location.href = "#viewCustomer";
     }
 
-
     //Get Loans
     $scope.numLoans = 0;
     var data = {
@@ -81,9 +80,29 @@
             $scope.numLoans = numL;
         }
     });
+<<<<<<< HEAD
 });
 
 app.controller('confirmController', function ($http, $scope, $window) {
 	
 	
+=======
+
+
+    // get transictions
+ 
+    $scope.GetTransictions = function (cus) {
+       
+        $window.location.href = "#transictions";
+        localStorage.setItem("transictionCustomerNumber", cus.CustomerId);
+
+    }
+});
+
+app.controller('successController', function ($http, $scope, $window) {
+    $scope.success = localStorage.getItem("success");
+    $scope.Ok = function () {
+        $window.location.href = "#home";
+    };
+>>>>>>> e4ddff2d6bdbd0e314c941abe5dbc8ee54916012
 });
