@@ -81,6 +81,10 @@
         }
     });
 
+});
+
+app.controller('confirmController', function ($http, $scope, $window) {
+	
 
     // get transictions
  
@@ -97,4 +101,5 @@ app.controller('successController', function ($http, $scope, $window) {
     $scope.Ok = function () {
         $window.location.href = "#home";
     };
+
 });
