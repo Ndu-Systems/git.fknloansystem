@@ -31,8 +31,6 @@
             if ($scope.IsActive === "1") {
                 $scope.status = "Alegible for Loan";
             }
-
-
         }
     });
 

@@ -96,7 +96,7 @@
     $http.post(GetApiUrl("Get"), data)
     .success(function (response, status) {
         if (response.data !== undefined) {
-            $scope.Loans = response.data;          
+            $scope.Loans = response.data;         
           
             var numL = 0;
             numL = $scope.Loans.length;
@@ -351,3 +351,80 @@ app.controller('editController', function ($http, $scope, $window, $route) {
     }  
 });
  
+app.controller('calculateCustomerController', function ($http, $scope, $window) {
+
+    $scope.CustomerLoan = [{CustomerId:1,LoanAmount:1,FullName:'',CellNumber:'',}];
+
+    //Get Loan Information
+   var data1 = {
+        table: "loan",
+        condition: "Status = 1"
+   };
+   $http.post(GetApiUrl("Get"), data1).success(function (response, status) {
+       if (data !== undefined) {
+           $scope.loans = response.data;
+           angular.forEach($scope.loans, function (item) {
+               var data2 = {
+                   table: "customer",
+                   condition: "CustomerId = " + item.CustomerId
+               };
+               $http.post(GetApiUrl("Get"), data2).success(function (response, status) {
+                   if (data !== undefined) {
+                       $scope.customers = response.data;
+
+                       var obj = {
+                           CustomerId: $scope.customers[0].CustomerId,
+                           LoanAmount: item.LoanAmount,
+                           FullName: $scope.customers[0].FirstName +" "+$scope.customers[0].LastName,
+                           CellNumber: $scope.customers[0].CellNumber
+                       };
+
+                       $scope.CustomerLoan.push(obj);
+                   }
+               });
+           });
+
+           $scope.totalItems = $scope.CustomerLoan.length;
+           $scope.currentPage = 1;
+           $scope.itemsPerPage = 5;
+
+           $scope.$watch("currentPage", function () {
+               setPagingData($scope.currentPage);
+           });
+
+           function setPagingData(page) {
+               var pageData = $scope.CustomerLoan.slice(
+                   (page - 1) * $scope.itemsPerPage,
+                   page * $scope.itemsPerPage);
+               $scope.aCustomers = pageData;
+           }
+       }
+   });
+    //Get Customers    
+    //var data = {
+    //    table: "customer",
+    //    condition: " IsActive = 1 "
+    //};
+    //$http.post(GetApiUrl("Get"), data)
+    //.success(function (response, status) {
+    //    if (response.data !== undefined) {
+    //        $scope.customers = response.data;           
+
+    //        $scope.totalItems = $scope.customers.length;
+    //        $scope.currentPage = 1;
+    //        $scope.itemsPerPage = 5;
+
+    //        $scope.$watch("currentPage", function () {
+    //            setPagingData($scope.currentPage);
+    //        });
+
+    //        function setPagingData(page) {
+    //            var pageData = $scope.customers.slice(
+    //                (page - 1) * $scope.itemsPerPage,
+    //                page * $scope.itemsPerPage);
+    //            $scope.aCustomers = pageData;
+    //        }
+    //    }
+    //});
+
+});

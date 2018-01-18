@@ -19,29 +19,28 @@
                                     </div>
                                 </div>
                             <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Customer #</th>
-                                        <th scope="col">First Name</th>
-                                        <th scope="col">Surname</th>
-                                        <th scope="col">Contact Number</th>
-                                        <th scope="col">Email Address</th>
-                                        <th scope="col">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="cus in customers | filter:search">
+                             <thead>
+                                 <tr>
+                                     <th scope="col">Customer #</th>
+                                     <th scope="col">Full Name</th>                                 
+                                     <th scope="col">Contact Number</th>
+                                     <th scope="col">Loan Amount</th>
+                                     <th scope="col">Actions</th>
+                                  </tr>
+                             </thead>
+                             <tbody>
+                                    <tr ng-repeat="cus in aCustomers | filter:search">
                                         <!--<th scope="row"><span class="fa fa-plus-square" style="resize:100px;"></span>{{cus.CustomerId}}</th>-->
-                                        <td><a href="" data-original-title="Save information" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="add(cus)">Add <span class="glyphicon glyphicon-plus"></span></a></td>
-                                        <td>{{cus.FirstName}}</td>
-                                        <td>{{cus.LastName}}</td>
+                                        <td>{{cus.CustomerId}}</td>
+                                        <td>{{cus.FullName}}</td>
                                         <td>{{cus.CellNumber}}</td>
-                                        <td>{{cus.EmailAddress}}</td>
-                                        <td><button type="button" class="btn btn-info" ng-click="GetCustomer(cus)">More Details</button></td>
-                                        <td><button type="button" class="btn btn-success" ng-click="GetTransictions(cus)">Transactions</button></td>
+                                        <td>{{cus.LoanAmount}}</td>
+                                        <td><a href="" data-original-title="Save information" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="add(cus)">Add <span class="glyphicon glyphicon-plus"></span></a></td>
                                     </tr>
-                                </tbody>
-                            </table>               
+                            </tbody>
+                      </table>
+                        <ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage"></ul>
+             
                 </div>
                 <div class="bs-example1 col-md-4 col-sm-6" data-example-id="contextual-table">
                     <h1><b>Customer Balance</b></h1>                   
@@ -74,7 +73,7 @@
                         <button type="reset" class="btn btn-warning" style="background-color:orange;border-color:orange;" ng-click="reset()">Reset</button>
                     </div>
                 </div>
-            </div>
+               </div>
             </div>
         </div>
     </div>
