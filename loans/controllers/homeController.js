@@ -82,3 +82,8 @@
         }
     });
 });
+
+app.controller('confirmController', function ($http, $scope, $window) {
+	
+	
+});
