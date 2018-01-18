@@ -1,11 +1,8 @@
 ﻿var extention = ".php";
-<<<<<<< HEAD
 //var host = "http://localhost/git.fknloans/loans/api/";
-=======
 //var host = "http://localhost:8080/git.fknloansystem/loans/api/";
-var host = "http://localhost/git.fknloans/loans/api/";
+//var host = "http://localhost/git.fknloans/loans/api/";
 
->>>>>>> e4ddff2d6bdbd0e314c941abe5dbc8ee54916012
 //var host = "http://ndu-systems.net/demo/fknloans/api/";
 var host = "http://localhost/git.fknloansystem/loans/api/";
 

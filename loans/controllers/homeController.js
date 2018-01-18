@@ -80,14 +80,11 @@
             $scope.numLoans = numL;
         }
     });
-<<<<<<< HEAD
+
 });
 
 app.controller('confirmController', function ($http, $scope, $window) {
 	
-	
-=======
-
 
     // get transictions
  
@@ -104,5 +101,5 @@ app.controller('successController', function ($http, $scope, $window) {
     $scope.Ok = function () {
         $window.location.href = "#home";
     };
->>>>>>> e4ddff2d6bdbd0e314c941abe5dbc8ee54916012
+
 });
