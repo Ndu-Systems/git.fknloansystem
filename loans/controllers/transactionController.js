@@ -29,6 +29,8 @@ app.controller('transactionController', function ($http, $scope, $window) {
   
   $scope.ShowAll = function(){
 	    GetTransictions(false);
+		$scope.datepickerFrom = undefined;
+		 $scope.datepickerTo = undefined;
   }
     $scope.CustomerId = localStorage.getItem("transictionCustomerNumber");
     //Get Customers    
