@@ -80,20 +80,19 @@
             $scope.numLoans = numL;
         }
     });
+ // get transictions
+ 
+    $scope.GetTransictions = function (cus) {
+        $window.location.href = "#transictions";
+        localStorage.setItem("transictionCustomerNumber", cus.CustomerId);
 
+    }
 });
 
 app.controller('confirmController', function ($http, $scope, $window) {
 	
 
-    // get transictions
- 
-    $scope.GetTransictions = function (cus) {
-       
-        $window.location.href = "#transictions";
-        localStorage.setItem("transictionCustomerNumber", cus.CustomerId);
-
-    }
+   
 });
 
 app.controller('successController', function ($http, $scope, $window) {

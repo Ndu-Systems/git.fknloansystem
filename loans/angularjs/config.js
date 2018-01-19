@@ -5,6 +5,7 @@
 
 //var host = "http://ndu-systems.net/demo/fknloans/api/";
 var host = "http://localhost/git.fknloansystem/loans/api/";
+var printTransictions = "http://localhost/git.fknloansystem/loans/api/pdf_gen/mypdf.php"
 
 function GetApiUrl(serviceName) {
 

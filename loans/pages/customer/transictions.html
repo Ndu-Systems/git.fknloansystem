@@ -84,9 +84,18 @@
                                 <div class="col-md-4">
                                     <h3>Transictions</h3>
                                 </div>
+								
+                               
+								
                                 <table class="table">
-                                    <thead>
-                                        <tr>
+                                   
+                                    <tbody>
+									<tr>
+									<td> Transictions From :  <input type="text" id="datepickerFrom" ng-model="datepickerFrom"></td>
+									<td> Transictions To :  <input type="text" id="datepickerTo"  ng-model="datepickerTo"></td>
+									<td><button type="button" ng-click= Filter() class="btn btn-primary">Filter</button></td>
+									</tr>
+									<tr>
                                             <th>Loan #</th>
                                             <th>Loan Amount</th>
                                             <th>Balance</th>
@@ -94,8 +103,6 @@
                                             <th>Description</th>
                                             <th>Transiction Date</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
                                         <tr ng-repeat="loan in aLoans">
                                             <td>{{loan.LoanId}}</td>
                                             <td>R{{loan.LoanAmount}}</td>

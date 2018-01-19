@@ -1,8 +1,27 @@
-﻿app.controller('transactionController', function ($http, $scope, $window) {
+﻿
+ 
+
+
+app.controller('transactionController', function ($http, $scope, $window) {
     if (localStorage.getItem("isLoggedIn") !== "true") {
         $window.location.href = "#/";
     }
+  // date picker
+   $( function() {
+    $( "#datepickerFrom" ).datepicker();
+  });
+
+  $( function() {
+    $( "#datepickerTo" ).datepicker();
+  });
+  // end date picker
   
+  $scope.Filter = function(){
+	  if($scope.datepickerFrom !== undefined && $scope.datepickerTo !== undefined){
+		  
+		  
+	  }
+  }
     $scope.CustomerId = localStorage.getItem("transictionCustomerNumber");
     //Get Customers    
     var data = {
@@ -35,7 +54,9 @@
     });
 
     //Get Transiction(s) For Customer
-    var data = {
+	GetTransictions();
+   function GetTransictions(){
+		var data = {
         table: "transaction",
         condition: "CustomerId = " + $scope.CustomerId
     };
@@ -64,8 +85,9 @@
         }
     });
 
+	}
     $scope.Print = function () {
-        var url = "http://localhost/git.fknloans/loans/api/pdf_gen/mypdf.php?id=" + $scope.CustomerId + "&name=" + $scope.FirstName;
+        var url = printTransictions+"?id=" + $scope.CustomerId + "&name=" + $scope.FirstName;
         window.open(url, '_blank');
     }
 
