@@ -29,13 +29,13 @@
                                   </tr>
                              </thead>
                              <tbody>
-                                    <tr ng-repeat="cus in aCustomers | filter:search">
+                                    <tr ng-repeat="cus in customers | filter:search">
                                         <!--<th scope="row"><span class="fa fa-plus-square" style="resize:100px;"></span>{{cus.CustomerId}}</th>-->
                                         <td>{{cus.CustomerId}}</td>
-                                        <td>{{cus.FullName}}</td>
+                                        <td>{{cus.FirstName}} {{cus.Name}}</td>
                                         <td>{{cus.CellNumber}}</td>
                                         <td>{{cus.LoanAmount}}</td>
-                                        <td><a href="" data-original-title="Save information" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="add(cus)">Add <span class="glyphicon glyphicon-plus"></span></a></td>
+                                        <td><a href="" data-original-title="Save information" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="Add(cus)">Add <span class="glyphicon glyphicon-plus"></span></a></td>
                                     </tr>
                             </tbody>
                       </table>
@@ -50,18 +50,17 @@
                                 <td>Selected Customer</td>
                                 <td>Amount (Out-standing)</td>
                             </tr>
+                            <tbody>
                             <tr>
-                                <td>King Pride</td>
-                                <td>R300</td>
+                                <td>Selected Customer</td>
+                                <td>Amount (Out-standing)</td>
                             </tr>
-                            <tr>
-                                <td>King Pride</td>
-                                <td>R300</td>
+                            <tr ng-repeat="cus in newCustomerList | filter:search">
+                                 <td>{{cus.name}}</td>
+                                 <td>{{cus.amount}}</td>
                             </tr>
-                            <tr>
-                                <td>King Pride</td>
-                                <td>R300</td>
-                            </tr>
+                                                      
+                        </tbody>  
                             <tr>
                                 <td><h1>Total</h1></td>
                                 <td><h2>R900.00</h2></td>
