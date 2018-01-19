@@ -21,7 +21,6 @@
                             <table class="table">
                              <thead>
                                  <tr>
-                                     <th scope="col">Customer #</th>
                                      <th scope="col">Full Name</th>                                 
                                      <th scope="col">Contact Number</th>
                                      <th scope="col">Loan Amount</th>
@@ -31,10 +30,9 @@
                              <tbody>
                                     <tr ng-repeat="cus in customers | filter:search">
                                         <!--<th scope="row"><span class="fa fa-plus-square" style="resize:100px;"></span>{{cus.CustomerId}}</th>-->
-                                        <td>{{cus.CustomerId}}</td>
                                         <td>{{cus.FirstName}} {{cus.Name}}</td>
                                         <td>{{cus.CellNumber}}</td>
-                                        <td>{{cus.LoanAmount}}</td>
+                                        <td>R {{cus.Balance}}</td>
                                         <td><a href="" data-original-title="Save information" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="Add(cus)">Add <span class="glyphicon glyphicon-plus"></span></a></td>
                                     </tr>
                             </tbody>
@@ -56,20 +54,20 @@
                                 <td>Amount (Out-standing)</td>
                             </tr>
                             <tr ng-repeat="cus in newCustomerList | filter:search">
-                                 <td>{{cus.name}}</td>
-                                 <td>{{cus.amount}}</td>
+                                 <td>{{cus.Name}}</td>
+                                 <td>R {{cus.Balance}}</td>
                             </tr>
                                                       
                         </tbody>  
                             <tr>
                                 <td><h1>Total</h1></td>
-                                <td><h2>R900.00</h2></td>
+                                <td><h2>R{{sumBalance}}</h2></td>
                             </tr>                           
                         </tbody>                  
                     </table>
                     <div>
                         <a href="" data-original-title="Save information" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="editLoan()">Save Calculations  <span class="glyphicon glyphicon-edit"></span></a>
-                        <button type="reset" class="btn btn-warning" style="background-color:orange;border-color:orange;" ng-click="reset()">Reset</button>
+                        <button type="reset" class="btn btn-warning" style="background-color:orange;border-color:orange;" ng-click="Reset()">Reset</button>
                     </div>
                 </div>
                </div>

@@ -353,13 +353,14 @@ app.controller('editController', function ($http, $scope, $window, $route) {
  
 app.controller('calculateCustomerController', function ($http, $scope, $window) {
 	$scope.newCustomerList = [];
+	$scope.sumBalance = 0;
    // Get Customers    
     var data = {
         table: "customer",
         condition: " IsActive = 1 "
     };
    
-   $http.post(GetApiUrl("Get"), data)
+   $http.post(GetApiUrl("GetCustomersJoinLoans"), data)
     .success(function (response, status) {
         if (response.data !== undefined) {
             $scope.customers = response.data;           
@@ -370,9 +371,15 @@ app.controller('calculateCustomerController', function ($http, $scope, $window) 
 	$scope.Add = function(cus){
 		//alert(cus.LastName);
 		var data= {
-			name:cus.FirstName, amount:cus.CustomerId
+			Name:cus.FirstName, Balance:cus.Balance, CreateUserId: cus.CustomerId
 		};
 		$scope.newCustomerList.push(data);
+		$scope.sumBalance += parseFloat(data.Balance);
+	};
+	
+	//Reset
+	$scope.Reset = function(){
+		$scope.newCustomerList=[];
 	}
 
 });
