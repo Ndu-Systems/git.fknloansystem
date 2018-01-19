@@ -351,10 +351,12 @@ app.controller('editController', function ($http, $scope, $window, $route) {
     }  
 });
  
-app.controller('calculateCustomerController', function ($http, $scope, $window) {
+app.controller('calculateCustomerController', function ($http, $scope, $window,$timeout) {
 	$scope.newCustomerList = [];
 	$scope.sumBalance = 0;
-   // Get Customers    
+   // Get Customers   
+ $timeout(function () {
+        //Get Customers    
     var data = {
         table: "customer",
         condition: " IsActive = 1 "
@@ -367,6 +369,8 @@ app.controller('calculateCustomerController', function ($http, $scope, $window) 
         }
     });
 	
+    }, 2000)   
+   
 	// Add
 	$scope.Add = function(cus){
 		//alert(cus.LastName);
