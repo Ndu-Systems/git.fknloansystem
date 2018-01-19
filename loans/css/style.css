@@ -14,6 +14,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
            background: #c1e2ec;
     padding: 2%;
     }
+	.load{
+		 position: fixed;
+    z-index: 100001;
+    left: 32%;
+    top: 29%;
+    width: 43%;
+    height: 48%;
+      display:none;
+	}
 .overlay {
     background:#000000c7;
     position:fixed;

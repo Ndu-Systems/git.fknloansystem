@@ -48,3 +48,12 @@ function Confirm(heading, msg, callback) {
     });
   
 }
+
+function Load(){
+	  $(".overlay").show();
+	   $(".load").show();
+}
+function Done(){
+	  $(".overlay").hide();
+	   $(".load").hide();
+}

@@ -354,7 +354,9 @@ app.controller('editController', function ($http, $scope, $window, $route) {
 app.controller('calculateCustomerController', function ($http, $scope, $window,$timeout) {
 	$scope.newCustomerList = [];
 	$scope.sumBalance = 0;
+	
    // Get Customers   
+   Load();
  $timeout(function () {
         //Get Customers    
     var data = {
@@ -364,7 +366,9 @@ app.controller('calculateCustomerController', function ($http, $scope, $window,$
    
    $http.post(GetApiUrl("GetCustomersJoinLoans"), data)
     .success(function (response, status) {
+		Done();
         if (response.data !== undefined) {
+			Done();
             $scope.customers = response.data;           
         }
     });
