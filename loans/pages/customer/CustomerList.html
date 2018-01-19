@@ -57,7 +57,7 @@
                             <tr ng-repeat="cus in newCustomerList | filter:search">
                                  <td>{{cus.Name}}</td>
                                  <td>R {{cus.Balance}}</td>
-								  <td> <span class="glyphicon glyphicon-remove" ng-click="Remove(cus)" style="color:red; pointer:cursor"></span></td>
+								  <td> <span class="glyphicon glyphicon-remove" ng-click="Remove($index)" style="color:red; pointer:cursor"></span></td>
                             </tr>
                                                       
                         </tbody>  

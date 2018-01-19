@@ -379,7 +379,7 @@ app.controller('calculateCustomerController', function ($http, $scope, $window,$
 	$scope.Add = function(cus){
 		//alert(cus.LastName);
 		var data= {
-			Name:cus.FirstName, Balance:cus.Balance, CreateUserId: cus.CustomerId
+			Name:cus.FirstName, Balance:cus.Balance, CustomerId: cus.CustomerId
 		};
 		$scope.newCustomerList.push(data);
 		$scope.sumBalance += parseFloat(data.Balance);
@@ -392,7 +392,7 @@ app.controller('calculateCustomerController', function ($http, $scope, $window,$
 	}
 	//Remove
 $scope.Remove = function(cus){
-		$scope.sumBalance=$scope.sumBalance - parseFloat(cus.Balance);
+		$scope.sumBalance=$scope.sumBalance - $scope.newCustomerList[cus].Balance;
 		 $scope.newCustomerList.splice(cus, 1);
 	}
 });
