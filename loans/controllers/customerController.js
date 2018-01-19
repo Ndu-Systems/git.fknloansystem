@@ -380,6 +380,7 @@ app.controller('calculateCustomerController', function ($http, $scope, $window) 
 	//Reset
 	$scope.Reset = function(){
 		$scope.newCustomerList=[];
+		$scope.sumBalance = 0;
 	}
 
 });
