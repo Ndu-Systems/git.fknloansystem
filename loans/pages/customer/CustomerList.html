@@ -52,10 +52,12 @@
                             <tr>
                                 <td>Selected Customer</td>
                                 <td>Amount (Out-standing)</td>
+								  <td></td>
                             </tr>
                             <tr ng-repeat="cus in newCustomerList | filter:search">
                                  <td>{{cus.Name}}</td>
                                  <td>R {{cus.Balance}}</td>
+								  <td> <span class="glyphicon glyphicon-remove" ng-click="Remove(cus)" style="color:red; pointer:cursor"></span></td>
                             </tr>
                                                       
                         </tbody>  
