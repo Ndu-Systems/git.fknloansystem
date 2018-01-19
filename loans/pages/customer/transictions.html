@@ -104,13 +104,13 @@
                                             <th>Description</th>
                                             <th>Transiction Date</th>
                                         </tr>
-                                        <tr ng-repeat="loan in aLoans">
-                                            <td>{{loan.LoanId}}</td>
-                                            <td>R{{loan.LoanAmount}}</td>
-                                            <td style="color:red">-R{{loan.Balance}}</td>
-                                            <td>{{loan.LoanTerm}} Months to Pay</td>
-                                            <td>{{loan.Description}}</td>
-                                            <td>{{loan.CreateDate}}</td>
+                                        <tr ng-repeat="transiction in transictions">
+                                            <td>{{transiction.LoanId}}</td>
+                                            <td>R{{transiction.LoanAmount}}</td>
+                                            <td style="color:red">-R{{transiction.Balance}}</td>
+                                            <td>{{transiction.LoanTerm}} Months to Pay</td>
+                                            <td>{{transiction.Description}}</td>
+                                            <td>{{transiction.CreateDate}}</td>
                                         </tr>
                                     </tbody>
                                     <tr>

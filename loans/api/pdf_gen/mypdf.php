@@ -24,7 +24,16 @@ $pdf->Write(35,"\n");
 
 //get db data
 $pdf->SetFont('Arial','',11);
- $sql = "SELECT * FROM transaction WHERE CustomerId = $id";
+$sql="";
+if(isset($_GET['datepickerFrom'])){
+	$datepickerFrom = $_GET['datepickerFrom'];
+	$datepickerTo = $_GET['datepickerTo'];
+	 $sql = "SELECT * FROM transaction WHERE CustomerId = $id and CreateDate >= '$datepickerFrom' and CreateDate<= '$datepickerTo'";
+
+}else{
+		 $sql = "SELECT * FROM transaction WHERE CustomerId = $id";
+
+}
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {

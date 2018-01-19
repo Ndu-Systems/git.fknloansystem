@@ -85,12 +85,12 @@ app.controller('transactionController', function ($http, $scope, $window) {
     $http.post(GetApiUrl("Get"), data)
     .success(function (response, status) {
         if (response.data !== undefined) {
-            $scope.Loans = response.data;
+            $scope.transictions = response.data;
 
             var numL = 0;
-            numL = $scope.Loans.length;
+            numL = $scope.transictions.length;
             $scope.numLoans = numL;
-            $scope.totalItems = $scope.Loans.length;
+            $scope.totalItems = $scope.transictions.length;
             $scope.currentPage = 1;
             $scope.itemsPerPage = 5;
 
@@ -99,7 +99,7 @@ app.controller('transactionController', function ($http, $scope, $window) {
             });
 
             function setPagingData(page) {
-                var pageData = $scope.Loans.slice(
+                var pageData = $scope.transictions.slice(
                     (page - 1) * $scope.itemsPerPage,
                     page * $scope.itemsPerPage);
                 $scope.aLoans = pageData;
@@ -109,8 +109,14 @@ app.controller('transactionController', function ($http, $scope, $window) {
 
 	}
     $scope.Print = function () {
-        var url = printTransictions+"?id=" + $scope.CustomerId + "&name=" + $scope.FirstName;
+		if($scope.datepickerFrom !== undefined && $scope.datepickerTo !== undefined){
+			 var url = printTransictions+"?id=" + $scope.CustomerId + "&name=" + $scope.FirstName + "&datepickerFrom="+$scope.datepickerFrom + "&datepickerTo="+$scope.datepickerTo;
         window.open(url, '_blank');
+		}else{
+			 var url = printTransictions+"?id=" + $scope.CustomerId + "&name=" + $scope.FirstName;
+        window.open(url, '_blank');
+		}
+       
     }
 
 });
