@@ -1,5 +1,4 @@
 ﻿app.controller('customerController', function ($http, $scope, $window, $route) {
-app.controller('customerController', function ($http, $scope, $window, $route) {
     if (localStorage.getItem("isLoggedIn") !== "true") {
         $window.location.href = "#/";
     }

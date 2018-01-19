@@ -8,19 +8,27 @@ app.controller('transactionController', function ($http, $scope, $window) {
     }
   // date picker
    $( function() {
-    $( "#datepickerFrom" ).datepicker();
+   $( "#datepickerFrom" ).datepicker({
+  dateFormat: "yy-mm-dd"
+});
   });
 
   $( function() {
-    $( "#datepickerTo" ).datepicker();
+    $( "#datepickerTo" ).datepicker({
+  dateFormat: "yy-mm-dd"
+});
   });
   // end date picker
   
   $scope.Filter = function(){
 	  if($scope.datepickerFrom !== undefined && $scope.datepickerTo !== undefined){
 		  
-		  
+		  GetTransictions(true);
 	  }
+  }
+  
+  $scope.ShowAll = function(){
+	    GetTransictions(false);
   }
     $scope.CustomerId = localStorage.getItem("transictionCustomerNumber");
     //Get Customers    
@@ -54,11 +62,23 @@ app.controller('transactionController', function ($http, $scope, $window) {
     });
 
     //Get Transiction(s) For Customer
-	GetTransictions();
-   function GetTransictions(){
-		var data = {
+	GetTransictions(false);
+   function GetTransictions(isFilter){
+	   var data  = undefined;
+	   if(isFilter){
+		   data = {
+       table: "transaction",
+        condition: "CustomerId = " + $scope.CustomerId + " and CreateDate >= '" + $scope.datepickerFrom + "' and CreateDate<= '" + $scope.datepickerTo + "'"
+	   }
+	   }
+	   
+	   else{
+	 data = {
         table: "transaction",
         condition: "CustomerId = " + $scope.CustomerId
+	   }
+		
+		
     };
     $http.post(GetApiUrl("Get"), data)
     .success(function (response, status) {

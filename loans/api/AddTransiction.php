@@ -11,7 +11,7 @@ $PayedAmount = $PaidAmount;
 $query_add_transiction = "
 INSERT INTO  transaction (Description ,  LoanId ,  CustomerId ,  TransactionDate ,  LoanAmount ,  PayedAmount ,  Balance ,  LoanTerm ,  Interest ,  CreateDate ,  CreateUserId ,  ModifyDate ,  ModifyUserId )
 VALUES
-('$Description', '$LoanId', $CustomerId, '$TransactionDate', '$LoanAmount', '$PayedAmount', '$Balance', '$LoanTerm', '$Interest', '$CreateDate', '$CreateUserId', '$ModifyDate', '$ModifyUserId')
+('$Description', '$LoanId', $CustomerId, '$TransactionDate', '$LoanAmount', '$PayedAmount', '$Balance', '$LoanTerm', '$Interest', now(), '$CreateUserId', '$ModifyDate', '$ModifyUserId')
 ";
 
   if ($conn->query($query_add_transiction) === TRUE) {
