@@ -392,7 +392,7 @@ app.controller('calculateCustomerController', function ($http, $scope, $window,$
 	}
 	//Remove
 $scope.Remove = function(cus){
+		$scope.sumBalance=$scope.sumBalance - parseFloat(cus.Balance);
 		 $scope.newCustomerList.splice(cus, 1);
-		 $scope.sumBalance=$scope.sumBalance - parseFloat(cus.Balance);
 	}
 });
