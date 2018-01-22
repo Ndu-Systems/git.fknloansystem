@@ -1,4 +1,4 @@
-﻿app.controller('customerController', function ($http, $scope, $window, $route) {
+﻿app.controller('customerController', function ($http, $scope, $window, $route, $timeout) {
     if (localStorage.getItem("isLoggedIn") !== "true") {
         $window.location.href = "#/";
     }
@@ -87,7 +87,8 @@
             }
         });
     }
-
+Load();
+ $timeout(function () {	
     //Get Loan(s) For Customer
     var data = {
         table: "loan",
@@ -95,6 +96,7 @@
     };
     $http.post(GetApiUrl("Get"), data)
     .success(function (response, status) {
+		Done();
         if (response.data !== undefined) {
             $scope.Loans = response.data;         
           
@@ -117,6 +119,7 @@
             }
         }
     });
+	  }, 2000)  
     //Create Loan redirects
     $scope.createLoan = function () {
       $window.location.href = "#addLoan";
@@ -142,7 +145,7 @@
         condition: "CustomerId = " + $scope.CustomerId+ " AND Status = 1"
     };
     $http.post(GetApiUrl("Get"), data)
-    .success(function (response, status) {
+    .success(function (response, status) {		
         if (response.data !== undefined) {
             $scope.Documents = response.data;
 
@@ -163,6 +166,7 @@
             }
         }
     });
+	 
 
     //Add Document For Customer
     //Upload file

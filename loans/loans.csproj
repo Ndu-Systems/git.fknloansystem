@@ -101,6 +101,7 @@
     <Content Include="api\EditProfile.php" />
     <Content Include="api\EditLoan.php" />
     <Content Include="api\EditUser.php" />
+    <Content Include="api\GetCustomersJoinLoans.php" />
     <Content Include="api\pdf_gen\changelog.htm" />
     <Content Include="api\pdf_gen\doc\acceptpagebreak.htm" />
     <Content Include="api\pdf_gen\doc\addfont.htm" />

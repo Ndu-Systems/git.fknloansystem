@@ -6,10 +6,10 @@
  $dbname = "fknloansdb";
 
 
-//$servername = "127.0.0.1";
-//$username = "ndusys0_poss";
-//$password = "Harder01!";
-//$dbname = "ndusys0_possibility";
+// $servername = "127.0.0.1";
+// $username = "ndusys0_fknloans";
+// $password = "Harder01!";
+// $dbname = "ndusys0_fknloansdb";
 
 
 $conn = new mysqli($servername, $username, $password,$dbname);

@@ -1,16 +1,19 @@
-﻿app.controller('homeController', function ($http, $scope, $window) {
+﻿app.controller('homeController', function ($http, $scope, $window,$timeout) {
     if (localStorage.getItem("isLoggedIn") !== "true") {
         $window.location.href = "#/";
     }
   
  
-    //Get Customers    
+    //Get Customers
+   Load();
+ $timeout(function () {    
     var data = {
         table: "customer",
         condition: " IsActive = 1 "
     };
     $http.post(GetApiUrl("Get"), data)
     .success(function (response, status) {
+		Done();
         if (response.data !== undefined) {
             $scope.customers = response.data;
             //var numC = 0;
@@ -35,7 +38,7 @@
             }
         }
     });
-
+    }, 2000)   
     //Selected Customer
     $scope.GetCustomer = function (cus) {
         localStorage.setItem("CustomerId", cus.CustomerId);

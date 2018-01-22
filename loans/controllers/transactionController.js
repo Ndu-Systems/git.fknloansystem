@@ -1,8 +1,5 @@
-﻿
- 
-
-
-app.controller('transactionController', function ($http, $scope, $window) {
+﻿app.controller('transactionController', function ($http, $scope, $window,$timeout) {
+	$scope.message = undefined;
     if (localStorage.getItem("isLoggedIn") !== "true") {
         $window.location.href = "#/";
     }
@@ -33,13 +30,16 @@ app.controller('transactionController', function ($http, $scope, $window) {
 		 $scope.datepickerTo = undefined;
   }
     $scope.CustomerId = localStorage.getItem("transictionCustomerNumber");
-    //Get Customers    
+    //Get Customers   
+ Load();
+ $timeout(function () {	
     var data = {
         table: "customer",
         condition: " CustomerId = " + $scope.CustomerId
     };
     $http.post(GetApiUrl("Get"), data)
     .success(function (response, status) {
+		Done();
         if (response.data !== undefined) {
             //alert(response.data[0]);
             //Customer Details to Display
@@ -62,10 +62,13 @@ app.controller('transactionController', function ($http, $scope, $window) {
             }
         }
     });
+	 }, 2000)   
 
     //Get Transiction(s) For Customer
 	GetTransictions(false);
    function GetTransictions(isFilter){
+	    Load();
+ $timeout(function () {
 	   var data  = undefined;
 	   if(isFilter){
 		   data = {
@@ -84,7 +87,9 @@ app.controller('transactionController', function ($http, $scope, $window) {
     };
     $http.post(GetApiUrl("Get"), data)
     .success(function (response, status) {
+		Done();
         if (response.data !== undefined) {
+			$scope.message = undefined;
             $scope.transictions = response.data;
 
             var numL = 0;
@@ -104,9 +109,17 @@ app.controller('transactionController', function ($http, $scope, $window) {
                     page * $scope.itemsPerPage);
                 $scope.aLoans = pageData;
             }
-        }
+        }else{
+			$scope.transictions=[];
+			if($scope.datepickerFrom !== undefined){
+			$scope.message=`No transactions found between ${$scope.datepickerFrom}  and  ${$scope.datepickerTo}`;
+			}else{
+				$scope.message="No transactions found ";
+			}
+			
+		}
     });
-
+ }, 2000)   
 	}
     $scope.Print = function () {
 		if($scope.datepickerFrom !== undefined && $scope.datepickerTo !== undefined){
