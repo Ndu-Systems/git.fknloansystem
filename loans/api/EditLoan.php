@@ -30,6 +30,7 @@ $data = json_decode(file_get_contents("php://input"));
         
         if ($conn->query($sql) === TRUE) {
             echo 1;
+            require 'EditTransaction.php';
         }
         else {
             //echo json_encode('failed');

@@ -1,6 +1,6 @@
 <?php
 $Description      = 'New Load deposit';
-$LoanId           = 100;
+$LoanId           = $LoanId;
 $TransactionDate  = date("l jS \of F Y h:i:s A") ;
 $CreateDate       =date("l jS \of F Y h:i:s A") ;
 $CreateUserId     = $userId;

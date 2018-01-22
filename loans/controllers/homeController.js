@@ -70,17 +70,27 @@
     $scope.numLoans = 0;
     var data = {
         table: "loan",
-        condition: " IsActive = 1 "
+        condition: " Status = 1 "
     };
     $http.post(GetApiUrl("Get"), data)
     .success(function (response, status) {
         if (response.data !== undefined) {
-            $scope.loans = response.data;
-            var numL = 0;
-            angular.forEach($scope.loans, function (item) {
-                numL++;
-            });
-            $scope.numLoans = numL;
+            $scope.loans = response.data;            
+            $scope.numLoans = $scope.loans.length;
+        }
+    });
+
+    //Get users
+    $scope.numUsers = 0;
+    var data2 = {
+        table: "users",
+        condition: " IsActive = 1 "
+    };
+    $http.post(GetApiUrl("Get"), data2)
+    .success(function (response, status) {
+        if (response.data !== undefined) {
+            $scope.users = response.data;
+            $scope.numUsers = $scope.users.length;
         }
     });
  // get transictions

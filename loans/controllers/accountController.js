@@ -2,7 +2,7 @@
     if (localStorage.getItem("isLoggedIn") === "true") {
         $window.location.href = "#home";
     }
-    var me = this;
+   
     $scope.reset = function () {
         $scope.message = undefined
         $route.reload();
@@ -15,8 +15,7 @@
             email: email,
             password: password
         };
-        if (data.email !== undefined && data.password !== undefined) {
-
+        if (data.email !== undefined && data.password !== undefined && data.email !== "" && data.password !== "") {
             $http.post(GetApiUrl("Login"), data)
             .success(function (response, status) {
                 if (response.length !== 0) {
@@ -30,7 +29,7 @@
                     localStorage.setItem("uModifyUserId", user.ModifyUserId);
                     localStorage.setItem("uurl", user.url);
                     localStorage.setItem("isLoggedIn", true);
-                    me.message = undefined;
+                    $scope.message = undefined;
                     if (user.Password !== "123456") {
                         var log = {
                             id: user.UserId

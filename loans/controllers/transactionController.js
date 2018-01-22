@@ -121,15 +121,15 @@
     });
  }, 2000)   
 	}
-    $scope.Print = function () {
+   $scope.Print = function () {
+       var fullName = $scope.FirstName + " " + $scope.LastName;
 		if($scope.datepickerFrom !== undefined && $scope.datepickerTo !== undefined){
-			 var url = printTransictions+"?id=" + $scope.CustomerId + "&name=" + $scope.FirstName + "&datepickerFrom="+$scope.datepickerFrom + "&datepickerTo="+$scope.datepickerTo;
+		    var url = printTransictions + "?id=" + $scope.CustomerId + "&name=" + fullName + "&datepickerFrom=" + $scope.datepickerFrom + "&datepickerTo=" + $scope.datepickerTo;
         window.open(url, '_blank');
 		}else{
-			 var url = printTransictions+"?id=" + $scope.CustomerId + "&name=" + $scope.FirstName;
+		    var url = printTransictions + "?id=" + $scope.CustomerId + "&name=" + fullName;
         window.open(url, '_blank');
-		}
-       
+		}       
     }
 
 });

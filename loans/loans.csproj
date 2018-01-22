@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="api\AddLoan.php" />
+    <Content Include="api\EditTransaction.php" />
     <Content Include="api\AddTransiction.php" />
     <Content Include="api\AddUser.php" />
     <Content Include="api\Deactivate.php" />
@@ -171,7 +172,8 @@
     <Content Include="api\pdf_gen\fpdf.php" />
     <Content Include="api\pdf_gen\install.txt" />
     <Content Include="api\pdf_gen\license.txt" />
-    <Content Include="api\pdf_gen\logo.png" />
+    <Content Include="api\pdf_gen\logo.PNG" />
+    <Content Include="api\pdf_gen\logo1.png" />
     <Content Include="api\pdf_gen\main.php" />
     <Content Include="api\pdf_gen\makefont\makefont.php" />
     <Content Include="api\pdf_gen\makefont\ttfparser.php" />
@@ -215,10 +217,22 @@
     <Content Include="api\uploads\profiles\1515437570Logo - Design.PNG" />
     <Content Include="api\uploads\profiles\1515437601Logo - Design with writing whitebg.PNG" />
     <Content Include="api\uploads\profiles\1515437958Logo.png" />
+    <Content Include="api\uploads\profiles\1516650373tw.jpg" />
+    <Content Include="api\uploads\profiles\1516650665tw.jpg" />
     <Content Include="api\uploads\profiles\5.png" />
     <Content Include="controllers\configurationController.js" />
+    <Content Include="controllers\settimeout.js" />
     <Content Include="css\angular-material.min.css" />
+    <Content Include="css\images\ui-icons_444444_256x240.png" />
+    <Content Include="css\images\ui-icons_555555_256x240.png" />
+    <Content Include="css\images\ui-icons_777620_256x240.png" />
+    <Content Include="css\images\ui-icons_777777_256x240.png" />
+    <Content Include="css\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="css\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="css\jquery-ui.css" />
     <Content Include="db\fknloansdb.sql" />
+    <Content Include="images\load.svg" />
+    <Content Include="images\Logo.PNG" />
     <Content Include="js\angular-material.min.js" />
     <Content Include="js\ui-bootstrap-tpls-2.5.0.min.js" />
     <Content Include="packages.config" />
@@ -294,7 +308,6 @@
     <Content Include="images\arrow-right.png" />
     <Content Include="images\bg.jpg" />
     <Content Include="images\cloud.png" />
-    <Content Include="images\logo.png" />
     <Content Include="images\pic1.png" />
     <Content Include="images\pic2.png" />
     <Content Include="images\pic3.jpg" />

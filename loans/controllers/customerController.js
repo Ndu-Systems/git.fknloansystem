@@ -270,7 +270,7 @@ app.controller('editController', function ($http, $scope, $window, $route) {
             var formData = new FormData();
             angular.forEach($scope.files, function (file) {
                 formData.append('file', file);
-                formData.append('name', file.name)
+                formData.append('name', file.name)                
             });
             $http.post(GetApiUrl("uploadProfile"), formData, {
                 transformRequest: angular.identity,
