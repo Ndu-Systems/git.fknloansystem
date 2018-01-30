@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2018 at 03:25 PM
+-- Generation Time: Jan 25, 2018 at 08:46 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -54,16 +54,8 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`CustomerId`, `FirstName`, `LastName`, `CellNumber`, `EmailAddress`, `IdNumber`, `Location`, `Address`, `BankName`, `AccountNumber`, `BranchCode`, `AccountType`, `IsActive`, `url`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
-(1, 'John', 'Blake', '27740606060', 'jblake@mail.com', '9207258405005', 'Gauteng', '11 MeetPlace, Main Avenue, Randburg', 'Capitec', 250050250, '255-500', 'Savings', 0, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2017-12-26 21:15:30', 1, '2018-01-10 05:54:56', 5),
-(2, 'Jane', 'Blake', '27740606060', 'janeb@mail.com', '9207258405005', 'Gauteng', '33 Palace, New Way, Sandton', 'Standard Bank', 250050250, '255-500', 'Gold Cheque Account', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/1515437601Logo - Design with writing whitebg.PNG\r\n', '2017-12-26 21:20:31', 1, '2018-01-10 05:53:55', 1),
-(3, 'Kenneth', 'Nkosi', '27740606060', 'kennyn@mail.com', '9107258405005', 'Kwa-Zulu Natal', '1 JikaPlace, Jika Avenue, Kwa-Mashu', 'Capitec', 250050250, '255-500', 'Savings', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2017-12-26 21:20:43', 1, '2017-12-26 21:20:43', 1),
-(4, 'Sam', 'Magwaza', '27740606060', 'magwazasam@mail.com', '9007258405005', 'Kwa-Zulu Natal', '300 Prince Palace, Main Avenue, Umhlanga', 'Bidvest', 250050250, '255-500', 'Savings', 0, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2017-12-26 21:20:48', 1, '2018-01-10 05:55:28', 5),
-(5, 'David', 'Beckham', '745060658', 'email@mail.com', '920825064005', 'Gauteng', 'Randburg 210 Main', 'BidVest Bank', 5208535, '255-500', 'Savings Account', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2018-01-01 12:48:52', 1, '2018-01-06 23:52:55', 1),
-(6, 'Jessica', 'Simpson', '745680008', 'jesica@mail.com', '920845520084', 'Kwa-Zulu Natal', 'Mhlanga Unit 3 Ferns', 'Bidvest', 580646358, '300-600', 'Savings', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/1515437958Logo.png\r\n', '2018-01-01 12:51:10', 2, '2018-01-08 20:59:19', 1),
-(7, 'Freedom', 'Khanyile', '745020506', 'free@mail.com', '', 'Gauteng', 'Randburg, 2101', 'FNB', 450450454, '255-500', 'Gold Cheque', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2018-01-02 00:02:32', 1, '2018-01-02 00:02:32', 1),
-(8, 'Freedom', 'Khanyile', '745020506', 'free@mail.com', '', 'Gauteng', 'Randburg, 2101', 'FNB', 450450454, '255-500', 'Gold Cheque', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2018-01-02 00:04:15', 1, '2018-01-02 00:04:15', 1),
-(9, 'Freedom', 'Khanyile', '27746958064', 'freedom@mail.com', '450650425384', 'Gauteng', 'Randburg', 'FNB', 2147483647, '255-500', 'Cheque Account', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2018-01-02 00:06:14', 1, '2018-01-02 00:06:14', 1),
-(10, 'Sam', 'Smith', '75468208', 'smith@mail.com', '924072524515', 'Cape Town', 'Cape Flats Unit 92', 'BidVest', 2147483647, '222-580', 'Check Savings', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2018-01-08 20:56:11', 1, '2018-01-08 20:56:11', 1);
+(1, 'Freedom', 'Khanyile', '7469580564', 'freedom@ndu-systems.net', '9250560420008', 'Gauteng', 'Randburg', 'FNB', 2305458, '255-305', 'Savings', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/1516651110pic.jpg\n', '2018-01-22 20:48:19', 1, '2018-01-22 21:58:33', 1),
+(2, 'Ndumiso', 'Mthembu', '27746050808', 'ndumiso@ndu-systems.net', '925005086064', 'Gauteng', 'Johanessburg', 'FNB', 250466084, '255-2508', 'Cheque', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2018-01-22 20:52:05', 1, '2018-01-22 20:52:05', 1);
 
 -- --------------------------------------------------------
 
@@ -89,7 +81,12 @@ CREATE TABLE `documents` (
 --
 
 INSERT INTO `documents` (`DocumentId`, `CustomerId`, `LoanId`, `Description`, `Url`, `Status`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
-(1, 2, 2, 'Proof Of Payment for Jane Blake', 'http://localhost/git.fknloans/loans/api/uploads/1515936543Ndu-Systems Invoice - FKN Micro Loans - number 2.pdf\n', 1, '2018-01-14 15:29:03', 1, '2018-01-14 15:29:03', 1);
+(1, 1, 1, 'Proof Of Payment for Freedom Khanyile', 'http://localhost/git.fknloans/loans/api/uploads/151664700920170207095229681.pdf\n', 1, '2018-01-22 20:50:09', 1, '2018-01-22 20:50:09', 1),
+(2, 2, 2, 'Proof Of Payment for Ndumiso Mthembu', 'http://localhost/git.fknloans/loans/api/uploads/151664725620170207095229681.pdf\n', 1, '2018-01-22 20:54:16', 1, '2018-01-22 20:54:16', 1),
+(3, 1, 0, 'Proof Of ID for Freedom Khanyile', 'http://localhost/git.fknloans/loans/api/uploads/1516651371pic.jpg\n', 1, '2018-01-22 22:02:51', 1, '2018-01-22 22:02:51', 1),
+(4, 1, 3, 'Proof Of Payment for Freedom Khanyile', 'http://localhost/git.fknloans/loans/api/uploads/1516653522coh_npc_profile.pdf\n', 1, '2018-01-22 22:38:42', 1, '2018-01-22 22:38:42', 1),
+(5, 0, 0, '', '', 0, '2018-01-22 23:30:42', 0, '2018-01-22 23:30:42', 0),
+(6, 2, 4, 'Proof Of Payment for Ndumiso Mthembu', 'http://localhost/git.fknloans/loans/api/uploads/1516656642coh_npc_profile.pdf\n', 1, '2018-01-22 23:30:42', 1, '2018-01-22 23:30:42', 1);
 
 -- --------------------------------------------------------
 
@@ -119,7 +116,10 @@ CREATE TABLE `loan` (
 --
 
 INSERT INTO `loan` (`LoanId`, `CustomerId`, `LoanAmount`, `PaidAmount`, `Balance`, `AmountPayable`, `LoanTerm`, `Interest`, `LoanDate`, `Status`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
-(1, 2, '5000', '2000', '3750', '5750', 2, '15', '2018-01-14 15:33:33', 1, '2018-01-14 15:35:50', 1, '2018-01-14 15:35:50', 1);
+(1, 1, '3000', '300', '3000', '3300', 6, '10', '2018-01-22 20:49:56', 1, '2018-01-22 22:36:40', 1, '2018-01-22 22:36:40', 1),
+(2, 2, '2500', '0', '2750', '2750', 3, '10', '2018-01-22 20:53:50', 1, '2018-01-22 20:54:18', 1, '2018-01-22 20:54:18', 1),
+(3, 1, '1000', '200', '1000', '1200', 6, '20', '2018-01-22 22:38:06', 1, '2018-01-22 22:58:46', 1, '2018-01-22 22:58:46', 1),
+(4, 2, '5000', '2000', '4000', '6000', 6, '20', '2018-01-22 23:30:22', 1, '2018-01-22 23:31:18', 1, '2018-01-22 23:31:18', 1);
 
 -- --------------------------------------------------------
 
@@ -149,20 +149,13 @@ CREATE TABLE `transaction` (
 --
 
 INSERT INTO `transaction` (`TransactionId`, `Description`, `LoanId`, `CustomerId`, `TransactionDate`, `LoanAmount`, `PayedAmount`, `Balance`, `LoanTerm`, `Interest`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
-(1, 'New Load deposit', 100, 2, 'Sunday 14th of January 2018 02:10:31 PM', '15000', '0', '16800', '1', '12', 'Sunday 14th of January 2018 02:10:31 PM', 1, 'Sunday 14th of January 2018 02:10:31 PM', 1),
-(2, 'New Load deposit', 100, 2, 'Sunday 14th of January 2018 02:10:31 PM', '15000', '0', '17250', '0', '15', 'Sunday 14th of January 2018 02:10:31 PM', 1, 'Sunday 14th of January 2018 02:10:31 PM', 1),
-(3, 'New Load deposit', 100, 2, 'Sunday 14th of January 2018 02:10:31 PM', '1500', '0', '1680', '2', '12', 'Sunday 14th of January 2018 02:10:31 PM', 1, 'Sunday 14th of January 2018 02:10:31 PM', 1),
-(4, 'New Load deposit', 100, 2, 'Sunday 14th of January 2018 02:12:34 PM', '2000', '0', '2200', '1', '10', 'Sunday 14th of January 2018 02:12:34 PM', 1, 'Sunday 14th of January 2018 02:12:34 PM', 1),
-(5, 'New Load deposit', 100, 2, 'Sunday 14th of January 2018 02:12:49 PM', '2000', '0', '2200', '1', '10', 'Sunday 14th of January 2018 02:12:49 PM', 1, 'Sunday 14th of January 2018 02:12:49 PM', 1),
-(6, 'New Load deposit', 100, 2, 'Sunday 14th of January 2018 02:12:49 PM', '1000', '0', '1100', '2', '10', 'Sunday 14th of January 2018 02:12:49 PM', 1, 'Sunday 14th of January 2018 02:12:49 PM', 1),
-(7, 'New Load deposit', 100, 2, 'Sunday 14th of January 2018 02:13:15 PM', '1000', '0', '1100', '2', '10', 'Sunday 14th of January 2018 02:13:15 PM', 1, 'Sunday 14th of January 2018 02:13:15 PM', 1),
-(8, 'New Load deposit', 100, 2, 'Sunday 14th of January 2018 02:13:15 PM', '2000', '0', '2200', '1', '10', 'Sunday 14th of January 2018 02:13:15 PM', 1, 'Sunday 14th of January 2018 02:13:15 PM', 1),
-(9, 'New Load deposit', 100, 2, 'Sunday 14th of January 2018 02:13:15 PM', '500', '0', '550', '1', '10', 'Sunday 14th of January 2018 02:13:15 PM', 1, 'Sunday 14th of January 2018 02:13:15 PM', 1),
-(10, 'New Load deposit', 100, 3, 'Sunday 14th of January 2018 02:20:12 PM', '3000', '0', '3300', '2', '10', 'Sunday 14th of January 2018 02:20:12 PM', 1, 'Sunday 14th of January 2018 02:20:12 PM', 1),
-(11, 'New Load deposit', 100, 3, 'Sunday 14th of January 2018 02:20:31 PM', '1000', '0', '1100', '2', '10', 'Sunday 14th of January 2018 02:20:31 PM', 1, 'Sunday 14th of January 2018 02:20:31 PM', 1),
-(12, 'New Load deposit', 100, 2, 'Sunday 14th of January 2018 02:27:18 PM', '2000', '0', '2400', '2', '20', 'Sunday 14th of January 2018 02:27:18 PM', 1, 'Sunday 14th of January 2018 02:27:18 PM', 1),
-(13, 'New Load deposit', 100, 2, 'Sunday 14th of January 2018 02:27:30 PM', '10000', '0', '11000', '3', '10', 'Sunday 14th of January 2018 02:27:30 PM', 1, 'Sunday 14th of January 2018 02:27:30 PM', 1),
-(14, 'New Load deposit', 100, 2, 'Sunday 14th of January 2018 02:33:33 PM', '5000', '0', '5750', '2', '15', 'Sunday 14th of January 2018 02:33:33 PM', 1, 'Sunday 14th of January 2018 02:33:33 PM', 1);
+(1, 'New Load deposit', 100, 1, 'Monday 22nd of January 2018 07:49:56 PM', '3000', '0', '3300', '6', '10', '2018-01-22 20:49:56', 1, 'Monday 22nd of January 2018 07:49:56 PM', 1),
+(2, 'New Load deposit', 100, 2, 'Monday 22nd of January 2018 07:53:50 PM', '2500', '0', '2750', '3', '10', '2018-01-22 20:53:50', 1, 'Monday 22nd of January 2018 07:53:50 PM', 1),
+(3, 'New Load deposit', 100, 1, 'Monday 22nd of January 2018 09:38:07 PM', '1000', '0', '1200', '6', '20', '2018-01-22 22:38:07', 1, 'Monday 22nd of January 2018 09:38:07 PM', 1),
+(4, 'Loan Update Transaction', 3, 1, 'Monday 22nd of January 2018 09:58:46 PM', '1000', '200', '1000', '6', '20', '2018-01-22 22:58:46', 1, 'Monday 22nd of January 2018 09:58:46 PM', 1),
+(5, 'New Load deposit', 0, 2, 'Monday 22nd of January 2018 10:30:22 PM', '5000', '0', '6000', '6', '20', '2018-01-22 23:30:22', 1, 'Monday 22nd of January 2018 10:30:22 PM', 1),
+(6, 'Loan Update Transaction', 4, 2, 'Monday 22nd of January 2018 10:30:44 PM', '5000', '0', '6000', '6', '20', '2018-01-22 23:30:44', 1, 'Monday 22nd of January 2018 10:30:44 PM', 1),
+(7, 'Loan Update Transaction', 4, 2, 'Monday 22nd of January 2018 10:31:18 PM', '5000', '2000', '4000', '6', '20', '2018-01-22 23:31:18', 1, 'Monday 22nd of January 2018 10:31:18 PM', 1);
 
 -- --------------------------------------------------------
 
@@ -190,11 +183,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Role`, `LastLoginDate`, `IsActive`, `EmailAddress`, `url`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
-(1, 'admin@mail.com', 'pass', 1, '2018-01-14 15:16:18', 1, 'admin@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2017-12-26 00:00:00', 0, '2017-12-26 00:00:00', 0),
+(1, 'admin@mail.com', 'pass', 1, '2018-01-22 23:56:22', 1, 'admin@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2017-12-26 00:00:00', 0, '2017-12-26 00:00:00', 0),
 (2, 'admin', 'pass', 1, '2018-01-06 23:36:00', 1, 'admin@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2017-12-26 00:00:00', 0, '2017-12-26 00:00:00', 0),
 (3, 'freedom', 'pass', 1, '2018-01-08 22:32:41', 1, 'freedom@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2018-01-08 21:34:06', 1, '2018-01-08 21:34:06', 1),
 (4, 'King', 'pass', 1, '2018-01-11 19:10:06', 1, 'king@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2018-01-08 22:36:06', 3, '2018-01-09 00:01:32', 4),
-(5, 'systemuser', 'pass', 1, '2018-01-10 05:53:48', 1, 'systemuser@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2018-01-09 00:02:14', 4, '2018-01-09 00:02:36', 5);
+(5, 'systemuser', 'pass', 1, '2018-01-10 05:53:48', 1, 'systemuser@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2018-01-09 00:02:14', 4, '2018-01-09 00:02:36', 5),
+(6, 'ndu@ndu-systems.net', 'pass', 1, '2018-01-22 21:01:34', 1, 'ndu@ndu-systems.net', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2018-01-22 21:00:55', 1, '2018-01-22 21:01:18', 6);
 
 --
 -- Indexes for dumped tables
@@ -238,31 +232,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CustomerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `CustomerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `DocumentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `DocumentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `loan`
 --
 ALTER TABLE `loan`
-  MODIFY `LoanId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `LoanId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `TransactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `TransactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="api\AddLoan.php" />
+    <Content Include="api\DeactivateLoan.php" />
     <Content Include="api\EditTransaction.php" />
     <Content Include="api\AddTransiction.php" />
     <Content Include="api\AddUser.php" />
@@ -204,6 +205,11 @@
     <Content Include="api\upload.php" />
     <Content Include="api\uploadProfile.php" />
     <Content Include="api\EditCustomer.php" />
+    <Content Include="api\uploads\1515778788Logo - Design with writing whitebg.PNG" />
+    <Content Include="api\uploads\1515781944logo.PNG" />
+    <Content Include="api\uploads\1515782009logo.PNG" />
+    <Content Include="api\uploads\1515783070logo.PNG" />
+    <Content Include="api\uploads\1516651371pic.jpg" />
     <Content Include="api\uploads\profiles1515436462Logo2017.PNG" />
     <Content Include="api\uploads\profiles\1515436672Logo2017.PNG" />
     <Content Include="api\uploads\profiles\1515436727Logo2017.PNG" />
@@ -219,6 +225,8 @@
     <Content Include="api\uploads\profiles\1515437958Logo.png" />
     <Content Include="api\uploads\profiles\1516650373tw.jpg" />
     <Content Include="api\uploads\profiles\1516650665tw.jpg" />
+    <Content Include="api\uploads\profiles\1516651110pic.jpg" />
+    <Content Include="api\uploads\profiles\1517081023IMG_20170828_194314.jpg" />
     <Content Include="api\uploads\profiles\5.png" />
     <Content Include="controllers\configurationController.js" />
     <Content Include="controllers\settimeout.js" />
@@ -270,6 +278,22 @@
     <Content Include="api\pdf_gen\makefont\koi8-u.map" />
     <Content Include="api\pdf_gen\tutorial\calligra.ttf" />
     <Content Include="api\pdf_gen\tutorial\calligra.z" />
+    <Content Include="api\uploads\1515705170Ndu-Systems Service Level Agreement Template.pdf" />
+    <Content Include="api\uploads\1515705796Ndu-Systems Invoice - FKN Micro Loans - number 2.pdf" />
+    <Content Include="api\uploads\1515706029Ndu-Systems Invoice - FKN Micro Loans - number 2.pdf" />
+    <Content Include="api\uploads\1515706544Ndu-Systems Invoice - FKN Micro Loans - number 1.pdf" />
+    <Content Include="api\uploads\1515706621Ndu-Systems Invoice - FKN Micro Loans - number 2.pdf" />
+    <Content Include="api\uploads\1515784943Ndu-Systems Service Level Agreement Template.pdf" />
+    <Content Include="api\uploads\1515785016Ndu-Systems Service Level Agreement Template.pdf" />
+    <Content Include="api\uploads\1515785079Ndu-Systems Service Level Agreement Template.pdf" />
+    <Content Include="api\uploads\1515936543Ndu-Systems Invoice - FKN Micro Loans - number 2.pdf" />
+    <Content Include="api\uploads\151646258520170207095229681.pdf" />
+    <Content Include="api\uploads\151664700920170207095229681.pdf" />
+    <Content Include="api\uploads\151664725620170207095229681.pdf" />
+    <Content Include="api\uploads\1516653522coh_npc_profile.pdf" />
+    <Content Include="api\uploads\1516656642coh_npc_profile.pdf" />
+    <Content Include="api\uploads\1517080944doc_13.pdf" />
+    <Content Include="api\uploads\1517091200doc_2.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

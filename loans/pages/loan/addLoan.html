@@ -45,18 +45,14 @@
                                 <input required type="number" ng-model="LoanAmount" placeholder="Loan Amount" style="width:90%; padding:1%">
                             </div>
                             <div class="form-group">
-                                <b>Select Loan Term (i.e. 6 Months)</b>
+                                <b>With Interest Yes/No</b>
                                 <!--<input required type="text" ng-model="LoanTerm" placeholder="Loan Term" style="width:90%; padding:1%">-->
                             </div>
                             <div class="form-group">                             
-                                    <select name="loanTerms" ng-model="LoanTerm" style="width:90%; padding:1%">
-                                        <option value="">Select Month(s)</option>
-                                        <option value="1">1 Month</option>
-                                        <option value="2">2 Months</option>
-                                        <option value="3">3 Months</option>
-                                        <option value="4">4 Months</option>
-                                        <option value="6">6 Months</option>
-                                        <option value="12">12 Months</option>
+                                    <select name="loanTerms" ng-model="WOI" style="width:90%; padding:1%">
+                                        <option value="">With Interest?</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>                                      
                                     </select>                          
                             </div>
                             <div class="form-group">
@@ -67,10 +63,27 @@
                                 <div>
                                     <h4>Amount <b>Payable</b> : {{total() | currency:'R'}} at an interest of {{Interest}} %</h4>
                                     <br />
-                                    <h4>Over a period of {{LoanTerm}} Months</h4>
+                                    <h4>With Interest? {{WOI}}</h4>
                                 </div>
                             </div>
-                            <div class="form-group">
+							 <div class="form-group">
+                                <b>Enter Paid Interest </b>
+                                <input required type="number" ng-model="PaidInterest" placeholder="Interest On Loan" style="width:90%; padding:1%">
+                            </div>
+							 <div class="form-group">
+							  <b>Select Means Of Payment</b>
+                                 <select name="loanTerms" ng-model="MeansOfPayment" style="width:90%; padding:1%">
+                                        <option value="">Means Of Pay?</option>
+                                        <option value="Cash">Cash</option>
+                                        <option value="EFT">EFT</option>                                      
+                                    </select>  
+							</div>
+							<hr/>							   
+							 <div class="form-group">
+                                <b>Enter Referrer</b>
+                                <input required type="text" ng-model="Referrer" placeholder="Referrer" style="width:90%; padding:1%">
+                            </div>  
+							<div class="form-group">
                                 <button type="submit" class="btn btn-primary" ng-click="addLoan()">Create Loan</button> <button type="reset" class="btn btn-warning" style="background-color:orange;border-color:orange;" ng-click="reset()">Reset</button>
                             </div>
                             <p><a href="#/viewCustomer">Abort</a></p>

@@ -25,11 +25,17 @@
             BranchCode: $scope.branchcode,
             AccountType: $scope.accounttype,
             IsActive: 1,
-            url:"http://localhost/git.fknloans/loans/api/uploads/profiles/5.png",
-            userId: userId
+            url:"http://localhost/fundakubona/api/uploads/profiles/5.png",
+            userId: userId,
+			NOKName: $scope.nokname,
+			NOKContactNumber:$scope.nokcontactnumber,
+			WorkAddress : $scope.workaddress,
+			Department : $scope.department,
+			NOKAddress : $scope.nokaddress,
+			CallSign : $scope.callsign			
         };
 
-        if (data.FirstName === undefined || data.LastName === undefined || data.CellNumber === undefined || data.EmailAddress === undefined || data.Location === undefined || data.Address === undefined || data.BankName === undefined || data.AccountNumber === undefined || data.BranchCode === undefined || data.AccountType === undefined)
+        if (data.NOKName === undefined ||data.NOKContactNumber === undefined ||data.NOKAddress === undefined ||data.WorkAddress === undefined ||data.Department === undefined ||data.CallSign === undefined ||data.FirstName === undefined || data.LastName === undefined || data.CellNumber === undefined || data.EmailAddress === undefined || data.Location === undefined || data.Address === undefined || data.BankName === undefined || data.AccountNumber === undefined || data.BranchCode === undefined || data.AccountType === undefined)
         {
             $scope.message = "All fields must be field in";
         }
@@ -62,6 +68,12 @@
     $scope.AccountType = localStorage.getItem("AccountType");
     $scope.IsActive = localStorage.getItem("IsActive");
     $scope.url = localStorage.getItem("url");
+	$scope.WorkAddress = localStorage.getItem("WorkAddress");  
+	$scope.Department = localStorage.getItem("Department");  
+	$scope.CallSign = localStorage.getItem("CallSign");  
+	$scope.NOKName = localStorage.getItem("NOKName");  
+	$scope.NOKAddress = localStorage.getItem("NOKAddress");  
+	$scope.NOKContactNumber = localStorage.getItem("NOKContactNumber");
     $scope.status = "Not Alegible for Loan";
     if ($scope.IsActive === "1") {
         $scope.status = "Alegible for Loan";
@@ -92,7 +104,7 @@ Load();
     //Get Loan(s) For Customer
     var data = {
         table: "loan",
-        condition: "CustomerId = " + $scope.CustomerId +" AND Balance <> 0 AND Status = 1"
+        condition: "CustomerId = " + $scope.CustomerId +" AND Status = 1"
     };
     $http.post(GetApiUrl("Get"), data)
     .success(function (response, status) {
@@ -110,7 +122,7 @@ Load();
             $scope.$watch("currentPage", function () {
                 setPagingData($scope.currentPage);
             });
-
+			
             function setPagingData(page) {
                 var pageData = $scope.Loans.slice(
                     (page - 1) * $scope.itemsPerPage,
@@ -130,12 +142,17 @@ Load();
         localStorage.setItem("LoanId", loan.LoanId);
         localStorage.setItem("LoanAmount", loan.LoanAmount);
         localStorage.setItem("Balance", loan.Balance);
-        localStorage.setItem("PaidAmount", loan.PaidAmount);
-        localStorage.setItem("LoanTerm", loan.LoanTerm);
+        localStorage.setItem("PaidLoan", loan.PaidLoan);      
         localStorage.setItem("AmountPayable", loan.AmountPayable);
         localStorage.setItem("Interest", loan.Interest);
         localStorage.setItem("LoanDate", loan.LoanDate);
-        localStorage.setItem("Status", loan.Status);
+        localStorage.setItem("PaidInterest", loan.PaidInterest);
+		localStorage.setItem("AdditionalLoan", loan.AdditionalLoan);
+		localStorage.setItem("Reciever", loan.Reciever);	
+		localStorage.setItem("Status", loan.Status);	
+		localStorage.setItem("PaidInterest", loan.PaidInterest);
+		localStorage.setItem("WOI", loan.WOI);
+		localStorage.setItem("Referrer", loan.Referrer);
         $window.location.href = "#editLoan";
     };
 
@@ -183,7 +200,7 @@ Load();
         $scope.success = undefined;
         $scope.errorP = undefined;
         if ($scope.filename !== undefined) {
-            var doc = "";
+            //var doc = "";
             var formData = new FormData();
             angular.forEach($scope.files, function (file) {
                 formData.append('file', file);
@@ -195,8 +212,8 @@ Load();
             })
             .success(function (resp) {
                 var expectedDate = new Date();
-                doc = GetHost(resp);
-                //  alert(doc);               
+               var doc = GetHost(resp);
+				alert(doc);               
 
                 var data = {
                     Url: doc,
@@ -249,7 +266,12 @@ app.controller('editController', function ($http, $scope, $window, $route) {
     //var CreateDate = localStorage.getItem("CreateDate");
     //var CreateUserId = localStorage.getItem("CreateUserId");
     var userId = localStorage.getItem("userId");
-
+	$scope.WorkAddresss = localStorage.getItem("WorkAddresss");  
+	$scope.Department = localStorage.getItem("Department");  
+	$scope.CallSign = localStorage.getItem("CallSign");  
+	$scope.NOKName = localStorage.getItem("NOKName");  
+	$scope.NOKAddress = localStorage.getItem("NOKAddress");  
+	$scope.NOKContactNumber = localStorage.getItem("NOKContactNumber");  	   
     //resets 
     $scope.reset = function () {
         $scope.message = undefined

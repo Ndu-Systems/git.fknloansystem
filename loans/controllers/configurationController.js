@@ -45,7 +45,7 @@ app.controller('userController', function ($http, $scope, $window) {
             EmailAddress: $scope.EmailAddress,
             UserName: $scope.UserName,
             userId: userId,
-            url: "http://localhost/git.fknloans/loans/api/uploads/profiles/5.png"
+          url:"http://localhost/fundakubona/api/uploads/profiles/5.png",
         };
         if (data.EmailAddress === undefined || data.UserName === undefined) {
             $scope.message = "All fields must be field in";

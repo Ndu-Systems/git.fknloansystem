@@ -49,34 +49,59 @@
                                                 <td><h4>Loan Amount:</h4></td>
                                                 <td> <h3>{{LoanAmount | currency:'R'}}</h3></td>
                                             </tr>
+											<tr>
+                                                <td><h4>Capture Additional Loan:</h4></td>                                                
+												<td>
+													<div class="form-group">
+															<input required type="number" ng-model="AdditionalLoan" placeholder="Additional Loan Amount" style="width:90%; padding:1%">
+													</div>
+												</td>
+                                            </tr> 
+											<tr>
+                                                <td><h4>Capture Paid Interest</h4></td>   
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input required type="number" ng-model="PaidInterest" placeholder="Paid Interest" style="width:90%; padding:1%">
+                                                    </div>
+                                                 </td>                                                                                         
+                                            </tr> 
+											<tr>
+                                                <td><h4>Defaulted Interest</h4></td>   
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input required type="number" ng-model="defaultedInterest" placeholder="Defaulted Interest" style="width:90%; padding:1%">
+                                                    </div>
+                                                 </td>                                                                                         
+                                            </tr> 
                                             <tr>
-                                                <td><h4>Remaining Balance:</h4></td>
-                                                <td> <h3>{{total() | currency:'R'}}</h3></td>
+                                                <td><h4>Balance:</h4></td>
+                                                <td> <h3>{{Balance | currency:'R'}}</h3></td>
                                             </tr> 
                                             <tr>
                                                 <td><h4>Interest Rate:</h4></td>
                                                 <td> <h3>{{Interest}} %</h3></td>
                                             </tr>  
                                             <tr>
-                                                <td><h4>Amount Payable (including interest):</h4></td>
-                                                <td style="color:white;background-color:forestgreen"> <h3>{{AmountPayable | currency:'R'}}</h3></td>
-                                            </tr>
-                                            <tr>
                                                 <td><h4>Loan Date:</h4></td>
                                                 <td> <h3>{{LoanDate}}</h3></td>
-                                            </tr>
-                                            <tr>
-                                                <td><h4>Loan Term:</h4></td>
-                                                <td> <h3>{{LoanTerm}} Month(s)</h3></td>
                                             </tr> 
+											 											
                                             <tr>
-                                                <td><h4>Capture Paid Amount</h4></td>   
+                                                <td><h4>Capture Paid Loan</h4></td>   
                                                 <td>
                                                     <div class="form-group">
-                                                        <input required type="text" ng-model="PaidAmount" placeholder="Paid Amount" style="width:90%; padding:1%">
+                                                        <input required type="number" ng-model="PaidLoan" placeholder="Paid Loan" style="width:90%; padding:1%">
                                                     </div>
                                                  </td>                                                                                         
-                                            </tr>     
+                                            </tr>    
+											<tr>
+                                                <td><h4>Enter Reciever</h4></td>   
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input required type="text" ng-model="Reciever" placeholder="Reciever" style="width:90%; padding:1%">
+                                                    </div>
+                                                 </td>                                                                                         
+                                            </tr> 
                                             <tr>
                                                 <td><h4>Upload Proof Of Payment</h4></td>
                                                 <td>
@@ -105,7 +130,7 @@
                                 <a href="" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="editLoan()">Update  <span class="glyphicon glyphicon-edit"></span></a>
                                 <button type="reset" class="btn btn-warning" style="background-color:orange;border-color:orange;" ng-click="reset()">Reset</button>
                                 <span class="pull-right">
-                                    <a href="" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="closeLoan()">Close Loan <span class="fa fa-upload"></span></a>
+                                    <a href="" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="Deactivate()">Close Loan <span class="fa fa-upload"></span></a>
                                     <a href="mailto:{{EmailAddress}}" data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary">Send Message <span class="glyphicon glyphicon-envelope"></span></a>
                                 </span>
                             </div>

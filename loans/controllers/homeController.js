@@ -5,6 +5,7 @@
   
  
     //Get Customers
+		$scope.numCustomers =0;
    Load();
  $timeout(function () {    
     var data = {
@@ -16,10 +17,8 @@
 		Done();
         if (response.data !== undefined) {
             $scope.customers = response.data;
-            //var numC = 0;
-            //angular.forEach($scope.customers, function (item) {                
-            //    numC++;             
-            //});
+           
+		
             $scope.numCustomers = $scope.customers.length;
 
             $scope.totalItems = $scope.customers.length;
@@ -60,6 +59,14 @@
         localStorage.setItem("CreateDate", cus.CreateDate);
         localStorage.setItem("CreateUserId", cus.CreateUserId);
         localStorage.setItem("ModifyDate", cus.ModifyDate);
+		
+		localStorage.setItem("WorkAddress", cus.WorkAddress);
+        localStorage.setItem("Department", cus.Department);
+        localStorage.setItem("CallSign", cus.CallSign);
+        localStorage.setItem("NOKName", cus.NOKName);
+		localStorage.setItem("NOKAddress", cus.NOKAddress);
+        localStorage.setItem("NOKContactNumber", cus.NOKContactNumber);
+		
 
         localStorage.setItem("ModifyUserId", cus.ModifyUserId);
         localStorage.setItem("url", cus.url);

@@ -5,14 +5,14 @@
             <div class="col-md-12 span_3">
                 <div class="bs-example1" data-example-id="contextual-table">              
                     <div class="col-md-6">
-                        <h1><b>Customer Number : {{CustomerId}}</b></h1>
+                        <h1><b>Client Number : {{CustomerId}}</b></h1>
                     </div>
                     <div class="col-md-6">
                         <h1><b>Number Of  Loans : {{numLoans}}</b></h1>
                     </div>
                     <div class="row" style="padding: 2%;">
                         <div class="col-md-12">
-                            <h3>Customer Information</h3>
+                            <h3>Client Information</h3>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h1 class="panel-title">{{status}}</h1>
@@ -42,7 +42,32 @@
                                                     <tr>
                                                         <td>Address:</td>
                                                         <td>{{Location}}, {{Address}}</td>
-                                                    </tr>                                                   
+                                                    </tr> 
+													<tr>
+                                                        <td>Next Of Keen:</td>
+                                                        <td>{{NOKName}}</td>
+                                                    </tr> 	
+													<tr>
+                                                        <td>Next Of Keen Address:</td>
+                                                        <td>{{NOKAddress}}</td>
+                                                    </tr> 
+													<tr>
+                                                        <td>Next Of Keen Contact Number:</td>
+                                                        <td>{{NOKContactNumber}}</td>
+                                                    </tr> 
+													 <tr> 
+                                                         <td>work address:</td>	 
+                                                         <td>{{WorkAddress}}</td> 
+                                                   </tr> 	 
+													<tr>
+                                                        <td>Department:</td>
+                                                        <td>{{Department}}</td>
+                                                    </tr> 	
+													<tr>
+                                                        <td>Call Sign:</td>
+                                                        <td>{{CallSign}}</td>
+                                                    </tr> 	
+														
                                                 </tbody>
                                             </table>
                                         </div>
@@ -99,7 +124,7 @@
                                             <th>Loan #</th>
                                             <th>Loan Amount</th>
                                             <th>Balance</th>
-                                            <th>Loan Term</th>                                             
+                                            <th>Referrer</th>                                             
                                             <th>Date Borrowed</th>
                                             <th>Action</th>
                                         </tr>
@@ -108,8 +133,8 @@
                                         <tr ng-repeat="loan in aLoans">
                                             <td>{{loan.LoanId}}</td>
                                             <td>R{{loan.LoanAmount}}</td>
-                                            <td style="color:red">-R{{loan.Balance}}</td>
-                                            <td>{{loan.LoanTerm}} Months to Pay</td>
+                                            <td style="color:red">R{{loan.Balance}}</td>
+                                            <td>{{loan.Referrer}}</td>
                                              <td>{{loan.LoanDate}}</td>
                                             <td> <button type="button" class="btn btn-sm btn-primary" ng-click="getLoan(loan)">Update Loan  <span class="fa fa-edit"></span></></button></td>
                                         </tr>

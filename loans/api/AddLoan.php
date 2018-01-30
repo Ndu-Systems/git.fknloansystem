@@ -8,15 +8,19 @@ $data = json_decode(file_get_contents("php://input"));
 if (isset($data->CustomerId) ){  
     $CustomerId = $data ->CustomerId;
     $LoanAmount =$data ->LoanAmount;
-    $PaidAmount =$data ->PaidAmount;
+    $PaidLoan =$data ->PaidLoan;
     $Balance =$data ->Balance;
-    $Interest =$data ->Interest;
-    $LoanTerm =$data ->LoanTerm;
+    $Interest =$data ->Interest;    
     $userId =$data ->userId;  
     $AmountPayable = $data -> AmountPayable;
+	$MeansOfPayment = $data -> MeansOfPayment;
+	$WOI = $data -> WOI;
+	$Referrer = $data -> Referrer;
+	$PaidInterest = $data -> PaidInterest;
+	
     
-        $sql = "INSERT INTO `loan`(`CustomerId`, `LoanAmount`, `PaidAmount`, `Balance`, `AmountPayable`,`LoanTerm`,`Interest`, `LoanDate`,`Status`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) 
-                VALUES ('$CustomerId','$LoanAmount','$PaidAmount','$Balance','$AmountPayable','$LoanTerm','$Interest',NOW(),1,NOW(),'$userId',NOW(),'$userId')";
+        $sql = "INSERT INTO `loan`(`CustomerId`, `LoanAmount`, `AdditionalLoan`, `PaidLoan`,`PaidInterest`, `Balance`, `AmountPayable`, `MeansOfPayment`, `WOI`, `Interest`, `LoanDate`, `Status`, `Reciever`, `Referrer`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`)
+               	VALUES ('$CustomerId','$LoanAmount','0','$PaidLoan','$PaidInterest','$Balance','$AmountPayable','$MeansOfPayment','$WOI','$Interest',NOW(),1,null,'$Referrer',NOW(),'$userId',NOW(),'$userId')";
 
         if ($conn->query($sql) === TRUE) {
             echo 1;

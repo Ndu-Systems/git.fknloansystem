@@ -20,9 +20,16 @@ if (isset($data->EmailAddress) ){
 	$IsActive = $data->IsActive;
     $userId = $data->userId;
     $url = $data->url;
+    $WorkAddress = $data->WorkAddress;
+    $Department = $data->Department;
+    $CallSign = $data->CallSign;
+    $NOKName = $data->NOKName;
+    $NOKContactNumber = $data->NOKContactNumber;
+    $NOKAddress = $data -> NOKAddress;
     
-        $sql = "INSERT INTO `customer`( `FirstName`, `LastName`, `CellNumber`, `EmailAddress`, `IdNumber`, `Location`, `Address`, `BankName`, `AccountNumber`, `BranchCode`, `AccountType`, `IsActive`, `url`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`)
-                VALUES ('$FirstName','$LastName',$CellNumber,'$EmailAddress','$IdNumber','$Location','$Address','$BankName',$AccountNumber,'$BranchCode','$AccountType',$IsActive,'$url',NOW(),$userId,NOW(),$userId)";        
+        $sql = "INSERT INTO `customer`( `FirstName`, `LastName`, `CellNumber`, `EmailAddress`, `IdNumber`, `Location`, `Address`, `BankName`, `AccountNumber`, `BranchCode`, `AccountType`, `IsActive`, `url`, `WorkAddress`, `Department`, `CallSign`, `NOKName`,`NOKContactNumber`,`NOKAddress`,`CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`)
+                VALUES ('$FirstName','$LastName',$CellNumber,'$EmailAddress','$IdNumber','$Location','$Address','$BankName',$AccountNumber,'$BranchCode','$AccountType',$IsActive,'$url','$WorkAddress','$Department','$CallSign','$NOKName','$NOKContactNumber','$NOKAddress',NOW(),$userId,NOW(),$userId)";        
+
         
         if ($conn->query($sql) === TRUE) {
             echo 1;

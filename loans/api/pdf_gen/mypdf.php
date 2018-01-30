@@ -17,7 +17,7 @@ $pdf->Image('logo.PNG',150,1,-450);
 // Insert a dynamic image from a URL
 
 $pdf->SetFont('Arial','',20);
-$pdf->Write(50,"Customer Number : ".$id);
+$pdf->Write(50,"Client Number : ".$id);
 $pdf->Write(15,"\n");
 $pdf->Write(50,"Transictions for :".$name);
 $pdf->Write(35,"\n");
@@ -40,18 +40,29 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 $pdf->Write(5,"------------------".$row['TransactionDate']."-----------------------------------------");
 $pdf->Ln();
-$pdf->Write(5,"Loan Id  :  ".$row['LoanId']);
-$pdf->Ln();
 $pdf->Write(5,"Description  :  ".$row['Description']);
 $pdf->Ln();
 $pdf->Write(5,"Loan Amount  :  R".$row['LoanAmount']);
 $pdf->Ln();
-$pdf->Write(5,"Paid Amount  :  R".$row['PayedAmount']);
+$pdf->Write(5,"Additional Loan  :  R".$row['AdditionalLoan']);
+$pdf->Ln();
+$pdf->Write(5,"Paid Loan  :  R".$row['PayedAmount']);
+$pdf->Ln();
+$pdf->Write(5,"Paid Interest  :  R".$row['PaidInterest']);
 $pdf->Ln();
 $pdf->Write(5,"Amount Due  :  R".$row['Balance']);
 $pdf->Ln();
+$pdf->Write(5,"WOI :  ".$row['WOI']);
+$pdf->Ln();
 $pdf->Write(5,"Interest :  ".$row['Interest']."%");
 $pdf->Ln();
+$pdf->Write(5,"Reciever :  ".$row['Reciever']);
+$pdf->Ln();
+$pdf->Write(5,"Referrer :  ".$row['Referrer']);
+$pdf->Ln();
+ 
+
+
 $pdf->Write(5,"--------------------------------------------------------------------------------------------------------------------");
 $pdf->Ln();
 	}

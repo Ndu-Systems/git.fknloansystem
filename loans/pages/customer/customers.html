@@ -1,9 +1,9 @@
 ﻿<div class="col-md-12 span_3" ng-controller="homeController">
     <div class="bs-example1" data-example-id="contextual-table">
-        <h1><b>Customers</b></h1>
+        <h1><b>Clients</b></h1>
         <div class="row" style="padding: 2%;">
             <div class="col-md-4">
-                <a href="#/addCustomer" style="color:white;"><button type="button" class="btn btn-primary">Register Customer</button></a>
+                <a href="#/addCustomer" style="color:white;"><button type="button" class="btn btn-primary">Register Client</button></a>
             </div>
             <div class="col-md-8">
                 <b>Search </b>: <input type="text" ng-model="search" placeholder="Search by FullName, Email and Location" style="width:90%; padding:1%" />
@@ -24,7 +24,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="cus in aCustomers | filter:search">
-                    <th scope="row">{{cus.CustomerId}}</th>
+                    <th scope="row">{{$index + 1}}</th>
                     <td>{{cus.FirstName}}</td>
                     <td>{{cus.LastName}}</td>
                     <td>{{cus.CellNumber}}</td>
