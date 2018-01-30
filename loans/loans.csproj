@@ -294,6 +294,10 @@
     <Content Include="api\uploads\1516656642coh_npc_profile.pdf" />
     <Content Include="api\uploads\1517080944doc_13.pdf" />
     <Content Include="api\uploads\1517091200doc_2.pdf" />
+    <Content Include="api\uploads\1517345868FN Khanyile ID.pdf" />
+    <Content Include="api\uploads\1517349591doc_9.pdf" />
+    <Content Include="api\uploads\1517350953doc_11.pdf" />
+    <Content Include="api\uploads\1517350968doc_10.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -372,6 +376,7 @@
     <Content Include="pages\home\success.html" />
     <Content Include="pages\loan\editLoan.html" />
     <Content Include="pages\loan\addLoan.html" />
+    <Content Include="pages\loan\HtmlPage1.html" />
     <Content Include="routes\routes.js" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />

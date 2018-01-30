@@ -25,7 +25,7 @@
             BranchCode: $scope.branchcode,
             AccountType: $scope.accounttype,
             IsActive: 1,
-            url:"http://localhost/fundakubona/api/uploads/profiles/5.png",
+            url: "http://localhost/git.fknloans/loans/api/uploads/profiles/5.png",
             userId: userId,
 			NOKName: $scope.nokname,
 			NOKContactNumber:$scope.nokcontactnumber,
@@ -192,7 +192,7 @@ Load();
         $scope.success = undefined;
         $scope.files = eml.files;
         $scope.filename = $scope.files[0].name;
-        alert($scope.filename);
+        //alert($scope.filename);
         $scope.$apply();
     };
  
@@ -213,7 +213,7 @@ Load();
             .success(function (resp) {
                 var expectedDate = new Date();
                var doc = GetHost(resp);
-				alert(doc);               
+				//alert(doc);              
 
                 var data = {
                     Url: doc,
@@ -387,7 +387,7 @@ app.controller('calculateCustomerController', function ($http, $scope, $window,$
         //Get Customers    
     var data = {
         table: "customer",
-        condition: " IsActive = 1 "
+        condition: "IsActive = 1 "
     };
    
    $http.post(GetApiUrl("GetCustomersJoinLoans"), data)

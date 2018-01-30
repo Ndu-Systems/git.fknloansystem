@@ -3,10 +3,10 @@
 // Host
 //var host = "http://ndu-systems.net/demo/fknloans_v2/api/";
 //var host = "http://localhost/git.fknloansystem/loans/api/"; 
-var host = "http://localhost/fundakubona/api/";   //Freedom
+var host = "http://localhost/git.fknloans/loans/api/";   //Freedom
 
 //PDF
-var printTransictions = "http://localhost/fundakubona/api/pdf_gen/mypdf.php"  // Freedom
+var printTransictions = "http://localhost/git.fknloans/loans/api/pdf_gen/mypdf.php"  // Freedom
 //var printTransictions = "http://localhost/git.fknloansystem/loans/api/pdf_gen/mypdf.php"
 
 //var printTransictions = "http://ndu-systems.net/demo/fknloans_v2/api/pdf_gen/mypdf.php"

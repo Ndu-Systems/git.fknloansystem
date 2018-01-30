@@ -25,44 +25,57 @@ app.controller('addLoanController', function ($http, $scope, $window, $route) {
 	$scope.WOI ="";
 	$scope.Referrer =""; 
     $scope.Interest = 0;
-    $scope.LoanTerm = 0;  
-    var amountWithInterest = 0;
+    $scope.LoanTerm = 0;
+    $scope.Reciever = "";
+    $scope.amountWithInterest = 0;
     var amount = 0;	
 	$scope.PaidInterest = 0;
+	$scope.validateInterest = undefined;
+
+  	
+	$scope.total = function () {
+	    $scope.amountWithInterest = $scope.LoanAmount * ($scope.Interest / 100);
+	    amount = $scope.LoanAmount + $scope.amountWithInterest;
+	    if ($scope.PaidInterest !== undefined) {
+	        if ($scope.PaidInterest !== 0) {
+	            amount = amount - $scope.PaidInterest;
+	        }
+	    }
+	    return amount;
+	};
 	
-    $scope.total = function () {
-        amountWithInterest = $scope.LoanAmount * ($scope.Interest / 100);
-        amount = $scope.LoanAmount + amountWithInterest;
-		if($scope.PaidInterest !== undefined){			
-			if($scope.PaidInterest !==0){
-				amount =	amount - $scope.PaidInterest;
-			}
-		}
-        return amount;
-    };	 
-	
+
     $scope.addLoan = function () {
-        var data = {
-                        CustomerId: $scope.CustomerId,
-                        LoanAmount: $scope.LoanAmount,
-                        PaidLoan:0,
-						Referrer :$scope.Referrer,
-						WOI : $scope.WOI,
-						MeansOfPayment : $scope.MeansOfPayment,
-                        Balance: $scope.LoanAmount,
-                        Interest: $scope.Interest,                        
-                        AmountPayable: $scope.LoanAmount,
-                        userId    : userId,
-						PaidInterest: $scope.PaidInterest
-                    };
-        $http.post(GetApiUrl("AddLoan"), data).success(function (data, status) {
-            if (parseFloat(data) === 1) {
-                $window.location.href = "#viewCustomer";
-            }
-            else {
-                $scope.errorP = "Something went wrong, please try again.";
-            }
-        });
+        if ($scope.PaidInterest !== $scope.amountWithInterest) {
+            $scope.validateInterest = "Please provide valid interest payment";
+        } else {
+            $scope.validateInterest = undefined;
+
+
+            var data = {
+                CustomerId: $scope.CustomerId,
+                LoanAmount: $scope.LoanAmount,
+                PaidLoan: 0,
+                Referrer: $scope.Referrer,
+                WOI: $scope.WOI,
+                MeansOfPayment: $scope.MeansOfPayment,
+                Balance: $scope.LoanAmount,
+                Interest: $scope.Interest,
+                AmountPayable: $scope.LoanAmount,
+                userId: userId,
+                PaidInterest: $scope.PaidInterest,
+                Reciever: $scope.Reciever
+            };
+            $http.post(GetApiUrl("AddLoan"), data).success(function (data, status) {
+                if (parseFloat(data) === 1) {
+                    $window.location.href = "#viewCustomer";
+                }
+                else {
+                    $scope.errorP = "Something went wrong, please try again.";
+                }
+            });
+        }
+      
 
     };
 
@@ -86,8 +99,8 @@ app.controller('editLoanController', function ($http, $scope, $window, $route) {
      var userId = localStorage.getItem("userId");
 	 
     //Loan details
-     $scope.AmountPayable = localStorage.getItem("AmountPayable");
-     $scope.LoanAmount = localStorage.getItem("LoanAmount");
+    $scope.AmountPayable = localStorage.getItem("AmountPayable");
+    $scope.LoanAmount = localStorage.getItem("LoanAmount");
     $scope.Balance = localStorage.getItem("Balance");   
     var paid = 0;
     paid = localStorage.getItem("PaidLoan");
@@ -99,36 +112,33 @@ app.controller('editLoanController', function ($http, $scope, $window, $route) {
 	$scope.Referrer = localStorage.getItem("Referrer");  
     $scope.PaidLoan = 0;
 	$scope.AdditionalLoan = 0;
-	var addAmount = 0;
+	$scope.addAmount = 0;
 	$scope.defaultedInterest = 0;
     var amount = 0;
 	var defaultInterest = 0;
 	$scope.PaidInterest = 0;
 	$scope.Reciever = "";
+	var totalCount = 0;
     //Calculate Balance after amount paid and Add Additional Loan
     $scope.total = function () {
-		addAmount = $scope.AdditionalLoan * (25/100);
+        $scope.addAmount = $scope.AdditionalLoan * (25 / 100);
         amount = $scope.Balance - $scope.PaidLoan;
-		defaultInterest = $scope.defaultedInterest ;
-		if($scope.AdditionalLoan !== 0){			
-			amount += $scope.AdditionalLoan + addAmount;			
-		}		 
-		if($scope.PaidInterest !==0){		 						
-			amount = amount - Number($scope.PaidInterest || 0);
-		}		
-        return amount + defaultInterest;
-    };
-	
-	
-	 
-	
+        if ($scope.AdditionalLoan !== 0) {
+            amount += $scope.AdditionalLoan + $scope.addAmount;
+        }        
+        if ($scope.PaidInterest !== 0) {
+            amount = amount - Number($scope.PaidInterest || 0);
+        }
+        totalCount = amount + $scope.defaultedInterest;
+        return totalCount;
+    };	
     //Upload file
     $scope.filesChanged = function (eml) {
         $scope.errorP = undefined;
         $scope.success = undefined;
         $scope.files = eml.files;
         $scope.filename = $scope.files[0].name;
-        alert($scope.filename);
+        //alert($scope.filename);
         $scope.$apply();
     };
     $scope.SaveFile = function () {
@@ -149,7 +159,6 @@ app.controller('editLoanController', function ($http, $scope, $window, $route) {
                 var expectedDate = new Date();
                 doc = GetHost(resp);
                 //  alert(doc);               
-
                 var data = {
                     Url: doc,
                     CustomerId: $scope.CustomerId,

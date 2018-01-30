@@ -122,20 +122,26 @@
                                     <thead>
                                         <tr>
                                             <th>Loan #</th>
+                                            <th>Loan ID</th>
                                             <th>Loan Amount</th>
                                             <th>Balance</th>
+                                            <th>Receiver</th>
                                             <th>Referrer</th>                                             
                                             <th>Date Borrowed</th>
+                                            <th>Update Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr ng-repeat="loan in aLoans">
+                                            <td>{{$index + 1}}</td>
                                             <td>{{loan.LoanId}}</td>
                                             <td>R{{loan.LoanAmount}}</td>
                                             <td style="color:red">R{{loan.Balance}}</td>
+                                            <td>{{loan.Reciever}}</td>
                                             <td>{{loan.Referrer}}</td>
                                              <td>{{loan.LoanDate}}</td>
+                                            <td>{{loan.ModifyDate}}</td>
                                             <td> <button type="button" class="btn btn-sm btn-primary" ng-click="getLoan(loan)">Update Loan  <span class="fa fa-edit"></span></></button></td>
                                         </tr>
                                     </tbody>
@@ -152,7 +158,8 @@
                                         <thead>
                                             <tr>
                                                 <th>Document #</th>
-                                                <th>Loan #</th>
+                                                <th>Document ID</th>
+                                                <th>Loan ID</th>
                                                 <th>Description</th>
                                                 <th>View</th>
                                                 <th>Status</th>
@@ -160,6 +167,7 @@
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="doc in aDocuments">
+                                                <td>{{$index + 1}}</td>
                                                 <td>{{doc.DocumentId}}</td>
                                                 <td><i>{{doc.LoanId}}</i></td>
                                                 <td>{{doc.Description}}</td>

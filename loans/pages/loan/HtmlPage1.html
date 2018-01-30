@@ -1,0 +1,150 @@
+﻿<div ng-include="'pages/home/nav.html'"></div>
+<div id="page-wrapper" style="min-height: 586px;">
+    <div class="graphs">
+        <div class="col_3">
+        </div>
+        <div class="content_bottom">
+            <div class="col-md-12 span_3">
+                <div class="bs-example1" data-example-id="contextual-table">
+                    <div class="row">
+                        <h1>Update <b>Loan</b> for {{FirstName}} {{LastName}}</h1>
+                        <div class="panel panel-default col-md-5 col-lg-5">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <td>Name(s):</td>
+                                                <td>{{FirstName}} {{LastName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cell Number:</td>
+                                                <td>{{CellNumber}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email:</td>
+                                                <td>{{EmailAddress}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Identity Number:</td>
+                                                <td>{{IdNumber}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <a href="#/editCustomer" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning">Edit Information<span class="glyphicon glyphicon-edit"></span></a>
+                            </div>
+                        </div>
+                        <div class="panel panel-default col-md-7 col-lg-7">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <table class="table table-hover">
+                                        <tbody>
+
+                                            <tr>
+                                                <td><h4>Loan Amount:</h4></td>
+                                                <td> <h3>{{LoanAmount | currency:'R'}}</h3></td>
+                                            </tr>
+                                            <tr>
+                                                <td><h4>Capture Additional Loan:</h4></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input required type="number" ng-model="AdditionalLoan" placeholder="Additional Loan Amount" style="width:90%; padding:1%">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h4>An Amount of {{amountWithInterest | currency:'R'}} is </h4></td>
+                                                <td><h4>Required as Interest on Additional Loan</h4></td>
+                                            </tr>
+                                            <tr>
+                                                <td><h4>Capture Paid Interest</h4></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input required type="number" ng-model="PaidInterest" placeholder="Paid Interest" style="width:90%; padding:1%">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h4>Defaulted Interest</h4></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input required type="number" ng-model="defaultedInterest" placeholder="Defaulted Interest" style="width:90%; padding:1%">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h4>Balance:</h4></td>
+                                                <td> <h3>{{Balance | currency:'R'}}</h3></td>
+                                            </tr>
+                                            <tr>
+                                                <td><h4>Interest Rate:</h4></td>
+                                                <td> <h3>{{Interest}} %</h3></td>
+                                            </tr>
+                                            <tr>
+                                                <td><h4>Loan Date:</h4></td>
+                                                <td> <h3>{{LoanDate}}</h3></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td><h4>Capture Paid Loan</h4></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input required type="number" ng-model="PaidLoan" placeholder="Paid Loan" style="width:90%; padding:1%">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h4>Enter Reciever</h4></td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <input required type="text" ng-model="Reciever" placeholder="Reciever" style="width:90%; padding:1%">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><h4>Upload Proof Of Payment</h4></td>
+                                                <td>
+                                                    <div>
+                                                        <span class="btn btn-default btn-file">
+                                                            Upload Proof of Payment(Required) <i class="fa fa-files-o"></i>
+                                                            <input type="file" class="fileUpload" onchange="angular.element(this).scope().filesChanged(this)" />
+                                                        </span>
+                                                    </div>
+                                                    <div>
+                                                        <div class="form-group">
+                                                            <br />
+                                                            <button type="button" class="btn btn-primary" ng-click="SaveFile()">Upload <span class="fa fa-upload"></span></button>
+                                                            <br><font color="black"><b>{{filename}}</b></font>
+                                                            <br><font color="green"><b>{{success}}</b></font>
+                                                            <br><font color="red"><b>{{errorP}}</b></font>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <a href="" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="editLoan()">Update  <span class="glyphicon glyphicon-edit"></span></a>
+                                <button type="reset" class="btn btn-warning" style="background-color:orange;border-color:orange;" ng-click="reset()">Reset</button>
+                                <span class="pull-right">
+                                    <a href="" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="Deactivate()">Close Loan <span class="fa fa-upload"></span></a>
+                                    <a href="mailto:{{EmailAddress}}" data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary">Send Message <span class="glyphicon glyphicon-envelope"></span></a>
+                                </span>
+                            </div>
+                            <p><a href="#/viewCustomer">Abort</a></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                    </div>
+                    <p style="color:red;">{{message}}</p>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>

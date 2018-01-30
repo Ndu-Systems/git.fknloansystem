@@ -17,10 +17,11 @@ if (isset($data->CustomerId) ){
 	$WOI = $data -> WOI;
 	$Referrer = $data -> Referrer;
 	$PaidInterest = $data -> PaidInterest;
-	
+    $Reciever = $data -> Reciever;
+	$AdditionalLoan = 0;
     
         $sql = "INSERT INTO `loan`(`CustomerId`, `LoanAmount`, `AdditionalLoan`, `PaidLoan`,`PaidInterest`, `Balance`, `AmountPayable`, `MeansOfPayment`, `WOI`, `Interest`, `LoanDate`, `Status`, `Reciever`, `Referrer`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`)
-               	VALUES ('$CustomerId','$LoanAmount','0','$PaidLoan','$PaidInterest','$Balance','$AmountPayable','$MeansOfPayment','$WOI','$Interest',NOW(),1,null,'$Referrer',NOW(),'$userId',NOW(),'$userId')";
+               	VALUES ('$CustomerId','$LoanAmount','$AdditionalLoan','$PaidLoan','$PaidInterest','$Balance','$AmountPayable','$MeansOfPayment','$WOI','$Interest',NOW(),1,'$Reciever','$Referrer',NOW(),'$userId',NOW(),'$userId')";
 
         if ($conn->query($sql) === TRUE) {
             echo 1;

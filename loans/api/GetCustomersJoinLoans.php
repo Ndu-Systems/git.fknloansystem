@@ -9,8 +9,8 @@ $table = $data->table;
 $condition=$data->condition;
 $rows = array();
  $sql = "SELECT loan.Balance, customer.FirstName,customer.CustomerId,customer.LastName,customer.CellNumber
-FROM loan
-INNER JOIN customer ON loan.CustomerId = customer.CustomerId WHERE customer.IsActive=1;";
+FROM customer
+INNER JOIN loan ON customer.CustomerId = loan.CustomerId WHERE customer.IsActive = 1 AND loan.Status = 1;";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {

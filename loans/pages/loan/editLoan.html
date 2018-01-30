@@ -2,13 +2,12 @@
 <div id="page-wrapper" style="min-height: 586px;">
     <div class="graphs">
         <div class="col_3">
-
         </div>
         <div class="content_bottom">
             <div class="col-md-12 span_3">
                 <div class="bs-example1" data-example-id="contextual-table">
                     <div class="row">
-                        <h1>Update <b>Loan</b> for {{FirstName}} {{LastName}}</h1>
+                        <h1>Create <b>Loan</b> for {{FirstName}} {{LastName}}</h1>
                         <div class="panel panel-default col-md-5 col-lg-5">
                             <div class="panel-body">
                                 <div class="row">
@@ -32,101 +31,88 @@
                                             </tr>
                                         </tbody>
                                     </table>
-
                                 </div>
                             </div>
                             <div class="panel-footer">
                                 <a href="#/editCustomer" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning">Edit Information<span class="glyphicon glyphicon-edit"></span></a>
                             </div>
                         </div>
-                        <div class="panel panel-default col-md-7 col-lg-7">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <table class="table table-hover">
-                                        <tbody>
-                                           
-                                            <tr>
-                                                <td><h4>Loan Amount:</h4></td>
-                                                <td> <h3>{{LoanAmount | currency:'R'}}</h3></td>
-                                            </tr>
-											<tr>
-                                                <td><h4>Capture Additional Loan:</h4></td>                                                
-												<td>
-													<div class="form-group">
-															<input required type="number" ng-model="AdditionalLoan" placeholder="Additional Loan Amount" style="width:90%; padding:1%">
-													</div>
-												</td>
-                                            </tr> 
-											<tr>
-                                                <td><h4>Capture Paid Interest</h4></td>   
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input required type="number" ng-model="PaidInterest" placeholder="Paid Interest" style="width:90%; padding:1%">
-                                                    </div>
-                                                 </td>                                                                                         
-                                            </tr> 
-											<tr>
-                                                <td><h4>Defaulted Interest</h4></td>   
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input required type="number" ng-model="defaultedInterest" placeholder="Defaulted Interest" style="width:90%; padding:1%">
-                                                    </div>
-                                                 </td>                                                                                         
-                                            </tr> 
-                                            <tr>
-                                                <td><h4>Balance:</h4></td>
-                                                <td> <h3>{{Balance | currency:'R'}}</h3></td>
-                                            </tr> 
-                                            <tr>
-                                                <td><h4>Interest Rate:</h4></td>
-                                                <td> <h3>{{Interest}} %</h3></td>
-                                            </tr>  
-                                            <tr>
-                                                <td><h4>Loan Date:</h4></td>
-                                                <td> <h3>{{LoanDate}}</h3></td>
-                                            </tr> 
-											 											
-                                            <tr>
-                                                <td><h4>Capture Paid Loan</h4></td>   
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input required type="number" ng-model="PaidLoan" placeholder="Paid Loan" style="width:90%; padding:1%">
-                                                    </div>
-                                                 </td>                                                                                         
-                                            </tr>    
-											<tr>
-                                                <td><h4>Enter Reciever</h4></td>   
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input required type="text" ng-model="Reciever" placeholder="Reciever" style="width:90%; padding:1%">
-                                                    </div>
-                                                 </td>                                                                                         
-                                            </tr> 
-                                            <tr>
-                                                <td><h4>Upload Proof Of Payment</h4></td>
-                                                <td>
-                                                    <div>
-                                                        <span class="btn btn-default btn-file">
-                                                            Upload Proof of Payment(Required) <i class="fa fa-files-o"></i>
-                                                            <input type="file" class="fileUpload" onchange="angular.element(this).scope().filesChanged(this)" />
-                                                        </span>
-                                                    </div>
-                                                    <div>
-                                                        <div class="form-group">
-                                                            <br />
-                                                            <button type="button" class="btn btn-primary" ng-click="SaveFile()">Upload <span class="fa fa-upload"></span></button>
-                                                            <br><font color="black"><b>{{filename}}</b></font>
-                                                            <br><font color="green"><b>{{success}}</b></font>
-                                                            <br><font color="red"><b>{{errorP}}</b></font>
-                                                        </div>
-                                                    </div>
-                                                </td> 
-                                            </tr>                                    
-                                        </tbody>
-                                    </table>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <b>Loan Amount </b>
+                                <input required type="text" disabled value="{{LoanAmount | currency:'R'}}" style="width:90%; padding:1%">
+                            </div>
+                            <div class="form-group">
+                                <b>Enter Additional Loan</b>
+                                <input required type="number" ng-model="AdditionalLoan" placeholder="Interest" style="width:90%; padding:1%">
+                            </div> 
+                            <div class="form-group">
+                                <div>
+                                    <h4>Amount <b>Payable</b> at an interest of 25 % <br />valued at: {{addAmount | currency:'R'}}</h4>
+                                   
+                                    <h4>With Out Interest? No</h4>
                                 </div>
                             </div>
-                            <div class="panel-footer">
+                            <div class="form-group">
+                                <b>Enter Paid Interest </b>
+                                <input required type="number" ng-model="PaidInterest" placeholder="Interest On Loan" style="width:90%; padding:1%">
+                            </div>
+                            <!--<p style="color:red;">{{validateInterest}}</p>-->
+                            <div class="form-group">
+                                <b>Defaulted Interest</b>
+                                <input required type="number" ng-model="defaultedInterest" placeholder="Interest On Loan" style="width:90%; padding:1%">
+                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <h4>Balance</h4>                                 
+                                    <h4>{{Balance | currency:'R'}}</h4>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <h4>Interest Rate</h4>                                  
+                                    <h4>{{Interest}}%</h4>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <h4>Loan Date</h4>                                 
+                                    <h4>{{LoanDate}}</h4>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <b>Capture Paid Loan</b>
+                                <input required type="number" ng-model="PaidLoan" placeholder="Paid Loan" style="width:90%; padding:1%">
+                            </div>
+                            <div class="form-group">
+                                <b>Enter Receiver</b>
+                                <input required type="text" ng-model="Reciever" placeholder="Reciever" style="width:90%; padding:1%">
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <b>Enter Referrer</b>
+                                <input required type="text" ng-model="Referrer" placeholder="Referrer" style="width:90%; padding:1%">
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <div>
+                                    <span class="btn btn-default btn-file">
+                                        Upload Proof of Payment(Required) <i class="fa fa-files-o"></i>
+                                        <input type="file" class="fileUpload" onchange="angular.element(this).scope().filesChanged(this)" />
+                                    </span>
+                                </div>
+                                <div>
+                                    <div class="form-group">
+                                        <br />
+                                        <button type="button" class="btn btn-primary" ng-click="SaveFile()">Upload <span class="fa fa-upload"></span></button>
+                                        <br><font color="black"><b>{{filename}}</b></font>
+                                        <br><font color="green"><b>{{success}}</b></font>
+                                        <br><font color="red"><b>{{errorP}}</b></font>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
                                 <a href="" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="editLoan()">Update  <span class="glyphicon glyphicon-edit"></span></a>
                                 <button type="reset" class="btn btn-warning" style="background-color:orange;border-color:orange;" ng-click="reset()">Reset</button>
                                 <span class="pull-right">
@@ -136,12 +122,11 @@
                             </div>
                             <p><a href="#/viewCustomer">Abort</a></p>
                         </div>
-                    </div>                  
-                    <div class="row">                         
+                    </div>
+                    <div class="row">
                     </div>
                     <p style="color:red;">{{message}}</p>
                 </div>
-
             </div>
             <div class="clearfix"> </div>
         </div>

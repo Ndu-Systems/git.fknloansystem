@@ -51,8 +51,8 @@
                             <div class="form-group">                             
                                     <select name="loanTerms" ng-model="WOI" style="width:90%; padding:1%">
                                         <option value="">With Interest?</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>                                      
+                                        <option value="No">Yes</option>
+                                        <option value="Yes">No</option>                                      
                                     </select>                          
                             </div>
                             <div class="form-group">
@@ -61,15 +61,17 @@
                             </div>                            
                             <div class="form-group">
                                 <div>
-                                    <h4>Amount <b>Payable</b> : {{total() | currency:'R'}} at an interest of {{Interest}} %</h4>
+                                    <h4>Amount <b>Payable</b> : {{total() | currency:'R'}} at an interest of {{Interest}} % <br />valued at: {{amountWithInterest | currency:'R'}}</h4>
                                     <br />
-                                    <h4>With Interest? {{WOI}}</h4>
+                                    <h4>With Out Interest? {{WOI}}</h4>
                                 </div>
                             </div>
 							 <div class="form-group">
                                 <b>Enter Paid Interest </b>
                                 <input required type="number" ng-model="PaidInterest" placeholder="Interest On Loan" style="width:90%; padding:1%">
-                            </div>
+                             
+                             </div>
+                            <p style="color:red;">{{validateInterest}}</p>
 							 <div class="form-group">
 							  <b>Select Means Of Payment</b>
                                  <select name="loanTerms" ng-model="MeansOfPayment" style="width:90%; padding:1%">
@@ -78,6 +80,10 @@
                                         <option value="EFT">EFT</option>                                      
                                     </select>  
 							</div>
+                            <div class="form-group">
+                                <b>Enter Receiver</b>
+                                <input required type="text" ng-model="Reciever" placeholder="Reciever" style="width:90%; padding:1%">
+                            </div> 
 							<hr/>							   
 							 <div class="form-group">
                                 <b>Enter Referrer</b>

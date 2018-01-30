@@ -21,6 +21,7 @@
                             <table class="table">
                              <thead>
                                  <tr>
+                                     <th>Customer #</th>
                                      <th scope="col">Full Name</th>                                 
                                      <th scope="col">Contact Number</th>
                                      <th scope="col">Loan Amount</th>
@@ -30,6 +31,7 @@
                              <tbody>
                                     <tr ng-repeat="cus in customers | filter:search">
                                         <!--<th scope="row"><span class="fa fa-plus-square" style="resize:100px;"></span>{{cus.CustomerId}}</th>-->
+                                        <td>{{$index + 1}}</td>
                                         <td>{{cus.FirstName}} {{cus.Name}}</td>
                                         <td>{{cus.CellNumber}}</td>
                                         <td>R {{cus.Balance}}</td>
