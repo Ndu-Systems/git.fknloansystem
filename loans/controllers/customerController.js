@@ -2,6 +2,7 @@
     if (localStorage.getItem("isLoggedIn") !== "true") {
         $window.location.href = "#/";
     }
+    $scope.numLoans = 0;
     //Add Customer
     $scope.message = undefined;
     var userId = localStorage.getItem("userId");
@@ -113,6 +114,7 @@ Load();
             $scope.Loans = response.data;         
           
             var numL = 0;
+           
             numL = $scope.Loans.length;
             $scope.numLoans = numL;
             $scope.totalItems = $scope.Loans.length;

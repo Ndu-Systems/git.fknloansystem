@@ -2,6 +2,19 @@
     if (localStorage.getItem("isLoggedIn") !== "true") {
         $window.location.href = "#/";
     }
+    //Get Users
+    $scope.usersNum = 0;
+    var data = {
+        table: "users",
+        condition: " IsActive = 1 "
+    };
+    $http.post(GetApiUrl("Get"), data)
+    .success(function (response, status) {
+        if (response.data !== undefined) {
+            $scope.users = response.data;
+            $scope.usersNum = $scope.users.length;
+        }
+    });
 });
 app.controller('userController', function ($http, $scope, $window) {
     if (localStorage.getItem("isLoggedIn") !== "true") {
@@ -62,5 +75,15 @@ app.controller('userController', function ($http, $scope, $window) {
                  }
              });
         }
+    }
+});
+app.controller('archiveController', function ($http, $scope, $window) {
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+        $window.location.href = "#/";
+    }  
+});
+app.controller('reportingController', function ($http, $scope, $window) {
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+        $window.location.href = "#/";
     }
 });

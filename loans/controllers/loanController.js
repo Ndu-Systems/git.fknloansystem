@@ -74,8 +74,7 @@ app.controller('addLoanController', function ($http, $scope, $window, $route) {
                     $scope.errorP = "Something went wrong, please try again.";
                 }
             });
-        }
-      
+        }   
 
     };
 
@@ -112,26 +111,26 @@ app.controller('editLoanController', function ($http, $scope, $window, $route) {
 	$scope.Referrer = localStorage.getItem("Referrer");  
     $scope.PaidLoan = 0;
 	$scope.AdditionalLoan = 0;
-	$scope.addAmount = 0;
+	$scope.amountWithInterest = 0;
 	$scope.defaultedInterest = 0;
     var amount = 0;
 	var defaultInterest = 0;
 	$scope.PaidInterest = 0;
 	$scope.Reciever = "";
-	var totalCount = 0;
+	var totalCount = 0;	
     //Calculate Balance after amount paid and Add Additional Loan
-    $scope.total = function () {
-        $scope.addAmount = $scope.AdditionalLoan * (25 / 100);
+	$scope.totalBalance = function () { 
+        $scope.amountWithInterest = $scope.AdditionalLoan * (25 / 100);
         amount = $scope.Balance - $scope.PaidLoan;
         if ($scope.AdditionalLoan !== 0) {
-            amount += $scope.AdditionalLoan + $scope.addAmount;
+            amount += $scope.AdditionalLoan + $scope.amountWithInterest;
         }        
         if ($scope.PaidInterest !== 0) {
             amount = amount - Number($scope.PaidInterest || 0);
         }
         totalCount = amount + $scope.defaultedInterest;
         return totalCount;
-    };	
+	};
     //Upload file
     $scope.filesChanged = function (eml) {
         $scope.errorP = undefined;
@@ -193,10 +192,10 @@ app.controller('editLoanController', function ($http, $scope, $window, $route) {
                 };              
                 $http.post(GetApiUrl("DeactivateLoan"), data)
                 .success(function (response, status) {
-                    if (parseInt(response)=== 1) {
-						 localStorage.setItem("success, Loan was fullfilled successfully!")
+                    if (parseInt(response) === 1) {
                         $window.location.href = "#success";
-                      
+                        localStorage.setItem("success", "Loan was closed successfully!")
+                                             
                     }
                 });
 
@@ -208,14 +207,14 @@ app.controller('editLoanController', function ($http, $scope, $window, $route) {
                 $scope.paidTotal = function () {
                     var sum = Number(paid || 0) + Number($scope.PaidLoan || 0);
                     return sum;
-                };
-				
+                };			
 			 
                 var data = {
                     CustomerId: $scope.CustomerId,
                     LoanAmount: Number($scope.AdditionalLoan || 0) + Number($scope.LoanAmount || 0),
                     PaidLoan: $scope.paidTotal(),
-                    Balance: $scope.total() ,					
+                    Balance: $scope.totalBalance(),
+                    
                     LoanId:$scope.LoanId,
                     Interest: $scope.Interest,           
                     Status: $scope.Status,

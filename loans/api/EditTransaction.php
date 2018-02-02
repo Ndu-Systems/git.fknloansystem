@@ -1,5 +1,5 @@
 <?php
-$Description      = 'Loan Update Transaction';
+$Description      = 'Loan Update';
 $LoanId           = $LoanId;
 $TransactionDate  = date("l jS \of F Y h:i:s A") ;
 $CreateDate       =date("l jS \of F Y h:i:s A") ;

@@ -67,6 +67,14 @@
          templateUrl: 'pages/home/success.html',
          controller: 'successController'
      })
+    .when('/archives', {
+        templateUrl: 'pages/home/archives.html',
+        controller: 'archivesController'
+    })
+    .when('/reporting', {
+        templateUrl: 'pages/home/reporting.html',
+        controller: 'reportingController'
+    })
      .when('/transictions', {
          templateUrl: 'pages/customer/transictions.html',
          controller: 'transactionController'

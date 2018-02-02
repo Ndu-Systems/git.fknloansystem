@@ -44,11 +44,11 @@
                             </div>
                             <div class="form-group">
                                 <b>Enter Additional Loan</b>
-                                <input required type="number" ng-model="AdditionalLoan" placeholder="Interest" style="width:90%; padding:1%">
-                            </div> 
+                                <input required type="number" ng-model="AdditionalLoan" placeholder="Additional Amount" style="width:90%; padding:1%">
+                            </div>                              
                             <div class="form-group">
                                 <div>
-                                    <h4>Amount <b>Payable</b> at an interest of 25 % <br />valued at: {{addAmount | currency:'R'}}</h4>
+                                    <h4>Addition Amount <b>Interest</b> at an interest of 25 % <br />valued at: {{amountWithInterest | currency:'R'}}</h4>
                                    
                                     <h4>With Out Interest? No</h4>
                                 </div>
@@ -62,10 +62,17 @@
                                 <b>Defaulted Interest</b>
                                 <input required type="number" ng-model="defaultedInterest" placeholder="Interest On Loan" style="width:90%; padding:1%">
                             </div>
+
                             <div class="form-group">
                                 <div>
                                     <h4>Balance</h4>                                 
                                     <h4>{{Balance | currency:'R'}}</h4>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <h4>Actual Loan Balance</h4>
+                                    <h4>{{totalBalance() | currency:'R'}}</h4>
                                 </div>
                             </div>
                             <div class="form-group">
