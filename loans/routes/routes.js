@@ -68,11 +68,19 @@
          controller: 'successController'
      })
     .when('/archives', {
-        templateUrl: 'pages/home/archives.html',
+        templateUrl: 'pages/configuration/archives.html',
         controller: 'archivesController'
     })
+    .when('/archivedCustomers', {
+        templateUrl: 'pages/configuration/archivedCustomers.html',
+        controller: 'archivedCustomersController'
+    })
+         .when('/archivedLoans', {
+             templateUrl: 'pages/configuration/archivedLoans.html',
+             controller: 'archivedLoansController'
+         })
     .when('/reporting', {
-        templateUrl: 'pages/home/reporting.html',
+        templateUrl: 'pages/configuration/reporting.html',
         controller: 'reportingController'
     })
      .when('/transictions', {

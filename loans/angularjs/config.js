@@ -1,19 +1,19 @@
 ﻿var extention = ".php";
 
 // Host
-//var host = "http://ndu-systems.net/demo/fknloans_v2/api/";
+//var host = "http://ndu-systems.net/demo/fknloans_v3/api/";
 //var host = "http://localhost/git.fknloansystem/loans/api/"; 
 var host = "http://localhost/git.fknloans/loans/api/";   //Freedom
 
-//PDF
+//PDF Transactions
 var printTransictions = "http://localhost/git.fknloans/loans/api/pdf_gen/mypdf.php"  // Freedom
 //var printTransictions = "http://localhost/git.fknloansystem/loans/api/pdf_gen/mypdf.php"
 
-//var printTransictions = "http://ndu-systems.net/demo/fknloans_v2/api/pdf_gen/mypdf.php"
+//var printTransictions = "http://ndu-systems.net/demo/fknloans_v3/api/pdf_gen/mypdf.php"
 
-
-
-
+//PDF Historical Loan(s)
+var printHistoricalLoans = "http://localhost/git.fknloans/loans/api/pdf_gen/archiveLoanPdf.php"
+var printHistoricalLoans = "http://ndu-systems.net/demo/fknloans_v3/api/pdf_gen/archiveLoanPdf.php"
 
 function GetApiUrl(serviceName) {
 

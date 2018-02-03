@@ -1,41 +1,45 @@
 ﻿<div ng-include="'pages/home/nav.html'"></div>
 <div id="page-wrapper" style="min-height: 586px;">
     <div class="graphs">
-        <div class="col_3">
-            <div class="col-md-3 widget widget1">
-                <a href="#/systemusers">
-                    <div class="r3_counter_box">
-                        <i class="pull-left fa fa-users user2 icon-rounded"></i>
-                        <div class="stats">                            
-                            <span>System Users</span>
-                            <h4><strong>{{usersNum}}</strong></h4>
+        <div class="content_bottom">
+            <div class="col-md-12 span_3">
+                <div class="bs-example1" data-example-id="contextual-table">
+                    <h1><b>Clients</b></h1>
+                    <div class="row" style="padding: 2%;">                  
+                        <div class="col-md-8">
+                            <b>Search </b>: <input type="text" ng-model="search" placeholder="Search by FullName, Email and Location" style="width:90%; padding:1%" />
                         </div>
                     </div>
-                </a>
-            </div>    
-            <div class="col-md-3 widget widget1">
-                <a href="#/archives">
-                    <div class="r3_counter_box">
-                        <i class="pull-left fa fa-archive user2 icon-rounded"></i>
-                        <div class="stats">
-                          <span>Archived History</span>
-                        </div>
-                    </div>
-                </a>
-            </div>   
-            <div class="col-md-3 widget widget1">
-                <a href="#/reporting">
-                    <div class="r3_counter_box">
-                        <i class="pull-left fa fa-bar-chart-o user2 icon-rounded"></i>
-                        <div class="stats">                            
-                            <span>Reports</span>
-                        </div>
-                    </div>
-                </a>
-            </div>           
-            <div class="clearfix"> </div>
-        </div>
-        <div class="content_bottom">            
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Customer #</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Surname</th>
+                                <th scope="col">Contact Number</th>
+                                <th scope="col">Email Address</th>
+                                <th scope="col">Province</th>
+                                <th scope="col">Physical Address</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="cus in aCustomers | filter:search">
+                                <th scope="row">{{$index + 1}}</th>
+                                <td>{{cus.FirstName}}</td>
+                                <td>{{cus.LastName}}</td>
+                                <td>{{cus.CellNumber}}</td>
+                                <td>{{cus.EmailAddress}}</td>
+                                <td>{{cus.Location}}</td>
+                                <td>{{cus.Address}}</td>
+                                <td><button type="button" class="btn btn-info" ng-click="GetCustomer(cus)">More Details</button></td>
+                                <td><button type="button" class="btn btn-success" ng-click="GetTransictions(cus)">Transactions</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage"></ul>
+                </div>
+            </div>
             <div class="clearfix"> </div>
         </div>
         <div class="col_1">
@@ -59,3 +63,4 @@
         </div>
     </div>
 </div>
+

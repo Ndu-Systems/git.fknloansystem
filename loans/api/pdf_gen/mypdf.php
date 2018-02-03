@@ -20,7 +20,6 @@ $pdf->Write(15,"\n");
 $pdf->Write(50,"Transictions for :".$name);
 $pdf->Write(35,"\n");
 
-
 //get db data
 $pdf->SetFont('Arial','',11);
 $sql="";

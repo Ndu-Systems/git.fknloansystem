@@ -10,6 +10,7 @@
         $scope.message = undefined
         $route.reload();
     };
+    $scope.location = "Kwa-Zulu Natal";
 
     $scope.addCustomer = function () {
         $scope.message = undefined;

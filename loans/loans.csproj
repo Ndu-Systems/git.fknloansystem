@@ -103,6 +103,7 @@
     <Content Include="api\EditProfile.php" />
     <Content Include="api\EditLoan.php" />
     <Content Include="api\EditUser.php" />
+    <Content Include="api\GetArchivedLoansJoinCustomer.php" />
     <Content Include="api\GetCustomersJoinLoans.php" />
     <Content Include="api\pdf_gen\changelog.htm" />
     <Content Include="api\pdf_gen\doc\acceptpagebreak.htm" />
@@ -169,6 +170,7 @@
     <Content Include="api\pdf_gen\font\timesbi.php" />
     <Content Include="api\pdf_gen\font\timesi.php" />
     <Content Include="api\pdf_gen\font\zapfdingbats.php" />
+    <Content Include="api\pdf_gen\fpdf2.php" />
     <Content Include="api\pdf_gen\fpdf.css" />
     <Content Include="api\pdf_gen\fpdf.php" />
     <Content Include="api\pdf_gen\install.txt" />
@@ -178,6 +180,7 @@
     <Content Include="api\pdf_gen\main.php" />
     <Content Include="api\pdf_gen\makefont\makefont.php" />
     <Content Include="api\pdf_gen\makefont\ttfparser.php" />
+    <Content Include="api\pdf_gen\archiveLoanPdf.php" />
     <Content Include="api\pdf_gen\mypdf.php" />
     <Content Include="api\pdf_gen\tutorial\20k_c1.txt" />
     <Content Include="api\pdf_gen\tutorial\20k_c2.txt" />
@@ -361,6 +364,9 @@
     <Content Include="pages\account\login.html" />
     <Content Include="pages\account\logout.html" />
     <Content Include="pages\configuration\AddUser.html" />
+    <Content Include="pages\configuration\archivedCustomers.html" />
+    <Content Include="pages\configuration\archivedLoans.html" />
+    <Content Include="pages\configuration\archives.html" />
     <Content Include="pages\configuration\configurations.html" />
     <Content Include="pages\configuration\users.html" />
     <Content Include="pages\customer\addCustomer.html" />
