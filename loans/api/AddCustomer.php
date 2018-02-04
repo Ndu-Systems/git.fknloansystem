@@ -26,9 +26,10 @@ if (isset($data->EmailAddress) ){
     $NOKName = $data->NOKName;
     $NOKContactNumber = $data->NOKContactNumber;
     $NOKAddress = $data -> NOKAddress;
+    $StationedArea = $data -> StationedArea;
     
-        $sql = "INSERT INTO `customer`( `FirstName`, `LastName`, `CellNumber`, `EmailAddress`, `IdNumber`, `Location`, `Address`, `BankName`, `AccountNumber`, `BranchCode`, `AccountType`, `IsActive`, `url`, `WorkAddress`, `Department`, `CallSign`, `NOKName`,`NOKContactNumber`,`NOKAddress`,`CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`)
-                VALUES ('$FirstName','$LastName',$CellNumber,'$EmailAddress','$IdNumber','$Location','$Address','$BankName',$AccountNumber,'$BranchCode','$AccountType',$IsActive,'$url','$WorkAddress','$Department','$CallSign','$NOKName','$NOKContactNumber','$NOKAddress',NOW(),$userId,NOW(),$userId)";        
+        $sql = "INSERT INTO `customer`( `FirstName`, `LastName`, `CellNumber`, `EmailAddress`, `IdNumber`, `Location`, `Address`, `BankName`, `AccountNumber`, `BranchCode`, `AccountType`, `IsActive`, `url`, `WorkAddress`, `Department`, `CallSign`, `stationedarea`, `NOKName`,`NOKContactNumber`,`NOKAddress`,`CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`)
+                VALUES ('$FirstName','$LastName',$CellNumber,'$EmailAddress','$IdNumber','$Location','$Address','$BankName',$AccountNumber,'$BranchCode','$AccountType',$IsActive,'$url','$WorkAddress','$Department','$CallSign','$StationedArea','$NOKName','$NOKContactNumber','$NOKAddress',NOW(),$userId,NOW(),$userId)";        
 
         
         if ($conn->query($sql) === TRUE) {

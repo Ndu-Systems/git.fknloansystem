@@ -83,6 +83,14 @@
         templateUrl: 'pages/configuration/reporting.html',
         controller: 'reportingController'
     })
+        .when('/loanReporting', {
+            templateUrl: 'pages/configuration/loanReporting.html',
+            controller: 'loanReportingController'
+        })
+         .when('/loanQuery', {
+             templateUrl: 'pages/configuration/loanQuery.html',
+             controller: 'loanReportingController'
+         })
      .when('/transictions', {
          templateUrl: 'pages/customer/transictions.html',
          controller: 'transactionController'

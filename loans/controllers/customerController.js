@@ -34,7 +34,8 @@
 			WorkAddress : $scope.workaddress,
 			Department : $scope.department,
 			NOKAddress : $scope.nokaddress,
-			CallSign : $scope.callsign			
+			CallSign: $scope.callsign,
+			StationedArea: $scope.stationedarea
         };
 
         if (data.NOKName === undefined ||data.NOKContactNumber === undefined ||data.NOKAddress === undefined ||data.WorkAddress === undefined ||data.Department === undefined ||data.CallSign === undefined ||data.FirstName === undefined || data.LastName === undefined || data.CellNumber === undefined || data.EmailAddress === undefined || data.Location === undefined || data.Address === undefined || data.BankName === undefined || data.AccountNumber === undefined || data.BranchCode === undefined || data.AccountType === undefined)

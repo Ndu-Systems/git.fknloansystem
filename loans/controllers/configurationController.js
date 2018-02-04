@@ -58,7 +58,8 @@ app.controller('userController', function ($http, $scope, $window) {
             EmailAddress: $scope.EmailAddress,
             UserName: $scope.UserName,
             userId: userId,
-          url:"http://localhost/fundakubona/api/uploads/profiles/5.png",
+            url: "http://localhost/fundakubona/api/uploads/profiles/5.png",
+
         };
         if (data.EmailAddress === undefined || data.UserName === undefined) {
             $scope.message = "All fields must be field in";
@@ -265,4 +266,60 @@ app.controller('reportingController', function ($http, $scope, $window) {
     if (localStorage.getItem("isLoggedIn") !== "true") {
         $window.location.href = "#/";
     }
+
+});
+
+app.controller('loanReportingController', function ($http, $scope, $window) {
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+        $window.location.href = "#/";
+    }
+    // date picker
+    $(function () {
+        $("#datepickerFrom").datepicker({
+            dateFormat: "yy-mm-dd"
+        });
+    });
+
+    $(function () {
+        $("#datepickerTo").datepicker({
+            dateFormat: "yy-mm-dd"
+        });
+    });
+    // end date picker
+
+    //Apply Filter
+    $scope.Filter = function () {
+        if ($scope.datepickerFrom !== undefined && $scope.datepickerTo !== undefined) {
+
+            GetHistoricalLoans(true);
+        }
+    }
+    //Show All
+    $scope.ShowAll = function () {
+        GetHistoricalLoans(false);
+        $scope.datepickerFrom = undefined;
+        $scope.datepickerTo = undefined;
+    }
+
+
+
+    $scope.PrintActiveLoans = function () {
+        if ($scope.datepickerFrom !== undefined && $scope.datepickerTo !== undefined) {
+            var url = PrintActiveLoans + "&datepickerFrom=" + $scope.datepickerFrom + "&datepickerTo=" + $scope.datepickerTo;
+            window.open(url, '_blank');
+        } else {
+            var url = PrintActiveLoans;
+            window.open(url, '_blank');
+        }
+    }
+    $scope.PrintClosedLoans = function () {
+        if ($scope.datepickerFrom !== undefined && $scope.datepickerTo !== undefined) {
+            var url = PrintClosedLoans + "&datepickerFrom=" + $scope.datepickerFrom + "&datepickerTo=" + $scope.datepickerTo;
+            window.open(url, '_blank');
+        } else {
+            var url = PrintClosedLoans;
+            window.open(url, '_blank');
+        }
+    }
+
 });

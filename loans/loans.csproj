@@ -105,6 +105,8 @@
     <Content Include="api\EditUser.php" />
     <Content Include="api\GetArchivedLoansJoinCustomer.php" />
     <Content Include="api\GetCustomersJoinLoans.php" />
+    <Content Include="api\pdf_gen\PrintClosedLoans.php" />
+    <Content Include="api\pdf_gen\PrintActiveLoans.php" />
     <Content Include="api\pdf_gen\changelog.htm" />
     <Content Include="api\pdf_gen\doc\acceptpagebreak.htm" />
     <Content Include="api\pdf_gen\doc\addfont.htm" />
@@ -368,6 +370,9 @@
     <Content Include="pages\configuration\archivedLoans.html" />
     <Content Include="pages\configuration\archives.html" />
     <Content Include="pages\configuration\configurations.html" />
+    <Content Include="pages\configuration\loanQuery.html" />
+    <Content Include="pages\configuration\loanReporting.html" />
+    <Content Include="pages\configuration\reporting.html" />
     <Content Include="pages\configuration\users.html" />
     <Content Include="pages\customer\addCustomer.html" />
     <Content Include="pages\customer\addDocument.html" />

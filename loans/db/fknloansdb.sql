@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2018 at 11:27 PM
+-- Generation Time: Feb 04, 2018 at 08:57 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -46,6 +46,7 @@ CREATE TABLE `customer` (
   `WorkAddress` varchar(225) NOT NULL,
   `Department` varchar(225) NOT NULL,
   `CallSign` varchar(225) NOT NULL,
+  `stationedarea` varchar(225) DEFAULT NULL,
   `NOKName` varchar(50) NOT NULL,
   `NOKContactNumber` int(13) NOT NULL,
   `NOKAddress` varchar(255) NOT NULL,
@@ -59,8 +60,10 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`CustomerId`, `FirstName`, `LastName`, `CellNumber`, `EmailAddress`, `IdNumber`, `Location`, `Address`, `BankName`, `AccountNumber`, `BranchCode`, `AccountType`, `IsActive`, `url`, `WorkAddress`, `Department`, `CallSign`, `NOKName`, `NOKContactNumber`, `NOKAddress`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
-(1, 'Freedom', 'Khanyile', 2147483647, 'freedom@mail.com', '9250254658051', 'Gauteng', 'Randpark Ridge', 'FNB', 2450084, '20508-5250', 'Cheque', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', 'Randburg', 'IT', 'KHA101', 'laam', 2147483647, 'alex', '2018-01-30 22:50:00', 18011, '2018-01-30 22:50:00', 18011);
+INSERT INTO `customer` (`CustomerId`, `FirstName`, `LastName`, `CellNumber`, `EmailAddress`, `IdNumber`, `Location`, `Address`, `BankName`, `AccountNumber`, `BranchCode`, `AccountType`, `IsActive`, `url`, `WorkAddress`, `Department`, `CallSign`, `stationedarea`, `NOKName`, `NOKContactNumber`, `NOKAddress`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
+(1, 'Freedom', 'Khanyile', 2147483647, 'freedom@mail.com', '9250254658051', 'Gauteng', 'Randpark Ridge', 'FNB', 2450084, '20508-5250', 'Cheque', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', 'Randburg', 'IT', 'KHA101', NULL, 'laam', 2147483647, 'alex', '2018-01-30 22:50:00', 18011, '2018-01-30 22:50:00', 18011),
+(2, 'Maria', 'Jackson', 2147483640, 'Maria@mail.com', '240587166752', 'Kwa-Zulu Natal', 'Kwamashu', 'FNB', 2147483647, '500-505', 'Savings', 0, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', 'Station, Shoprite', 'Security', '1002', NULL, 'Maxwel', 2147483647, 'Jackson', '2018-02-03 21:59:00', 18011, '2018-02-03 23:09:32', 18011),
+(3, 'Xolani', 'Ngcobo', 2147483647, 'xolani@mail.com', '9280842580084', 'Kwa-Zulu Natal', 'Parking Hill', 'Capitec', 250804, '500-000', 'Savings', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', 'Rosebank', 'Fishing, Docs', '2500', 'Mtateni', 'Musa Ngcobo', 2147483647, 'Kwa-Mashu', '2018-02-04 21:52:29', 18011, '2018-02-04 21:52:29', 18011);
 
 -- --------------------------------------------------------
 
@@ -80,16 +83,6 @@ CREATE TABLE `documents` (
   `ModifyDate` datetime NOT NULL,
   `ModifyUserId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `documents`
---
-
-INSERT INTO `documents` (`DocumentId`, `CustomerId`, `LoanId`, `Description`, `Url`, `Status`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
-(1, 1, 0, 'Proof of ID for Freedom Khanyile', 'http://localhost/git.fknloans/loans/api/uploads/1517345868FN Khanyile ID.pdf\n', 1, '2018-01-30 22:57:49', 18011, '2018-01-30 22:57:49', 18011),
-(2, 1, 1, 'Proof Of Payment for Freedom Khanyile', 'http://localhost/git.fknloans/loans/api/uploads/1517349591doc_9.pdf\n', 1, '2018-01-30 23:59:51', 18011, '2018-01-30 23:59:51', 18011),
-(3, 1, 2, 'Proof Of Payment for Freedom Khanyile', 'http://localhost/git.fknloans/loans/api/uploads/1517350953doc_11.pdf\n', 1, '2018-01-31 00:22:33', 18011, '2018-01-31 00:22:33', 18011),
-(4, 1, 4, 'Proof Of Payment for Freedom Khanyile', 'http://localhost/git.fknloans/loans/api/uploads/1517350968doc_10.pdf\n', 1, '2018-01-31 00:22:48', 18011, '2018-01-31 00:22:48', 18011);
 
 -- --------------------------------------------------------
 
@@ -124,10 +117,9 @@ CREATE TABLE `loan` (
 --
 
 INSERT INTO `loan` (`LoanId`, `CustomerId`, `LoanAmount`, `AdditionalLoan`, `PaidLoan`, `PaidInterest`, `Balance`, `AmountPayable`, `MeansOfPayment`, `WOI`, `Interest`, `LoanDate`, `Status`, `Reciever`, `Referrer`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
-(1, 1, '800', '0', '450', '0', '500', '100', 'EFT', 'No', '25', '2018-01-30 22:53:11', 1, 'Capitec', 'Freedom', '2018-01-31 00:19:54', 18011, '2018-01-31 00:19:54', 18011),
-(2, 1, '100', '0', '0', '0', '100', '100', 'Cash', 'No', '25', '2018-01-30 23:03:31', 1, '', 'Freedom', '2018-01-31 00:22:34', 18011, '2018-01-31 00:22:34', 18011),
-(3, 1, '200', '0', '0', '51', '200', '200', 'Cash', 'No', '25', '2018-01-30 23:12:21', 1, 'FNB', 'Freedom', '2018-01-30 23:12:21', 18011, '2018-01-30 23:12:21', 18011),
-(4, 1, '200', '0', '0', '0', '200', '200', 'Cash', 'No', '25', '2018-01-30 23:17:32', 1, '', 'Freedom', '2018-01-31 00:22:49', 18011, '2018-01-31 00:22:49', 18011);
+(1, 1, '1000', '0', '500', '0', '550', '500', 'EFT', 'Yes', '0', '2018-02-01 21:53:31', 1, 'FNB Bank', 'Max', '2018-02-02 22:50:38', 18011, '2018-02-02 22:50:38', 18011),
+(2, 1, '300', '0', '0', '75', '300', '300', 'Cash', 'No', '25', '2018-02-01 22:27:07', 0, 'Muzi', 'Khaye', '2018-02-01 22:38:15', 18011, '2018-02-01 22:38:15', 18011),
+(3, 1, '100', '0', '0', '25', '100', '100', 'Cash', 'No', '25', '2018-02-02 23:52:15', 1, 'Magwaza', 'Patrick', '2018-02-04 12:53:52', 18011, '2018-02-02 23:52:15', 18011);
 
 -- --------------------------------------------------------
 
@@ -163,19 +155,12 @@ CREATE TABLE `transaction` (
 --
 
 INSERT INTO `transaction` (`TransactionId`, `Description`, `LoanId`, `CustomerId`, `TransactionDate`, `LoanAmount`, `PayedAmount`, `Balance`, `LoanTerm`, `Interest`, `WOI`, `MeansOfPayment`, `Referrer`, `Reciever`, `AdditionalLoan`, `PaidInterest`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
-(1, 'New Load deposit', NULL, 1, 'Tuesday 30th of January 2018 09:53:11 PM', '100', '0', '100', '', '25', 'No', 'EFT', 'N/A', 'FNB Bank', '0', '25', '2018-01-30 22:53:11', 18011, 'Tuesday 30th of January 2018 09:53:11 PM', 18011),
-(2, 'New Load deposit', NULL, 1, 'Tuesday 30th of January 2018 10:03:31 PM', '100', '0', '100', '', '25', 'No', 'Cash', 'Freedom', 'FNB', '0', '25', '2018-01-30 23:03:31', 18011, 'Tuesday 30th of January 2018 10:03:31 PM', 18011),
-(3, 'New Load deposit', NULL, 1, 'Tuesday 30th of January 2018 10:12:21 PM', '200', '0', '200', '', '25', 'No', 'Cash', 'Freedom', 'FNB', '0', '51', '2018-01-30 23:12:21', 18011, 'Tuesday 30th of January 2018 10:12:21 PM', 18011),
-(4, 'New Load deposit', NULL, 1, 'Tuesday 30th of January 2018 10:17:33 PM', '200', '0', '200', '', '25', 'No', 'Cash', 'Freedom', 'Capitec', '0', '50', '2018-01-30 23:17:33', 18011, 'Tuesday 30th of January 2018 10:17:33 PM', 18011),
-(5, 'Loan Update Transaction', NULL, 1, 'Tuesday 30th of January 2018 10:59:53 PM', '100', '0', '100', '', '25', 'No', '', 'N/A', '', '0', '0', '2018-01-30 23:59:53', 18011, 'Tuesday 30th of January 2018 10:59:53 PM', 18011),
-(6, 'Loan Update Transaction', NULL, 1, 'Tuesday 30th of January 2018 11:08:57 PM', '300', '0', '300', '', '25', 'No', '', 'N/A', 'FNB', '200', '50', '2018-01-31 00:08:57', 18011, 'Tuesday 30th of January 2018 11:08:57 PM', 18011),
-(7, 'Loan Update Transaction', NULL, 1, 'Tuesday 30th of January 2018 11:09:39 PM', '300', '150', '150', '', '25', 'No', '', 'Freedom', 'Freedom', '0', '0', '2018-01-31 00:09:39', 18011, 'Tuesday 30th of January 2018 11:09:39 PM', 18011),
-(8, 'Loan Update Transaction', NULL, 1, 'Tuesday 30th of January 2018 11:12:57 PM', '300', '150', '175', '', '25', 'No', '', 'Freedom', '', '0', '0', '2018-01-31 00:12:57', 18011, 'Tuesday 30th of January 2018 11:12:57 PM', 18011),
-(9, 'Loan Update Transaction', NULL, 1, 'Tuesday 30th of January 2018 11:15:10 PM', '800', '150', '800', '', '25', 'No', '', 'Freedom', '', '500', '0', '2018-01-31 00:15:10', 18011, 'Tuesday 30th of January 2018 11:15:10 PM', 18011),
-(10, 'Loan Update Transaction', NULL, 1, 'Tuesday 30th of January 2018 11:19:47 PM', '800', '450', '0', '', '25', 'No', '', 'Freedom', 'Capitec', '0', '0', '2018-01-31 00:19:47', 18011, 'Tuesday 30th of January 2018 11:19:47 PM', 18011),
-(11, 'Loan Update Transaction', NULL, 1, 'Tuesday 30th of January 2018 11:19:54 PM', '800', '450', '500', '', '25', 'No', '', 'Freedom', 'Capitec', '0', '0', '2018-01-31 00:19:54', 18011, 'Tuesday 30th of January 2018 11:19:54 PM', 18011),
-(12, 'Loan Update Transaction', NULL, 1, 'Tuesday 30th of January 2018 11:22:34 PM', '100', '0', '100', '', '25', 'No', '', 'Freedom', '', '0', '0', '2018-01-31 00:22:34', 18011, 'Tuesday 30th of January 2018 11:22:34 PM', 18011),
-(13, 'Loan Update Transaction', NULL, 1, 'Tuesday 30th of January 2018 11:22:49 PM', '200', '0', '200', '', '25', 'No', '', 'Freedom', '', '0', '0', '2018-01-31 00:22:49', 18011, 'Tuesday 30th of January 2018 11:22:49 PM', 18011);
+(1, 'New Load deposit', NULL, 1, 'Thursday 1st of February 2018 08:53:31 PM', '500', '0', '500', '', '0', 'Yes', 'EFT', 'Max', 'FNB', '0', '0', '2018-02-01 21:53:31', 18011, 'Thursday 1st of February 2018 08:53:31 PM', 18011),
+(2, 'Loan Update ', NULL, 1, 'Thursday 1st of February 2018 09:14:54 PM', '1000', '0', '1050', '', '0', 'Yes', '', 'Max', 'Capitec', '500', '125', '2018-02-01 22:14:54', 18011, 'Thursday 1st of February 2018 09:14:54 PM', 18011),
+(3, 'New Load deposit', NULL, 1, 'Thursday 1st of February 2018 09:27:08 PM', '300', '0', '300', '', '25', 'No', 'Cash', 'Khaye', 'Muzi', '0', '75', '2018-02-01 22:27:08', 18011, 'Thursday 1st of February 2018 09:27:08 PM', 18011),
+(4, 'Loan Update', NULL, 1, 'Friday 2nd of February 2018 09:50:20 PM', '1000', '500', '550', '', '0', 'Yes', '', 'Max', '', '0', '0', '2018-02-02 22:50:20', 18011, 'Friday 2nd of February 2018 09:50:20 PM', 18011),
+(5, 'Loan Update', NULL, 1, 'Friday 2nd of February 2018 09:50:38 PM', '1000', '500', '550', '', '0', 'Yes', '', 'Max', 'FNB Bank', '0', '0', '2018-02-02 22:50:38', 18011, 'Friday 2nd of February 2018 09:50:38 PM', 18011),
+(6, 'New Load deposit', NULL, 1, 'Friday 2nd of February 2018 10:52:15 PM', '100', '0', '100', '', '25', 'No', 'Cash', 'Patrick', 'Magwaza', '0', '25', '2018-02-02 23:52:15', 18011, 'Friday 2nd of February 2018 10:52:15 PM', 18011);
 
 -- --------------------------------------------------------
 
@@ -203,7 +188,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Role`, `LastLoginDate`, `IsActive`, `EmailAddress`, `url`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
-(18011, 'admin@mail.com', 'pass', 1, '2018-01-31 00:05:47', 1, 'admin@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2017-12-26 00:00:00', 0, '2017-12-26 00:00:00', 0),
+(18011, 'admin@mail.com', 'pass', 1, '2018-02-04 21:15:37', 1, 'admin@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2017-12-26 00:00:00', 0, '2017-12-26 00:00:00', 0),
 (18012, 'freedom', 'pass', 1, '2018-01-27 17:13:46', 1, 'freedom@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2018-01-27 17:12:58', 18011, '2018-01-27 17:13:39', 18012);
 
 --
@@ -248,25 +233,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CustomerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `CustomerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `DocumentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `DocumentId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `loan`
 --
 ALTER TABLE `loan`
-  MODIFY `LoanId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `LoanId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `TransactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `TransactionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
