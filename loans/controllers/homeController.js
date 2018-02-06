@@ -63,11 +63,14 @@
 		localStorage.setItem("WorkAddress", cus.WorkAddress);
         localStorage.setItem("Department", cus.Department);
         localStorage.setItem("CallSign", cus.CallSign);
+        localStorage.setItem("EmployerName", cus.EmployerName);
+        localStorage.setItem("EmployerCellNumber", cus.EmployerCellNumber);
+        localStorage.setItem("StationedArea", cus.stationedarea);
+
         localStorage.setItem("NOKName", cus.NOKName);
 		localStorage.setItem("NOKAddress", cus.NOKAddress);
-        localStorage.setItem("NOKContactNumber", cus.NOKContactNumber);
-		
-
+        localStorage.setItem("NOKContactNumber", cus.NOKContactNumber);      
+     
         localStorage.setItem("ModifyUserId", cus.ModifyUserId);
         localStorage.setItem("url", cus.url);
         $window.location.href = "#viewCustomer";

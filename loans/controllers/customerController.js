@@ -35,7 +35,9 @@
 			Department : $scope.department,
 			NOKAddress : $scope.nokaddress,
 			CallSign: $scope.callsign,
-			StationedArea: $scope.stationedarea
+			StationedArea: $scope.stationedarea,
+			EmployerCellNumber: $scope.employercellnumber,
+			EmployerName: $scope.employername
         };
 
         if (data.NOKName === undefined ||data.NOKContactNumber === undefined ||data.NOKAddress === undefined ||data.WorkAddress === undefined ||data.Department === undefined ||data.CallSign === undefined ||data.FirstName === undefined || data.LastName === undefined || data.CellNumber === undefined || data.EmailAddress === undefined || data.Location === undefined || data.Address === undefined || data.BankName === undefined || data.AccountNumber === undefined || data.BranchCode === undefined || data.AccountType === undefined)
@@ -77,7 +79,11 @@
 	$scope.NOKName = localStorage.getItem("NOKName");  
 	$scope.NOKAddress = localStorage.getItem("NOKAddress");  
 	$scope.NOKContactNumber = localStorage.getItem("NOKContactNumber");
-    $scope.status = "Not Alegible for Loan";
+	$scope.StationedArea = localStorage.getItem("StationedArea");
+	$scope.EmployerCellNumber = localStorage.getItem("EmployerCellNumber");
+	$scope.EmployerName = localStorage.getItem("EmployerName");
+
+	$scope.status = "Not Alegible for Loan";
     if ($scope.IsActive === "1") {
         $scope.status = "Alegible for Loan";
     }        
@@ -157,6 +163,7 @@ Load();
 		localStorage.setItem("PaidInterest", loan.PaidInterest);
 		localStorage.setItem("WOI", loan.WOI);
 		localStorage.setItem("Referrer", loan.Referrer);
+
         $window.location.href = "#editLoan";
     };
 
@@ -270,12 +277,15 @@ app.controller('editController', function ($http, $scope, $window, $route) {
     //var CreateDate = localStorage.getItem("CreateDate");
     //var CreateUserId = localStorage.getItem("CreateUserId");
     var userId = localStorage.getItem("userId");
-	$scope.WorkAddresss = localStorage.getItem("WorkAddresss");  
 	$scope.Department = localStorage.getItem("Department");  
 	$scope.CallSign = localStorage.getItem("CallSign");  
 	$scope.NOKName = localStorage.getItem("NOKName");  
 	$scope.NOKAddress = localStorage.getItem("NOKAddress");  
 	$scope.NOKContactNumber = localStorage.getItem("NOKContactNumber");  	   
+	$scope.StationedArea = localStorage.getItem("StationedArea");
+	$scope.EmployerCellNumber = localStorage.getItem("EmployerCellNumber");
+	$scope.EmployerName = localStorage.getItem("EmployerName"); 
+	$scope.WorkAddress = localStorage.getItem("WorkAddress");
     //resets 
     $scope.reset = function () {
         $scope.message = undefined
@@ -344,7 +354,17 @@ app.controller('editController', function ($http, $scope, $window, $route) {
             BranchCode: $scope.BranchCode,
             AccountType: $scope.AccountType,
             IsActive: 1,
-            userId: userId
+            userId: userId,
+
+            CallSign: $scope.CallSign,
+            WorkAddress: $scope.WorkAddress,
+            Department : $scope.Department,
+            StationedArea: $scope.StationedArea,
+            EmployerCellNumber: $scope.EmployerCellNumber,
+            EmployerName: $scope.EmployerName,
+            NOKName: $scope.NOKName,
+            NOKAddress: $scope.NOKAddress,
+            NOKContactNumber: $scope.NOKContactNumber
         };
         if (data!==undefined) {
             $http.post(GetApiUrl("EditCustomer"), data).success(function (data, status) {
@@ -364,7 +384,18 @@ app.controller('editController', function ($http, $scope, $window, $route) {
                     localStorage.setItem("BankName", $scope.BankName);
                     localStorage.setItem("AccountNumber", $scope.AccountNumber);
                     localStorage.setItem("BranchCode", $scope.BranchCode);
-                    localStorage.setItem("AccountType", $scope.AccountType);                
+                    localStorage.setItem("AccountType", $scope.AccountType);
+
+                    localStorage.setItem("WorkAddress", $scope.WorkAddress);
+                    localStorage.setItem("Department", $scope.Department);
+                    localStorage.setItem("CallSign", $scope.CallSign);
+                    localStorage.setItem("EmployerName", $scope.EmployerName);
+                    localStorage.setItem("EmployerCellNumber", $scope.EmployerCellNumber);
+                    localStorage.setItem("StationedArea", $scope.StationedArea);
+
+                    localStorage.setItem("NOKName", $scope.NOKName);
+                    localStorage.setItem("NOKAddress", $scope.NOKAddress);
+                    localStorage.setItem("NOKContactNumber", $scope.NOKContactNumber);
 
                     $window.location.href = "#viewCustomer";
                     $scope.error = undefined;

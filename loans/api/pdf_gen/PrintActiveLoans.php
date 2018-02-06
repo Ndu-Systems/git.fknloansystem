@@ -17,6 +17,43 @@ $pdf->SetFont('Arial','',20);
 $pdf->Write(50,"Active Loans in The System");
 $pdf->Write(35,"\n");
 
+$Totalsql="";
+if(isset($_GET['datepickerFrom'])){
+    $datepickerFrom = $_GET['datepickerFrom'];
+    $datepickerTo = $_GET['datepickerTo'];
+     $Totalsql = "SELECT SUM(loan.LoanAmount) AS AmountLoaned, SUM(loan.Interest) AS InterestOnLoan, SUM(loan.PaidLoan) AS LoanPaid, SUM(loan.PaidInterest) AS InterestPaid , SUM(loan.AdditionalLoan) AS AddedLoan , SUM(loan.PaidLoan + loan.PaidInterest +  loan.AdditionalLoan) AS Profit 
+            FROM `loan` INNER JOIN customer on loan.CustomerId = customer.CustomerId 
+            WHERE loan.Status = 1 AND loan.CreateDate >= '$datepickerFrom' and loan.CreateDate<= '$datepickerTo'";
+}
+else{
+         $Totalsql = "SELECT SUM(loan.LoanAmount) AS AmountLoaned, SUM(loan.Interest) AS InterestOnLoan, SUM(loan.PaidLoan) AS LoanPaid, SUM(loan.PaidInterest) AS InterestPaid , SUM(loan.AdditionalLoan) AS AddedLoan , SUM(loan.PaidLoan + loan.PaidInterest +  loan.AdditionalLoan) AS Profit 
+                        FROM `loan` INNER JOIN customer on loan.CustomerId = customer.CustomerId 
+                        WHERE loan.Status = 1";
+}
+
+//$pdf->Write(50,"Expected Profits from Active Loans in The System");
+//$pdf->Write(35,"\n");
+$result = $conn->query($Totalsql);
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $pdf->Write(5,"Loaned Amount   :  ".$row['AmountLoaned']);
+        $pdf->Ln();
+        $pdf->Ln();
+        $pdf->Write(5,"Interest On Loans  :  ".$row['InterestOnLoan']);
+        $pdf->Ln();
+        $pdf->Ln();
+        $pdf->Write(5,"Profit From Loans  :  ".$row['Profit']);
+        $pdf->Ln();
+        $pdf->Ln();
+         $pdf->Write(5,"Paid Interest  :  ".$row['InterestPaid']);
+        $pdf->Ln();
+        $pdf->Ln();
+         $pdf->Write(5,"Paid Loans  :  ".$row['LoanPaid']);
+        $pdf->Ln();
+        $pdf->Ln();
+    }
+}
+
 //get db data
 $pdf->SetFont('Arial','',11);
 $sql="";

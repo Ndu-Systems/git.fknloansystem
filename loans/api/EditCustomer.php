@@ -18,8 +18,17 @@ $data = json_decode(file_get_contents("php://input"));
              $BranchCode = $data->BranchCode;
              $AccountType = $data->AccountType;
              $IsActive = $data->IsActive;
-             $userId = $data->userId;                  
-                 
+             $userId = $data->userId;  
+             $WorkAddress = $data->WorkAddress;
+             $Department = $data->Department;
+             $CallSign = $data->CallSign;
+             $NOKName = $data->NOKName;
+             $NOKContactNumber = $data->NOKContactNumber;
+             $NOKAddress = $data -> NOKAddress;
+             $StationedArea = $data -> StationedArea;
+             $EmployerCellNumber = $data -> EmployerCellNumber;
+             $EmployerName = $data -> EmployerName;                
+                          
              $sql = "
 				UPDATE  customer  SET	 
 				 FirstName = '$FirstName', 
@@ -35,7 +44,17 @@ $data = json_decode(file_get_contents("php://input"));
 				 AccountType ='$AccountType',
 				 IsActive = '$IsActive',
 				 ModifyDate = NOW(),                 
-				 ModifyUserId = '$userId'
+				 ModifyUserId = '$userId',
+                 CallSign = '$CallSign',
+                 WorkAddress = '$WorkAddress',
+                 Department = '$Department',
+                 NOKName = '$NOKName',
+                 NOKContactNumber = '$NOKContactNumber',
+                 NOKAddress = '$NOKAddress',
+                 stationedarea = '$StationedArea',
+                 EmployerCellNumber = '$EmployerCellNumber',
+                 EmployerName = '$EmployerName'             
+
 				WHERE CustomerId= '$CustomerId' 		
 				";								
 								
