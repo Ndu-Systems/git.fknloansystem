@@ -1,11 +1,12 @@
-﻿app.controller('homeController', function ($http, $scope, $window,$timeout) {
+﻿app.controller('homeController', function ($http, $scope, $window, $timeout) {
     if (localStorage.getItem("isLoggedIn") !== "true") {
         $window.location.href = "#/";
     }
   
- 
+    var vm = this;
+
     //Get Customers
-		$scope.numCustomers =0;
+ $scope.numCustomers =0;
    Load();
  $timeout(function () {    
     var data = {
@@ -16,25 +17,24 @@
     .success(function (response, status) {
 		Done();
         if (response.data !== undefined) {
-            $scope.customers = response.data;
-           
-		
+            $scope.customers = response.data;  
+            	
             $scope.numCustomers = $scope.customers.length;
 
-            $scope.totalItems = $scope.customers.length;
-            $scope.currentPage = 1;
-            $scope.itemsPerPage = 5;
+            //$scope.totalItems = $scope.customers.length;
+            //$scope.currentPage = 1;
+            //$scope.itemsPerPage =20;
 
-            $scope.$watch("currentPage", function () {
-                setPagingData($scope.currentPage);
-            });
+            //$scope.$watch("currentPage", function () {
+            //    setPagingData($scope.currentPage);
+            //});
 
-            function setPagingData(page) {
-                var pageData = $scope.customers.slice(
-                    (page - 1) * $scope.itemsPerPage,
-                    page * $scope.itemsPerPage);
-                $scope.aCustomers = pageData;
-            }
+            //function setPagingData(page) {
+            //    var pageData = $scope.customers.slice(
+            //        (page - 1) * $scope.itemsPerPage,
+            //        page * $scope.itemsPerPage);
+            //    $scope.aCustomers = pageData;
+            //}
         }
     });
     }, 2000)   

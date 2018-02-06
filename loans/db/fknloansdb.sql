@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2018 at 08:57 PM
+-- Generation Time: Feb 06, 2018 at 10:45 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -43,6 +43,8 @@ CREATE TABLE `customer` (
   `AccountType` varchar(45) NOT NULL,
   `IsActive` int(11) NOT NULL,
   `url` varchar(225) DEFAULT NULL,
+  `EmployerName` varchar(225) DEFAULT NULL,
+  `EmployerCellNumber` int(13) DEFAULT NULL,
   `WorkAddress` varchar(225) NOT NULL,
   `Department` varchar(225) NOT NULL,
   `CallSign` varchar(225) NOT NULL,
@@ -60,10 +62,20 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`CustomerId`, `FirstName`, `LastName`, `CellNumber`, `EmailAddress`, `IdNumber`, `Location`, `Address`, `BankName`, `AccountNumber`, `BranchCode`, `AccountType`, `IsActive`, `url`, `WorkAddress`, `Department`, `CallSign`, `stationedarea`, `NOKName`, `NOKContactNumber`, `NOKAddress`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
-(1, 'Freedom', 'Khanyile', 2147483647, 'freedom@mail.com', '9250254658051', 'Gauteng', 'Randpark Ridge', 'FNB', 2450084, '20508-5250', 'Cheque', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', 'Randburg', 'IT', 'KHA101', NULL, 'laam', 2147483647, 'alex', '2018-01-30 22:50:00', 18011, '2018-01-30 22:50:00', 18011),
-(2, 'Maria', 'Jackson', 2147483640, 'Maria@mail.com', '240587166752', 'Kwa-Zulu Natal', 'Kwamashu', 'FNB', 2147483647, '500-505', 'Savings', 0, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', 'Station, Shoprite', 'Security', '1002', NULL, 'Maxwel', 2147483647, 'Jackson', '2018-02-03 21:59:00', 18011, '2018-02-03 23:09:32', 18011),
-(3, 'Xolani', 'Ngcobo', 2147483647, 'xolani@mail.com', '9280842580084', 'Kwa-Zulu Natal', 'Parking Hill', 'Capitec', 250804, '500-000', 'Savings', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', 'Rosebank', 'Fishing, Docs', '2500', 'Mtateni', 'Musa Ngcobo', 2147483647, 'Kwa-Mashu', '2018-02-04 21:52:29', 18011, '2018-02-04 21:52:29', 18011);
+INSERT INTO `customer` (`CustomerId`, `FirstName`, `LastName`, `CellNumber`, `EmailAddress`, `IdNumber`, `Location`, `Address`, `BankName`, `AccountNumber`, `BranchCode`, `AccountType`, `IsActive`, `url`, `EmployerName`, `EmployerCellNumber`, `WorkAddress`, `Department`, `CallSign`, `stationedarea`, `NOKName`, `NOKContactNumber`, `NOKAddress`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
+(1, 'Freedom', 'Khanyile', 2147483647, 'freedom@mail.com', '9250254658051', 'Gauteng', 'Randpark Ridge', 'FNB', 2450084, '20508-5250', 'Cheque', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', 'Multichoice', 0, 'Randburg', 'IT', 'KHA101', 'Mtateni', 'laam', 2147483647, 'alex', '2018-01-30 22:50:00', 18011, '2018-02-05 21:28:40', 18011),
+(2, 'Maria', 'Jackson', 2147483640, 'Maria@mail.com', '240587166752', 'Kwa-Zulu Natal', 'Kwamashu', 'FNB', 2147483647, '500-505', 'Savings', 0, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', 'Multichoice', 2147483647, 'Station, Shoprite', 'Security', '1002', 'mtateni', 'Maxwel', 2147483647, 'Jackson', '2018-02-03 21:59:00', 18011, '2018-02-03 23:09:32', 18011),
+(3, 'Xolani', 'Ngcobo', 2147483647, 'xolani@mail.com', '9280842580084', 'Kwa-Zulu Natal', 'Parking Hill', 'Capitec', 250804, '500-000', 'Savings', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', 'Multichoice', 2147483647, 'Rosebank', 'Fishing, Docs', '2500', 'Mtateni', 'Musa Ngcobo', 2147483647, 'Kwa-Mashu', '2018-02-04 21:52:29', 18011, '2018-02-04 21:52:29', 18011),
+(4, 'Lamlile', 'Magwaza', 2147483647, 'laam@mail.com', '9258066485008', 'Kwa-Zulu Natal', 'Nanda', 'Bidvest', 443008584, '500-580', 'Cheque', 1, 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', 'Mr Price', 2147483647, 'Durban Umngeni', 'CEO', 'KH!01', 'Umlazi', 'Freedom Nduduzo', 2147483647, 'Nanda', '2018-02-05 20:18:15', 18011, '2018-02-05 21:38:46', 18011),
+(5, 'Test', 'User', 277558056, 'email@mail.com', '8400744585666', 'KXN', 'Mash', 'KNM', 256658845, '55055', 'Savings', 1, NULL, 'Jet', 277585503, 'Mashu', 'Cashier', 'M3454', 'NewTown', 'Freedo', 27745058, 'Nanda', '2018-02-06 23:37:00', 1, '2018-02-06 23:37:00', 1),
+(6, 'Test', 'User', 277558056, 'email@mail.com', '8400744585666', 'KXN', 'Mash', 'KNM', 256658845, '55055', 'Savings', 1, NULL, 'Jet', 277585503, 'Mashu', 'Cashier', 'M3454', 'NewTown', 'Freedo', 27745058, 'Nanda', '2018-02-06 23:39:24', 1, '2018-02-06 23:39:24', 1),
+(7, 'Test', 'User', 277558056, 'email@mail.com', '8400744585666', 'KXN', 'Mash', 'KNM', 256658845, '55055', 'Savings', 1, NULL, 'Jet', 277585503, 'Mashu', 'Cashier', 'M3454', 'NewTown', 'Freedo', 27745058, 'Nanda', '2018-02-06 23:39:31', 1, '2018-02-06 23:39:31', 1),
+(8, 'Test', 'User', 277558056, 'email@mail.com', '8400744585666', 'KXN', 'Mash', 'KNM', 256658845, '55055', 'Savings', 1, NULL, 'Jet', 277585503, 'Mashu', 'Cashier', 'M3454', 'NewTown', 'Freedo', 27745058, 'Nanda', '2018-02-06 23:39:37', 1, '2018-02-06 23:39:37', 1),
+(9, 'Test', 'User', 277558056, 'email@mail.com', '8400744585666', 'KXN', 'Mash', 'KNM', 256658845, '55055', 'Savings', 1, NULL, 'Jet', 277585503, 'Mashu', 'Cashier', 'M3454', 'NewTown', 'Freedo', 27745058, 'Nanda', '2018-02-06 23:39:41', 1, '2018-02-06 23:39:41', 1),
+(10, 'Test', 'User', 277558056, 'email@mail.com', '8400744585666', 'KXN', 'Mash', 'KNM', 256658845, '55055', 'Savings', 1, NULL, 'Jet', 277585503, 'Mashu', 'Cashier', 'M3454', 'NewTown', 'Freedo', 27745058, 'Nanda', '2018-02-06 23:39:46', 1, '2018-02-06 23:39:46', 1),
+(11, 'Test', 'User', 277558056, 'email@mail.com', '8400744585666', 'KXN', 'Mash', 'KNM', 256658845, '55055', 'Savings', 1, NULL, 'Jet', 277585503, 'Mashu', 'Cashier', 'M3454', 'NewTown', 'Freedo', 27745058, 'Nanda', '2018-02-06 23:39:54', 1, '2018-02-06 23:39:54', 1),
+(12, 'Test', 'User', 277558056, 'email@mail.com', '8400744585666', 'KXN', 'Mash', 'KNM', 256658845, '55055', 'Savings', 1, NULL, 'Jet', 277585503, 'Mashu', 'Cashier', 'M3454', 'NewTown', 'Freedo', 27745058, 'Nanda', '2018-02-06 23:40:00', 1, '2018-02-06 23:40:00', 1),
+(13, 'Test', 'User1', 277558056, 'email@mail.com', '8400744585666', 'KXN', 'Mash', 'KNM', 256658845, '55055', 'Savings', 1, NULL, 'Jet', 277585503, 'Mashu', 'Cashier', 'M3454', 'NewTown', 'Freedo', 27745058, 'Nanda', '2018-02-06 23:40:04', 1, '2018-02-06 23:43:44', 18011);
 
 -- --------------------------------------------------------
 
@@ -83,6 +95,13 @@ CREATE TABLE `documents` (
   `ModifyDate` datetime NOT NULL,
   `ModifyUserId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `documents`
+--
+
+INSERT INTO `documents` (`DocumentId`, `CustomerId`, `LoanId`, `Description`, `Url`, `Status`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
+(1, 4, 0, 'ID Copy for Lamlile Magwaza', 'http://localhost/git.fknloans/loans/api/uploads/151785978439651821-developer-wallpapers.jpg\n', 1, '2018-02-05 21:43:04', 18011, '2018-02-05 21:43:04', 18011);
 
 -- --------------------------------------------------------
 
@@ -188,7 +207,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Role`, `LastLoginDate`, `IsActive`, `EmailAddress`, `url`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) VALUES
-(18011, 'admin@mail.com', 'pass', 1, '2018-02-04 21:15:37', 1, 'admin@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2017-12-26 00:00:00', 0, '2017-12-26 00:00:00', 0),
+(18011, 'admin@mail.com', 'pass', 1, '2018-02-06 23:43:08', 1, 'admin@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2017-12-26 00:00:00', 0, '2017-12-26 00:00:00', 0),
 (18012, 'freedom', 'pass', 1, '2018-01-27 17:13:46', 1, 'freedom@mail.com', 'http://localhost/git.fknloans/loans/api/uploads/profiles/5.png', '2018-01-27 17:12:58', 18011, '2018-01-27 17:13:39', 18012);
 
 --
@@ -233,13 +252,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `CustomerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `CustomerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `DocumentId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `DocumentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `loan`

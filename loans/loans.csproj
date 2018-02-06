@@ -247,6 +247,8 @@
     <Content Include="images\load.svg" />
     <Content Include="images\Logo.PNG" />
     <Content Include="js\angular-material.min.js" />
+    <Content Include="js\dirPagination.js" />
+    <Content Include="js\jquery-ui.js" />
     <Content Include="js\ui-bootstrap-tpls-2.5.0.min.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
