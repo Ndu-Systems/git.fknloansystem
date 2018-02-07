@@ -104,7 +104,6 @@
                         localStorage.setItem("success", $scope.FirstName + " was  deactivated successfully!")
                     }
                 });
-
             }
         });
     }

@@ -31,19 +31,19 @@ app.controller('userController', function ($http, $scope, $window) {
         if (response.data !== undefined) {
             $scope.users = response.data;            
             $scope.totalItems = $scope.users.length;
-            $scope.currentPage = 1;
-            $scope.itemsPerPage = 5;
+            //$scope.currentPage = 1;
+            //$scope.itemsPerPage = 5;
 
-            $scope.$watch("currentPage", function () {
-                setPagingData($scope.currentPage);
-            });
+            //$scope.$watch("currentPage", function () {
+            //    setPagingData($scope.currentPage);
+            //});
 
-            function setPagingData(page) {
-                var pageData = $scope.users.slice(
-                    (page - 1) * $scope.itemsPerPage,
-                    page * $scope.itemsPerPage);
-                $scope.aUsers = pageData;
-            }
+            //function setPagingData(page) {
+            //    var pageData = $scope.users.slice(
+            //        (page - 1) * $scope.itemsPerPage,
+            //        page * $scope.itemsPerPage);
+            //    $scope.aUsers = pageData;
+            //}
         }
     });
 
@@ -77,6 +77,26 @@ app.controller('userController', function ($http, $scope, $window) {
              });
         }
     }
+
+    $scope.Deactivate = function (user) {
+        Confirm("Confirm Deactivation", "Are you sure you want to deactivation " + user.UserName, function (result) {
+            if (result) {
+                // Deactivate
+                var data = {
+                    CustomerId: user.UserId,
+                    ModifyUserId: userId
+                };
+                $http.post(GetApiUrl("DeactivateUser"), data)
+                .success(function (response, status) {
+                    if (parseInt(response) === 1) {
+                        $window.location.href = "#success";
+                        localStorage.setItem("success", user.UserName + " was  deactivated successfully!")
+                    }
+                });
+
+            }
+        });
+    }
 });
 
 app.controller('archivesController', function ($http, $scope, $window) {
@@ -104,20 +124,20 @@ app.controller('archivedCustomersController', function ($http, $scope, $window) 
 
                 $scope.numCustomers = $scope.customers.length;
 
-                $scope.totalItems = $scope.customers.length;
-                $scope.currentPage = 1;
-                $scope.itemsPerPage = 5;
+                //$scope.totalItems = $scope.customers.length;
+                //$scope.currentPage = 1;
+                //$scope.itemsPerPage = 5;
 
-                $scope.$watch("currentPage", function () {
-                    setPagingData($scope.currentPage);
-                });
+                //$scope.$watch("currentPage", function () {
+                //    setPagingData($scope.currentPage);
+                //});
 
-                function setPagingData(page) {
-                    var pageData = $scope.customers.slice(
-                        (page - 1) * $scope.itemsPerPage,
-                        page * $scope.itemsPerPage);
-                    $scope.aCustomers = pageData;
-                }
+                //function setPagingData(page) {
+                //    var pageData = $scope.customers.slice(
+                //        (page - 1) * $scope.itemsPerPage,
+                //        page * $scope.itemsPerPage);
+                //    $scope.aCustomers = pageData;
+                //}
             }
         });
 
@@ -224,19 +244,19 @@ app.controller('archivedLoansController', function ($http, $scope, $window, $tim
                         $scope.Loans = response.data;
                         var numL = 0;
                         numL = $scope.Loans.length;
-                        $scope.numLoans = numL;
-                        $scope.totalItems = $scope.Loans.length;
-                        $scope.currentPage = 1;
-                        $scope.itemsPerPage = 5;
-                        $scope.$watch("currentPage", function () {
-                            setPagingData($scope.currentPage);
-                        });
-                        function setPagingData(page) {
-                            var pageData = $scope.Loans.slice(
-                                (page - 1) * $scope.itemsPerPage,
-                                page * $scope.itemsPerPage);
-                            $scope.aLoans = pageData;
-                        }
+                        //$scope.numLoans = numL;
+                        //$scope.totalItems = $scope.Loans.length;
+                        //$scope.currentPage = 1;
+                        //$scope.itemsPerPage = 5;
+                        //$scope.$watch("currentPage", function () {
+                        //    setPagingData($scope.currentPage);
+                        //});
+                        //function setPagingData(page) {
+                        //    var pageData = $scope.Loans.slice(
+                        //        (page - 1) * $scope.itemsPerPage,
+                        //        page * $scope.itemsPerPage);
+                        //    $scope.aLoans = pageData;
+                        //}
                     }
                     else {
                         $scope.aLoans = undefined;
@@ -253,23 +273,23 @@ app.controller('archivedLoansController', function ($http, $scope, $window, $tim
     $scope.Print = function () {
 
             if ($scope.datepickerFrom !== undefined && $scope.datepickerTo !== undefined) {
-                var url = printHistoricalLoans + "&datepickerFrom=" + $scope.datepickerFrom + "&datepickerTo=" + $scope.datepickerTo;
+                var url = printHistoricalLoans + "?datepickerFrom=" + $scope.datepickerFrom + "&datepickerTo=" + $scope.datepickerTo;
                 window.open(url, '_blank');
             } else {
-                var url = printHistoricalLoans;
+                var url = printHistoricalLoans +"?";
                 window.open(url, '_blank');
             }
     }
 });
 
-app.controller('reportingController', function ($http, $scope, $window) {
+app.controller('reportingController', function ($http, $scope, $window, $timeout) {
     if (localStorage.getItem("isLoggedIn") !== "true") {
         $window.location.href = "#/";
     }
 
 });
 
-app.controller('loanReportingController', function ($http, $scope, $window) {
+app.controller('loanReportingController', function ($http, $scope, $window, $timeout) {
     if (localStorage.getItem("isLoggedIn") !== "true") {
         $window.location.href = "#/";
     }
@@ -294,30 +314,71 @@ app.controller('loanReportingController', function ($http, $scope, $window) {
             GetHistoricalLoans(true);
         }
     }
-    //Show All
+    ////Show All
     $scope.ShowAll = function () {
         GetHistoricalLoans(false);
         $scope.datepickerFrom = undefined;
         $scope.datepickerTo = undefined;
     }
 
+    GetHistoricalLoans(false);
+    function GetHistoricalLoans(isFilter) {
+        Load();
+        $timeout(function () {
+            //Get Loan(s) For Customer
+            var data = undefined;
+            if (isFilter) {
+                data = {
+                    table: "loan",
+                    condition: "loan.Status = 1 AND loan.CreateDate >= '" + $scope.datepickerFrom + "' and loan.CreateDate<= '" + $scope.datepickerTo + "'"
+                };
+            }
+            else {
+
+                data = {
+                    table: "loan",
+                    condition: "loan.Status = 1"
+                };
+            }
+
+            $http.post(GetApiUrl("GetArchivedLoansJoinCustomer"), data)
+            .success(function (response, status) {
+                Done();
+                if (response.data !== undefined) {
+                    $scope.message = undefined;
+                    $scope.Loans = response.data;
+                    var numL = 0;
+                    numL = $scope.Loans.length;      
+                }
+                else {
+                    $scope.aLoans = undefined;
+                    $scope.Loans = [];
+                    if ($scope.datepickerFrom !== undefined) {
+                        $scope.message = `No transactions found between ${$scope.datepickerFrom}  and  ${$scope.datepickerTo}`;
+                    } else {
+                        $scope.message = "No transactions found ";
+                    }
+                }
+            });
+        }, 2000)
+    }
 
 
     $scope.PrintActiveLoans = function () {
         if ($scope.datepickerFrom !== undefined && $scope.datepickerTo !== undefined) {
-            var url = PrintActiveLoans + "&datepickerFrom=" + $scope.datepickerFrom + "&datepickerTo=" + $scope.datepickerTo;
+            var url = PrintActiveLoans + "?datepickerFrom=" + $scope.datepickerFrom + "&datepickerTo=" + $scope.datepickerTo;
             window.open(url, '_blank');
         } else {
-            var url = PrintActiveLoans;
+            var url = PrintActiveLoans+"?";
             window.open(url, '_blank');
         }
     }
     $scope.PrintClosedLoans = function () {
         if ($scope.datepickerFrom !== undefined && $scope.datepickerTo !== undefined) {
-            var url = PrintClosedLoans + "&datepickerFrom=" + $scope.datepickerFrom + "&datepickerTo=" + $scope.datepickerTo;
+            var url = PrintClosedLoans + "?datepickerFrom=" + $scope.datepickerFrom + "&datepickerTo=" + $scope.datepickerTo;
             window.open(url, '_blank');
         } else {
-            var url = PrintClosedLoans;
+            var url = PrintClosedLoans+"?";
             window.open(url, '_blank');
         }
     }

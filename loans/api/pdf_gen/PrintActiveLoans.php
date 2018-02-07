@@ -18,6 +18,7 @@ $pdf->Write(50,"Active Loans in The System");
 $pdf->Write(35,"\n");
 
 $Totalsql="";
+
 if(isset($_GET['datepickerFrom'])){
     $datepickerFrom = $_GET['datepickerFrom'];
     $datepickerTo = $_GET['datepickerTo'];

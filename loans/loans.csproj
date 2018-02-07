@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="api\AddLoan.php" />
+    <Content Include="api\DeactivateUser.php" />
     <Content Include="api\DeactivateLoan.php" />
     <Content Include="api\EditTransaction.php" />
     <Content Include="api\AddTransiction.php" />

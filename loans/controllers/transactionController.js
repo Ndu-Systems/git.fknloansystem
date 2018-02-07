@@ -95,20 +95,20 @@
             var numL = 0;
             numL = $scope.transictions.length;
             $scope.numLoans = numL;
-            $scope.totalItems = $scope.transictions.length;
-            $scope.currentPage = 1;
-            $scope.itemsPerPage = 5;
+            //$scope.totalItems = $scope.transictions.length;
+            //$scope.currentPage = 1;
+            //$scope.itemsPerPage = 5;
 
-            $scope.$watch("currentPage", function () {
-                setPagingData($scope.currentPage);
-            });
+            //$scope.$watch("currentPage", function () {
+            //    setPagingData($scope.currentPage);
+            //});
 
-            function setPagingData(page) {
-                var pageData = $scope.transictions.slice(
-                    (page - 1) * $scope.itemsPerPage,
-                    page * $scope.itemsPerPage);
-                $scope.aLoans = pageData;
-            }
+            //function setPagingData(page) {
+            //    var pageData = $scope.transictions.slice(
+            //        (page - 1) * $scope.itemsPerPage,
+            //        page * $scope.itemsPerPage);
+            //    $scope.aLoans = pageData;
+            //}
         }else{
 			$scope.transictions=[];
 			if($scope.datepickerFrom !== undefined){

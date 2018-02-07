@@ -1,79 +1,86 @@
 ﻿<div ng-include="'pages/home/nav.html'"></div>
 <div id="page-wrapper" style="min-height: 586px;">
     <div class="graphs">
-        <div class="col_3">
-        </div>
         <div class="content_bottom">
-            <div class="col-md-12 span_3">               
-                    <div class="bs-example1 col-md-8 col-sm-6" data-example-id="contextual-table">            
-                            <h1><b>Clients</b></h1>
-                            <div class="row col-md-12" style="padding: 2%;">
-                                <div class="col-md-3">
-                                    <a href="#/addCustomer" style="color:white;"><button type="button" class="btn btn-primary">Register Client</button></a>
-                                </div>
-                                <div class="col-md-1">
-                                    <b>Search:</b>
-                                </div>
-                                 <div class="col-md-8">
-                                        <input type="text" class="fa-align-right" ng-model="search" placeholder="Search by FullName, Email and Location" style="width:90%; padding:1%" />
-                                    </div>
-                                </div>
-                            <table class="table">
-                             <thead>
-                                 <tr>
-                                     <th>Customer #</th>
-                                     <th scope="col">Full Name</th>                                 
-                                     <th scope="col">Contact Number</th>
-                                     <th scope="col">Loan Amount</th>
-                                     <th scope="col">Actions</th>
-                                  </tr>
-                             </thead>
-                             <tbody>
-                                    <tr ng-repeat="cus in customers | filter:search">
-                                        <!--<th scope="row"><span class="fa fa-plus-square" style="resize:100px;"></span>{{cus.CustomerId}}</th>-->
-                                        <td>{{$index + 1}}</td>
-                                        <td>{{cus.FirstName}} {{cus.Name}}</td>
-                                        <td>{{cus.CellNumber}}</td>
-                                        <td>R {{cus.Balance}}</td>
-                                        <td><a href="" data-original-title="Save information" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="Add(cus)">Add <span class="glyphicon glyphicon-plus"></span></a></td>
-                                    </tr>
-                            </tbody>
-                      </table>
-                        <ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage"></ul>
-             
-                </div>
-                <div class="bs-example1 col-md-4 col-sm-6" data-example-id="contextual-table">
-                    <h1><b>Client Balance</b></h1>                   
-                    <table class="table">                                      
-                        <tbody>
-                            <tr>
-                                <td>Selected Client</td>
-                                <td>Amount (Out-standing)</td>
-                            </tr>
+            <div class="row" style="padding: 2%;">
+                <div class="col-md-12 span_3">
+                    <div class="bs-example1 col-md-8 col-sm-6" data-example-id="contextual-table">
+                        <div class="col-md-4">
+                            <h3><b>Clients</b></h3>
+                        </div>
+                        <div class="row col-md-12" style="padding: 2%;">
+                            <div class="col-md-3">
+                                <a href="#/addCustomer" style="color:white;"><button type="button" class="btn btn-primary">Register Client</button></a>
+                            </div>
+                            <div class="col-md-1">
+                                <b>Search:</b>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" class="fa-align-right" ng-model="search" placeholder="Search by FullName, Email and Location" style="width:90%; padding:1%" />
+                            </div>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Customer #</th>
+                                    <th scope="col">Full Name</th>
+                                    <th scope="col">Contact Number</th>
+                                    <th scope="col">Loan Amount</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
                             <tbody>
-                            <tr>
-                                <td>Selected Client</td>
-                                <td>Amount (Out-standing)</td>
-								  <td></td>
-                            </tr>
-                            <tr ng-repeat="cus in newCustomerList | filter:search">
-                                 <td>{{cus.Name}}</td>
-                                 <td>R {{cus.Balance}}</td>
-								  <td> <span class="glyphicon glyphicon-remove" ng-click="Remove($index)" style="color:red; pointer:cursor"></span></td>
-                            </tr>
-                                                      
-                        </tbody>  
+                                <tr dir-paginate="cus in customers | filter:search |itemsPerPage:5">
+                                    <!--<th
+                                    scope="row"><span class="fa fa-plus-square" style="resize:100px;"></span>{{cus.CustomerId}}</th>-->
+                                    <td>{{$i
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{cus.FirstName}} {{cus.Name}}</td>
+                                    <td>{{cus.CellNumber}}</td>
+                                    <td>R {{cus.Balance}}</td>
+                                    <td><a href="" data-original-title="Save information" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="Add(cus)">Add <span class="glyphicon glyphicon-plus"></span></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--<ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage"></ul>-->
+                        <dir-pagination-controls max-size="5"
+                                                 direction-links="true"
+                                                 boundary-links="true">
+                        </dir-pagination-controls>
+                    </div>
+                    <div class="bs-example1 col-md-4 col-sm-6" data-example-id="contextual-table">
+                        <h1><b>Client Balance</b></h1>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Selected Client</td>
+                                    <td>Amount (Out-standing)</td>
+                                </tr>
+                            <tbody>
+                                <tr>
+                                    <td>Selected Client</td>
+                                    <td>Amount (Out-standing)</td>
+                                    <td></td>
+                                </tr>
+                                <tr ng-repeat="cus in newCustomerList | filter:search">
+                                    <td>{{cus.Name}}</td>
+                                    <td>R {{cus.Balance}}</td>
+                                    <td> <span class="glyphicon glyphicon-remove" ng-click="Remove($index)" style="color:red; pointer:cursor"></span></td>
+                                </tr>
+
+                            </tbody>
                             <tr>
                                 <td><h1>Total</h1></td>
                                 <td><h2>R{{sumBalance}}</h2></td>
-                            </tr>                           
-                        </tbody>                  
-                    </table>
-                    <div>
-                        <button type="reset" class="btn btn-warning" style="background-color:orange;border-color:orange;" ng-click="Reset()">Reset</button>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <button type="reset" class="btn btn-warning" style="background-color:orange;border-color:orange;" ng-click="Reset()">Reset</button>
+                        </div>
                     </div>
                 </div>
-               </div>
             </div>
         </div>
     </div>
+</div>
