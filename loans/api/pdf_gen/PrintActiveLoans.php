@@ -34,27 +34,27 @@ else{
 
 //$pdf->Write(50,"Expected Profits from Active Loans in The System");
 //$pdf->Write(35,"\n");
-$result = $conn->query($Totalsql);
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $pdf->Write(5,"Loaned Amount   :  ".$row['AmountLoaned']);
-        $pdf->Ln();
-        $pdf->Ln();
-        $pdf->Write(5,"Interest On Loans  :  ".$row['InterestOnLoan']);
-        $pdf->Ln();
-        $pdf->Ln();
-        $pdf->Write(5,"Profit From Loans  :  ".$row['Profit']);
-        $pdf->Ln();
-        $pdf->Ln();
-         $pdf->Write(5,"Paid Interest  :  ".$row['InterestPaid']);
-        $pdf->Ln();
-        $pdf->Ln();
-         $pdf->Write(5,"Paid Loans  :  ".$row['LoanPaid']);
-        $pdf->Ln();
-        $pdf->Ln();
-    }
-}
-
+//$result = $conn->query($Totalsql);
+//if ($result->num_rows > 0) {
+//    while($row = $result->fetch_assoc()) {
+//        $pdf->Write(5,"Loaned Amount   :  ".$row['AmountLoaned']);
+//        $pdf->Ln();
+//        $pdf->Ln();
+//        $pdf->Write(5,"Interest On Loans  :  ".$row['InterestOnLoan']);
+//        $pdf->Ln();
+//        $pdf->Ln();
+//        $pdf->Write(5,"Profit From Loans  :  ".$row['Profit']);
+//        $pdf->Ln();
+//        $pdf->Ln();
+//         $pdf->Write(5,"Paid Interest  :  ".$row['InterestPaid']);
+//        $pdf->Ln();
+//        $pdf->Ln();
+//         $pdf->Write(5,"Paid Loans  :  ".$row['LoanPaid']);
+//        $pdf->Ln();
+//        $pdf->Ln();
+//    }
+//}
+ 
 //get db data
 $pdf->SetFont('Arial','',11);
 $sql="";

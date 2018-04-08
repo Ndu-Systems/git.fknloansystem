@@ -8,17 +8,16 @@ $data = json_decode(file_get_contents("php://input"));
 $table = $data->table;
 $condition=$data->condition;
 $rows = array();
- $sql = "SELECT loan.*, customer.EmailAddress,customer.FirstName,customer.LastName,customer.CellNumber
+ $result = $conn -> prepare( "SELECT loan.*, customer.EmailAddress,customer.FirstName,customer.LastName,customer.CellNumber
 FROM loan
-INNER JOIN customer ON loan.CustomerId = customer.CustomerId WHERE $condition;";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
+INNER JOIN customer ON loan.CustomerId = customer.CustomerId WHERE $condition;");
+$result -> execute(array());
+if ($result->rowCount() > 0) {
+    while($row = $result->fetch(PDO::FETCH_OBJ)) {
 		$rows["data"][]= $row;
 	}
 }
-
 echo json_encode($rows);
-$conn->close();
+//$conn->close();
 
 ?>

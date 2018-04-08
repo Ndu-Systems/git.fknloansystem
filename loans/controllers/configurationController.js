@@ -58,7 +58,7 @@ app.controller('userController', function ($http, $scope, $window) {
             EmailAddress: $scope.EmailAddress,
             UserName: $scope.UserName,
             userId: userId,
-            url: "http://localhost/fundakubona/api/uploads/profiles/5.png",
+            url: "http://localhost:8080/fundakubona/api/uploads/profiles/5.png",
 
         };
         if (data.EmailAddress === undefined || data.UserName === undefined) {

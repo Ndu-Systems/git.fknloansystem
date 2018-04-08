@@ -5,20 +5,21 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 require "conn.php";
 $data = json_decode(file_get_contents("php://input"));
 
-$table = $data->table;
-$condition=$data->condition;
+//$table = $data->table;
+//$condition=$data->condition;
 $rows = array();
- $sql = "SELECT loan.Balance, customer.FirstName,customer.CustomerId,customer.LastName,customer.CellNumber
+ $result = $conn -> prepare ("SELECT loan.Balance, customer.FirstName,customer.CustomerId,customer.LastName,customer.CellNumber
 FROM customer
-INNER JOIN loan ON customer.CustomerId = loan.CustomerId WHERE customer.IsActive = 1 AND loan.Status = 1;";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
+INNER JOIN loan ON customer.CustomerId = loan.CustomerId WHERE customer.IsActive = ? AND loan.Status = ?;");
+$result ->execute(array(1,1));
+
+if ($result ->rowCount() > 0) {
+    while($row = $result->fetch(PDO::FETCH_OBJ)) {
 		$rows["data"][]= $row;
 	}
 }
 
 echo json_encode($rows);
-$conn->close();
+//$conn->close();
 
 ?>

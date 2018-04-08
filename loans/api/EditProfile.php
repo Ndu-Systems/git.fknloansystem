@@ -8,13 +8,13 @@ $data = json_decode(file_get_contents("php://input"));
                $CustomerId =	$data->CustomerId;
                $doc	=	$data->doc;               		   
 			  
-			$sql = "
+			$result = $conn -> prepare( "
 			UPDATE  customer  SET
-			 url = '$doc' 			 			 
-			WHERE CustomerId= $CustomerId			
-				";								
+			 url = ? 			 			 
+			WHERE CustomerId= ?			
+				");								
 								
-				if ($conn->query($sql) === TRUE) {
+				if ($result -> execute(array($doc,$CustomerId))) {
 					echo 1;
 				} else {
 				echo 0;

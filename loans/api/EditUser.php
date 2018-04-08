@@ -5,29 +5,30 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 require "conn.php";
 $data = json_decode(file_get_contents("php://input"));
    
-     $UserId = $data->UserId;
+    $UserId = $data->UserId;
 	$UserName = $data->UserName;
     $EmailAddress= $data->EmailAddress;
 	$Password = $data->Password;	 
 	$IsActive = $data->IsActive;
     $Role    = $data->Role;
-    $url    = $data->url;
+    $url    = $data->url; 
 
-        $sql = "UPDATE `users` SET
-                        `UserName`='$UserName',
-                        `Password`='$Password',
-                        `Role`='$Role',
-                        `IsActive`='$IsActive',
-                        `EmailAddress`='$EmailAddress',
-                        `url`='$url',
-                        `ModifyDate`=NOW(),
-                        `ModifyUserId`='$UserId' WHERE UserId = '$UserId'";        
+        $result = $conn->prepare( "UPDATE `users` SET
+                        `UserName`=?,
+                        `Password`=?,
+                        `Role`=?,
+                        `IsActive`=?,
+                        `EmailAddress`=?,
+                        `url`=?,
+                        `ModifyDate`=Now(),
+                        `ModifyUserId`=? WHERE UserId =?"); 
+		
         
-        if ($conn->query($sql) === TRUE) {
+        if ($result->execute(array($UserName,$Password,$Role,$IsActive,$EmailAddress,$url,$UserId,$UserId))) {
             echo 1;
         }
         else {
             //echo json_encode('failed');
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: He's Dead Jim!";
         }    
 ?>

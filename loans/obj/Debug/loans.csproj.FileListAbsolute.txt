@@ -64,3 +64,5 @@ C:\xampp\htdocs\git.fknloansystem\loans\bin\Microsoft.CodeDom.Providers.DotNetCo
 C:\xampp\htdocs\git.fknloansystem\loans\obj\Debug\loans.csprojResolveAssemblyReference.cache
 C:\xampp\htdocs\git.fknloansystem\loans\obj\Debug\loans.dll
 C:\xampp\htdocs\git.fknloansystem\loans\obj\Debug\loans.pdb
+C:\xampp\htdocs\git.fknloans\loans\obj\Debug\loans.csproj.CoreCompileInputs.cache
+C:\xampp\htdocs\git.fknloans\loans\obj\Debug\loans.csproj.CopyComplete

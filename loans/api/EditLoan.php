@@ -16,27 +16,29 @@ $data = json_decode(file_get_contents("php://input"));
 	$PaidInterest =$data ->PaidInterest;  
 	$AdditionalLoan =$data ->AdditionalLoan;  
 	$Reciever =$data ->Reciever; 
+	$MeansOfPayment=$data ->MeansOfPayment;
 	$WOI = $data -> WOI;
 	$Referrer = $data -> Referrer;
 
-        $sql = " UPDATE `loan` SET 
-				`CustomerId`='$CustomerId',
-				`LoanAmount`='$LoanAmount',
-				`PaidInterest`='$PaidInterest',
-				`AdditionalLoan`='$AdditionalLoan',
-				`Reciever`='$Reciever',
-				`PaidLoan`='$PaidLoan',
-				`Balance`=   '$Balance',							
-				`Interest`='$Interest',				
-				`Status`='$Status',	
-				`WOI`='$WOI',	
-				`Referrer`='$Referrer',					
+        $result = $conn -> prepare( " UPDATE `loan` SET 
+				`CustomerId`=?,
+				`LoanAmount`=?,
+				`PaidInterest`=?,
+				`AdditionalLoan`=?,
+				`Reciever`=?,
+				 MeansOfPayment=?,
+				`PaidLoan`=?,
+				`Balance`=?,							
+				`Interest`=?,				
+				`Status`=?,	
+				`WOI`=?,	
+				`Referrer`=?,					
 				`ModifyDate`=NOW(),
-				`ModifyUserId`='$userId' 
-                WHERE `LoanId`=  '$LoanId'
-               ";        
+				`ModifyUserId`=? 
+                WHERE `LoanId`=  ?
+               ");        
         
-        if ($conn->query($sql) === TRUE) {
+        if ($result->execute(array($CustomerId,$LoanAmount,$PaidInterest,$AdditionalLoan,$Reciever,$MeansOfPayment,$PaidLoan,$Balance,$Interest,$Status,$WOI,$Referrer,$userId,$LoanId))) {
             echo 1;
             require 'EditTransaction.php';
         }

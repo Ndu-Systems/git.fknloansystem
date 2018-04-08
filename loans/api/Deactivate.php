@@ -8,13 +8,13 @@ if (isset($data->CustomerId) ){
 $CustomerId = $data->CustomerId;
 $ModifyUserId =$data->ModifyUserId;
 
-  $sql = "UPDATE customer SET
-                        IsActive=0,
+  $result = $conn -> prepare("UPDATE customer SET
+                        IsActive=?,
                         ModifyDate=NOW(),
-                        ModifyUserId=$ModifyUserId
-						WHERE CustomerId = $CustomerId";        
+                        ModifyUserId=?
+						WHERE CustomerId = ?");        
         
-        if ($conn->query($sql) === TRUE) {
+        if ($result->execute(array(0,$ModifyUserId,$CustomerId))) {
             echo 1;
         }
         else {

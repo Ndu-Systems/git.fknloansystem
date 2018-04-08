@@ -12,10 +12,10 @@ $data = json_decode(file_get_contents("php://input"));
                $Status		=	$data->Status;
                $userId		=	$data->userId;
 			  
-			$sql = "INSERT INTO `documents`(`CustomerId`, `LoanId`, `Description`, `Url`, `Status`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) 
-                    VALUES ('$CustomerId','$LoanId','$Description','$Url','$Status',NOW(),'$userId',NOW(),'$userId')";		 
+			$result = $conn -> prepare( "INSERT INTO `documents`(`CustomerId`, `LoanId`, `Description`, `Url`, `Status`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`) 
+                    VALUES (?,?,?,?,?,NOW(),?,NOW(),?)");		 
 			
-				if ($conn->query($sql) === TRUE) {
+				if ($result->execute(array($CustomerId,$LoanId,$Description,$Url,$Status,$userId,$userId))) {
 					echo 1;
 				} else {
 				echo 0;

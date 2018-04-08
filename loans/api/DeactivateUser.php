@@ -8,18 +8,18 @@ if (isset($data->CustomerId) ){
 $CustomerId = $data->CustomerId;
 $ModifyUserId =$data->ModifyUserId;
 
-  $sql = "UPDATE users SET
-                        IsActive=0,
+  $result = $conn -> prepare( "UPDATE users SET
+                        IsActive=?,
                         ModifyDate=NOW(),
-                        ModifyUserId=$ModifyUserId
-						WHERE UserId = $CustomerId";        
+                        ModifyUserId=?
+						WHERE UserId = ?");        
         
-        if ($conn->query($sql) === TRUE) {
+        if ($result->execute(array(0,$ModifyUserId,$CustomerId))) {
             echo 1;
         }
         else {
             //echo json_encode('failed');
-            echo "Error: " . $sql . "<br>" . $conn->error;
+			echo "Error: He's Dead Jim!";
         }    
 }
 else{

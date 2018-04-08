@@ -29,39 +29,41 @@ $data = json_decode(file_get_contents("php://input"));
              $EmployerCellNumber = $data -> EmployerCellNumber;
              $EmployerName = $data -> EmployerName;                
                           
-             $sql = "
-				UPDATE  customer  SET	 
-				 FirstName = '$FirstName', 
-				 LastName ='$LastName',
-                 CellNumber ='$CellNumber',
-                 EmailAddress ='$EmailAddress',
-                 IdNumber ='$IdNumber',
-                 Location ='$Location',
-                 Address ='$Address',
-                 BankName ='$BankName',
-				 AccountNumber = '$AccountNumber',
-				 BranchCode ='$BranchCode',			 
-				 AccountType ='$AccountType',
-				 IsActive = '$IsActive',
-				 ModifyDate = NOW(),                 
-				 ModifyUserId = '$userId',
-                 CallSign = '$CallSign',
-                 WorkAddress = '$WorkAddress',
-                 Department = '$Department',
-                 NOKName = '$NOKName',
-                 NOKContactNumber = '$NOKContactNumber',
-                 NOKAddress = '$NOKAddress',
-                 stationedarea = '$StationedArea',
-                 EmployerCellNumber = '$EmployerCellNumber',
-                 EmployerName = '$EmployerName'             
+										 $result = $conn -> prepare( "
+											UPDATE  customer  SET	 
+											 FirstName = ?, 
+											 LastName =?,
+											 CellNumber =?,
+											 EmailAddress =?,
+											 IdNumber =?,
+											 Location =?,
+											 Address =?,
+											 BankName =?,
+											 AccountNumber = ?,
+											 BranchCode =?,			 
+											 AccountType =?,
+											 IsActive = ?,
+											 ModifyDate = NOW(),                 
+											 ModifyUserId =?,
+											 CallSign = ?,
+											 WorkAddress = ?,
+											 Department =?,
+											 NOKName = ?,
+											 NOKContactNumber = ?,
+											 NOKAddress =?,
+											 stationedarea = ?,
+											 EmployerCellNumber =?,
+											 EmployerName = ?            
 
-				WHERE CustomerId= '$CustomerId' 		
-				";								
+											WHERE CustomerId= ? 		
+											");								
 								
-				if ($conn->query($sql) === TRUE) {
+				if ($result->execute(array($FirstName,$LastName,$CellNumber,$EmailAddress,$IdNumber,$Location,$Address,$BankName
+						,$AccountNumber,$BranchCode,$AccountType,$IsActive,$userId,$CallSign,$WorkAddress,$Department,$NOKName,$NOKContactNumber,$NOKAddress,
+						$StationedArea,$EmployerCellNumber,$EmployerName,$CustomerId))) {
 					echo 1;
 				} else {
-				echo 0;
+				   echo "Error: He's Dead Jim!";
 				}						
 						
 

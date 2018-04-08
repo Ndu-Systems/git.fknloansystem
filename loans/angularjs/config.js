@@ -3,24 +3,24 @@
 // Host
 //var host = "http://ndu-systems.net/demo/fknloans_v3/api/";
 //var host = "http://localhost/git.fknloansystem/loans/api/"; 
-var host = "http://localhost/git.fknloans/loans/api/";   //Freedom
+var host = "http://localhost:8080/git.fknloans/loans/api/";   //Freedom
 
 //PDF Transactions
-var printTransictions = "http://localhost/git.fknloans/loans/api/pdf_gen/mypdf.php"  // Freedom
+var printTransictions = "http://localhost:8080/git.fknloans/loans/api/pdf_gen/mypdf.php"  // Freedom
 //var printTransictions = "http://localhost/git.fknloansystem/loans/api/pdf_gen/mypdf.php"
 
 //var printTransictions = "http://ndu-systems.net/demo/fknloans_v3/api/pdf_gen/mypdf.php"
 
 //PDF Historical Loan(s)
-var printHistoricalLoans = "http://localhost/git.fknloans/loans/api/pdf_gen/archiveLoanPdf.php"
+var printHistoricalLoans = "http://localhost:8080/git.fknloans/loans/api/pdf_gen/archiveLoanPdf.php"
 //var printHistoricalLoans = "http://ndu-systems.net/demo/fknloans_v3/api/pdf_gen/archiveLoanPdf.php"
 
 //Pdf Active loans
-var PrintActiveLoans = "http://localhost/git.fknloans/loans/api/pdf_gen/PrintActiveLoans.php"
+var PrintActiveLoans = "http://localhost:8080/git.fknloans/loans/api/pdf_gen/PrintActiveLoans.php"
 
 
 //Pdf Closed loans
-var PrintClosedLoans = "http://localhost/git.fknloans/loans/api/pdf_gen/PrintClosedLoans.php"
+var PrintClosedLoans = "http://localhost:8080/git.fknloans/loans/api/pdf_gen/PrintClosedLoans.php"
 
 
 function GetApiUrl(serviceName) {

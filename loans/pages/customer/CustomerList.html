@@ -12,10 +12,10 @@
                             <div class="col-md-3">
                                 <a href="#/addCustomer" style="color:white;"><button type="button" class="btn btn-primary">Register Client</button></a>
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                                 <b>Search:</b>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-7">
                                 <input type="text" class="fa-align-right" ng-model="search" placeholder="Search by FullName, Email and Location" style="width:90%; padding:1%" />
                             </div>
                         </div>
@@ -33,7 +33,6 @@
                                 <tr dir-paginate="cus in customers | filter:search |itemsPerPage:5">
                                     <!--<th
                                     scope="row"><span class="fa fa-plus-square" style="resize:100px;"></span>{{cus.CustomerId}}</th>-->
-                                    <td>{{$i
                                     <td>{{$index + 1}}</td>
                                     <td>{{cus.FirstName}} {{cus.Name}}</td>
                                     <td>{{cus.CellNumber}}</td>
@@ -51,12 +50,7 @@
                     <div class="bs-example1 col-md-4 col-sm-6" data-example-id="contextual-table">
                         <h1><b>Client Balance</b></h1>
                         <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td>Selected Client</td>
-                                    <td>Amount (Out-standing)</td>
-                                </tr>
-                            <tbody>
+                             <tbody>
                                 <tr>
                                     <td>Selected Client</td>
                                     <td>Amount (Out-standing)</td>

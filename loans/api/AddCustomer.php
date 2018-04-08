@@ -30,16 +30,16 @@ if (isset($data->EmailAddress) ){
     $EmployerCellNumber = $data -> EmployerCellNumber;
     $EmployerName = $data -> EmployerName;
     
-        $sql = "INSERT INTO `customer`( `FirstName`, `LastName`, `CellNumber`, `EmailAddress`, `IdNumber`, `Location`, `Address`, `BankName`, `AccountNumber`, `BranchCode`, `AccountType`, `IsActive`, `url`,`EmployerName`, `EmployerCellNumber`, `WorkAddress`, `Department`, `CallSign`, `stationedarea`, `NOKName`,`NOKContactNumber`,`NOKAddress`,`CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`)
-                VALUES ('$FirstName','$LastName',$CellNumber,'$EmailAddress','$IdNumber','$Location','$Address','$BankName',$AccountNumber,'$BranchCode','$AccountType',$IsActive,'$url','$EmployerName',$EmployerCellNumber,'$WorkAddress','$Department','$CallSign','$StationedArea','$NOKName','$NOKContactNumber','$NOKAddress',NOW(),$userId,NOW(),$userId)";        
+        $result = $conn -> prepare( "INSERT INTO `customer`( `FirstName`, `LastName`, `CellNumber`, `EmailAddress`, `IdNumber`, `Location`, `Address`, `BankName`, `AccountNumber`, `BranchCode`, `AccountType`, `IsActive`, `url`,`EmployerName`, `EmployerCellNumber`, `WorkAddress`, `Department`, `CallSign`, `stationedarea`, `NOKName`,`NOKContactNumber`,`NOKAddress`,`CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),?,NOW(),?)");        
 
         
-        if ($conn->query($sql) === TRUE) {
+        if ($result->execute(array($FirstName,$LastName,$CellNumber,$EmailAddress,$IdNumber,$Location,$Address,$BankName,$AccountNumber,$BranchCode,$AccountType,$IsActive,$url,$EmployerName,$EmployerCellNumber,$WorkAddress,$Department,$CallSign,$StationedArea,$NOKName,$NOKContactNumber,$NOKAddress,$userId,$userId))) {
             echo 1;
         }
         else {
             //echo json_encode('failed');
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: " . $conn . "<br>" . $result->error;
         }       
         
  

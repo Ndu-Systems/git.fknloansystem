@@ -20,19 +20,17 @@ if (isset($data->CustomerId) ){
     $Reciever = $data -> Reciever;
 	$AdditionalLoan = 0;
     
-        $sql = "INSERT INTO `loan`(`CustomerId`, `LoanAmount`, `AdditionalLoan`, `PaidLoan`,`PaidInterest`, `Balance`, `AmountPayable`, `MeansOfPayment`, `WOI`, `Interest`, `LoanDate`, `Status`, `Reciever`, `Referrer`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`)
-               	VALUES ('$CustomerId','$LoanAmount','$AdditionalLoan','$PaidLoan','$PaidInterest','$Balance','$AmountPayable','$MeansOfPayment','$WOI','$Interest',NOW(),1,'$Reciever','$Referrer',NOW(),'$userId',NOW(),'$userId')";
+        $result = $conn->prepare( "INSERT INTO `loan`(`CustomerId`, `LoanAmount`, `AdditionalLoan`, `PaidLoan`,`PaidInterest`, `Balance`, `AmountPayable`, `MeansOfPayment`, `WOI`, `Interest`, `LoanDate`, `Status`, `Reciever`, `Referrer`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`)
+               	VALUES (?,?,?,?,?,?,?,?,?,?,NOW(),?,?,?,NOW(),?,NOW(),?)");
 
-        if ($conn->query($sql) === TRUE) {
+        if ($result->execute(array($CustomerId,$LoanAmount,$AdditionalLoan,$PaidLoan,$PaidInterest,$Balance,$AmountPayable,$MeansOfPayment,$WOI,$Interest,1,$Reciever,$Referrer,$userId,$userId))) {
             echo 1;
 			require 'AddTransiction.php';
         }
         else {
             //echo json_encode('failed');
             echo "Error: " . $sql . "<br>" . $conn->error;
-        }       
-        
- 
+        }    
 }
  else {
 

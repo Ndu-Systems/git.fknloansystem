@@ -13,17 +13,19 @@ $MeansOfPayment = $MeansOfPayment;
 $PayedAmount = $PaidLoan;
 $AdditionalLoan = 0; 
 $PaidInterest = $PaidInterest;
-$query_add_transiction = "
+
+
+$result = $conn -> prepare( "
 INSERT INTO  transaction (Description ,  LoanId ,  CustomerId ,  TransactionDate ,  LoanAmount ,  PayedAmount ,  Balance  ,  Interest , WOI,MeansOfPayment, Referrer, Reciever,AdditionalLoan,PaidInterest, CreateDate ,  CreateUserId ,  ModifyDate ,  ModifyUserId )
 VALUES
-('$Description', null, $CustomerId, '$TransactionDate', '$LoanAmount', '$PaidLoan', '$Balance', '$Interest','$WOI','$MeansOfPayment','$Referrer','$Reciever','$AdditionalLoan','$PaidInterest', now(), '$CreateUserId', '$ModifyDate', '$ModifyUserId')";
+(?, ?, ?, ?, ?, ?,?, ?,?,?,?,?,?,?, now(), ?, ?, ?)");
 
-  if ($conn->query($query_add_transiction) === TRUE) {
+  if ($result->execute(array($Description, null, $CustomerId, $TransactionDate,$LoanAmount, $PaidLoan, $Balance, $Interest,$WOI,$MeansOfPayment,$Referrer,$Reciever,$AdditionalLoan,$PaidInterest, $CreateUserId, $ModifyDate, $ModifyUserId))) {
 
         }
         else {
             //echo json_encode('failed');
-            echo "Error: " . $query_add_transiction . "<br>" . $conn->error;
+            echo "Error: " . $result . "<br>" . $conn->error;
         }       
         
 ?>

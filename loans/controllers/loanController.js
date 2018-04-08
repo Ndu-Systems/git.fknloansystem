@@ -108,7 +108,8 @@ app.controller('editLoanController', function ($http, $scope, $window, $route) {
     $scope.Status = localStorage.getItem("Status");
     $scope.LoanId = localStorage.getItem("LoanId");
 	$scope.WOI = localStorage.getItem("WOI");  
-	$scope.Referrer = localStorage.getItem("Referrer");  
+    $scope.Referrer = localStorage.getItem("Referrer");
+    $scope.MeansOfPayment = localStorage.getItem("MeansOfPayment");
     $scope.PaidLoan = 0;
 	$scope.AdditionalLoan = 0;
 	$scope.amountWithInterest = 0;
@@ -214,7 +215,7 @@ app.controller('editLoanController', function ($http, $scope, $window, $route) {
                     LoanAmount: Number($scope.AdditionalLoan || 0) + Number($scope.LoanAmount || 0),
                     PaidLoan: $scope.paidTotal(),
                     Balance: $scope.totalBalance(),
-                    
+                    MeansOfPayment :  $scope.MeansOfPayment,
                     LoanId:$scope.LoanId,
                     Interest: $scope.Interest,           
                     Status: $scope.Status,

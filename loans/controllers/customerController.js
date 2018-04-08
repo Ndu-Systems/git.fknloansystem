@@ -27,7 +27,7 @@
             BranchCode: $scope.branchcode,
             AccountType: $scope.accounttype,
             IsActive: 1,
-            url: "http://localhost/git.fknloans/loans/api/uploads/profiles/5.png",
+            url: "http://localhost:8080/git.fknloans/loans/api/uploads/profiles/5.png",
             userId: userId,
 			NOKName: $scope.nokname,
 			NOKContactNumber:$scope.nokcontactnumber,
@@ -161,8 +161,8 @@ Load();
 		localStorage.setItem("Status", loan.Status);	
 		localStorage.setItem("PaidInterest", loan.PaidInterest);
 		localStorage.setItem("WOI", loan.WOI);
-		localStorage.setItem("Referrer", loan.Referrer);
-
+        localStorage.setItem("Referrer", loan.Referrer);
+        localStorage.setItem("MeansOfPayment", loan.MeansOfPayment);
         $window.location.href = "#editLoan";
     };
 
@@ -424,7 +424,7 @@ app.controller('calculateCustomerController', function ($http, $scope, $window,$
         condition: "IsActive = 1 "
     };
    
-   $http.post(GetApiUrl("GetCustomersJoinLoans"), data)
+   $http.get(GetApiUrl("GetCustomersJoinLoans"))
     .success(function (response, status) {
 		Done();
         if (response.data !== undefined) {
