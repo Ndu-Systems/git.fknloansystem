@@ -40,11 +40,13 @@
     }, 2000)   
     //Selected Customer
     $scope.GetCustomer = function (cus) {
+
         localStorage.setItem("CustomerId", cus.CustomerId);
         localStorage.setItem("FirstName", cus.FirstName);
         localStorage.setItem("LastName", cus.LastName);
-        localStorage.setItem("CellNumber", cus.CellNumber);
-
+        localStorage.setItem("CellNumber", cus.CellNumber);      
+        
+        localStorage.setItem("AlternativeNumber", cus.AlternativeNumber);
         localStorage.setItem("EmailAddress", cus.EmailAddress);
         localStorage.setItem("IdNumber", cus.IdNumber);
         localStorage.setItem("Location", cus.Location);

@@ -16,7 +16,10 @@
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">
-                                        <div class="col-md-3 col-lg-3" align="center"><img src="{{url}}" class="img-circle img-responsive" /></div>
+                                        <div class="col-md-3 col-lg-3" align="center">
+                                        <img src="http://localhost:8080/git.fknloans/loans/api/uploads/profiles/5.png" class="img-circle img-responsive" /><br/>
+                                        <img src="{{url}}" class="img-circle img-responsive" />
+                                        </div>
                                         <div class="col-md-5 col-lg-5">
                                             <table class="table table-hover">
                                                 <tbody>
@@ -80,45 +83,50 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <div class="bs-example1" data-example-id="contextual-table">
-                                <div class="col-md-4">
+                                <div >
                                     <h3>Transictions</h3>
                                 </div>
-								
-                               
-								
+                                <div>
+                                    <div class="col-md-4"> Transictions From :  <input type="text" id="datepickerFrom" ng-model="datepickerFrom"></div>
+                                    <div class="col-md-4"> Transictions To :  <input type="text" id="datepickerTo" ng-model="datepickerTo"></div>
+                                    <div class="col-md-2"><button type="button" ng-click=Filter() class="btn btn-primary">Filter</button></div>
+                                    <div class="col-md-2"><button type="button" ng-click=ShowAll() class="btn btn-primary">Show All</button></div>
+                                </div>
+
                                 <table class="table">
-                                   
                                     <tbody>
-									<tr>
-									<td> Transictions From :  <input type="text" id="datepickerFrom" ng-model="datepickerFrom"></td>
-									<td> Transictions To :  <input type="text" id="datepickerTo"  ng-model="datepickerTo"></td>
-									<td><button type="button" ng-click= Filter() class="btn btn-primary">Filter</button></td>
-									<td><button type="button" ng-click= ShowAll() class="btn btn-primary">Show All</button></td>
-									</tr>
-									<tr>
+                                        <tr>
                                             <th>Transiction #</th>
+                                            <th>Loan ID</th>
                                             <th>Loan Amount</th>
+                                            <th>Loan Summary</th>
+                                            <th>Interest</th>
+                                            <th>Paid Interest</th>
+                                            <th>Loan Paid</th>
                                             <th>Balance</th>
-                                            <th>Loan Term</th>
-                                            <th>Description</th>
-                                            <th>Transiction Date</th>
+                                            <th>Date of Transaction</th>
                                         </tr>
                                         <tr dir-paginate="transiction in transictions |itemsPerPage:5">
                                             <td>{{$index + 1}}</td>
+                                            <td>{{transiction.LoanId}}</td>
                                             <td>R{{transiction.LoanAmount}}</td>
-                                            <td style="color:red">-R{{transiction.Balance}}</td>
-                                            <td>{{transiction.LoanTerm}} Months to Pay</td>
                                             <td>{{transiction.Description}}</td>
-                                            <td>{{transiction.CreateDate}}</td>
+                                            <td>{{transiction.Interest}} %</td>
+                                            <td>R{{transiction.PaidInterest}}</td>
+                                            <td>R{{transiction.PayedAmount}}</td>
+                                            <td style="color:red">-R{{transiction.Balance}}</td>
+                                            <td>{{transiction.LoanDate}}</td>
                                         </tr>
-										<tr>                                       
-											  <td colspan="7"><div class="warning"><h3>{{message}}</h3></div>  <td>
-										</tr>
+                                        <tr>
+                                            <td colspan="7"><div class="warning"><h3>{{message}}</h3></div>
+                                            <td>
+                                        </tr>
                                     </tbody>
                                     <tr>
                                         <td>
                                         <td align="left">
-                                         <button type="button" class="btn btn-sm btn-primary" ng-click="Print()">Print Transictions <span class="fa fa-edit"></span></></button></td>
+                                            <button type="button" class="btn btn-sm btn-primary" ng-click="Print()">Print Transictions <span class="fa fa-edit"></span></></button>
+                                        </td>
                                         </td>
                                     </tr>
                                 </table>

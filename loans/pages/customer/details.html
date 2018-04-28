@@ -19,7 +19,11 @@
                                 </div>
                                 <div class="panel-body">                                                            
                                     <div class="row">
-                                        <div class="col-md-3 col-lg-3" align="center"><img src="{{url}}" class="img-circle img-responsive"/></div>
+                                        <div class="col-md-3 col-lg-3" align="center">
+                                            <img src="http://localhost:8080/git.fknloans/loans/api/uploads/profiles/5.png" class="img-circle img-responsive" />
+                                            <br />
+                                            <img src="{{url}}" class="img-circle img-responsive" />
+                                        </div>
                                         <div class="col-md-5 col-lg-5">
                                             <table class="table table-hover">
                                                 <tbody>
@@ -29,7 +33,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td>Cell Number:</td>
-                                                        <td>{{CellNumber}}</td>
+                                                        <td>{{CellNumber}} {{AlternativeNumber}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Email:</td>
@@ -125,10 +129,9 @@
                                             <th>Loan ID</th>
                                             <th>Loan Amount</th>
                                             <th>Balance</th>
-                                            <th>Receiver</th>
+                                            <th>Loan Summary</th>
                                             <th>Referrer</th>                                             
-                                            <th>Date Borrowed</th>
-                                            <th>Update Date</th>
+                                            <th>Last Transaction Date</th>                                          
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -138,10 +141,9 @@
                                             <td>{{loan.LoanId}}</td>
                                             <td>R{{loan.LoanAmount}}</td>
                                             <td style="color:red">R{{loan.Balance}}</td>
-                                            <td>{{loan.Reciever}}</td>
+                                            <td>{{loan.Description}}</td>
                                             <td>{{loan.Referrer}}</td>
-                                             <td>{{loan.LoanDate}}</td>
-                                            <td>{{loan.ModifyDate}}</td>
+                                             <td>{{loan.LoanDate}}</td>                                             
                                             <td> <button type="button" class="btn btn-sm btn-primary" ng-click="getLoan(loan)">Update Loan  <span class="fa fa-edit"></span></></button></td>
                                         </tr>
                                     </tbody>

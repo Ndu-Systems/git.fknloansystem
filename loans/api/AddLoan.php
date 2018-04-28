@@ -19,12 +19,16 @@ if (isset($data->CustomerId) ){
 	$PaidInterest = $data -> PaidInterest;
     $Reciever = $data -> Reciever;
 	$AdditionalLoan = 0;
+	$LoanDate = $data-> LoanDate;
+	$Description = $data -> Description;
+	$LoanId = 0;
     
-        $result = $conn->prepare( "INSERT INTO `loan`(`CustomerId`, `LoanAmount`, `AdditionalLoan`, `PaidLoan`,`PaidInterest`, `Balance`, `AmountPayable`, `MeansOfPayment`, `WOI`, `Interest`, `LoanDate`, `Status`, `Reciever`, `Referrer`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`)
-               	VALUES (?,?,?,?,?,?,?,?,?,?,NOW(),?,?,?,NOW(),?,NOW(),?)");
+        $result = $conn->prepare( "INSERT INTO `loan`(`CustomerId`, `LoanAmount`, `AdditionalLoan`,`Description`, `PaidLoan`,`PaidInterest`, `Balance`, `AmountPayable`, `MeansOfPayment`, `WOI`, `Interest`, `LoanDate`, `Status`, `Reciever`, `Referrer`, `CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`)
+               	VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),?,NOW(),?)");
 
-        if ($result->execute(array($CustomerId,$LoanAmount,$AdditionalLoan,$PaidLoan,$PaidInterest,$Balance,$AmountPayable,$MeansOfPayment,$WOI,$Interest,1,$Reciever,$Referrer,$userId,$userId))) {
-            echo 1;
+        if ($result->execute(array($CustomerId,$LoanAmount,$AdditionalLoan,$Description,$PaidLoan,$PaidInterest,$Balance,$AmountPayable,$MeansOfPayment,$WOI,$Interest,$LoanDate,1,$Reciever,$Referrer,$userId,$userId))) {
+            $LoanId = $conn-> lastInsertId();
+			echo 1;
 			require 'AddTransiction.php';
         }
         else {

@@ -7,7 +7,7 @@
             <div class="col-md-12 span_3">
                 <div class="bs-example1" data-example-id="contextual-table">
                     <div class="row">
-                        <h1>Create <b>Loan</b> for {{FirstName}} {{LastName}}</h1>
+                        <h1>Edit <b>Loan</b> for {{FirstName}} {{LastName}}</h1>
                         <div class="panel panel-default col-md-5 col-lg-5">
                             <div class="panel-body">
                                 <div class="row">
@@ -43,13 +43,18 @@
                                 <input required type="text" disabled value="{{LoanAmount | currency:'R'}}" style="width:90%; padding:1%">
                             </div>
                             <div class="form-group">
+                                <b>Select Loan Date </b>
+                                <!--<input required type="date" ng-model="LoanDate" placeholder="Loan Date" style="width:90%; padding:1%">-->
+                                <input id="loanDate" required ng-model="LoanDate" type="datetime-local" placeholder="Loan Date" style="width:90%; padding:1%">
+                            </div>
+                            <div class="form-group">
                                 <b>Enter Additional Loan</b>
                                 <input required type="number" ng-model="AdditionalLoan" placeholder="Additional Amount" style="width:90%; padding:1%">
-                            </div>                              
+                            </div>
                             <div class="form-group">
                                 <div>
                                     <h4>Addition Amount <b>Interest</b> at an interest of 25 % <br />valued at: {{amountWithInterest | currency:'R'}}</h4>
-                                   
+
                                     <h4>With Out Interest? No</h4>
                                 </div>
                             </div>
@@ -65,7 +70,7 @@
 
                             <div class="form-group">
                                 <div>
-                                    <h4>Balance</h4>                                 
+                                    <h4>Balance</h4>
                                     <h4>{{Balance | currency:'R'}}</h4>
                                 </div>
                             </div>
@@ -77,13 +82,13 @@
                             </div>
                             <div class="form-group">
                                 <div>
-                                    <h4>Interest Rate</h4>                                  
+                                    <h4>Interest Rate</h4>
                                     <h4>{{Interest}}%</h4>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div>
-                                    <h4>Loan Date</h4>                                 
+                                    <h4>Loan Date</h4>
                                     <h4>{{LoanDate}}</h4>
                                 </div>
                             </div>
@@ -112,11 +117,16 @@
                                     <div class="form-group">
                                         <br />
                                         <button type="button" class="btn btn-primary" ng-click="SaveFile()">Upload <span class="fa fa-upload"></span></button>
-                                        <br><font color="black"><b>{{filename}}</b></font>
-                                        <br><font color="green"><b>{{success}}</b></font>
-                                        <br><font color="red"><b>{{errorP}}</b></font>
+                                        <font color="black"><b>{{filename}}</b></font>
+                                        <font color="green"><b>{{success}}</b></font>
+                                        <font color="red"><b>{{errorP}}</b></font>
                                     </div>
                                 </div>
+
+                            </div>
+                            <div class="form-group">
+                                <b>Enter Loan Summary</b>
+                                <textarea required type="text" ng-model="Description" placeholder="Brief Loan Summary i.e. Paid Interest + Loan Amount" style="width:90%; padding:1%"></textarea>
 
                             </div>
                             <div class="form-group">

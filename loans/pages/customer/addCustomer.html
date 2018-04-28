@@ -2,7 +2,7 @@
 <div id="page-wrapper" style="min-height: 586px;">
     <div class="graphs">
         <div class="col_3">
-         
+
         </div>
        <div class="content_bottom">
             <div class="col-md-12 span_3">
@@ -23,13 +23,17 @@
                                 <input required type="text" ng-model="cellnumber" placeholder="CellPhone Number" style="width:90%; padding:1%">
                             </div>
                             <div class="form-group">
+                                <b>Enter Alternative CellNumber</b>
+                                <input required type="text" ng-model="alternativeNumber" placeholder="CellPhone Number" style="width:90%; padding:1%">
+                            </div>
+                            <div class="form-group">
                                 <b>Enter Email</b>
-                                <input type="email" ng-model="email" placeholder="Email Address" style="width:90%; padding:1%">
+                                <input type="text" ng-model="email" placeholder="Email Address" style="width:90%; padding:1%">
                             </div>
                             <div class="form-group">
                                 <b>Enter ID #</b>
                                 <input required type="text" ng-model="idnumber" placeholder="Identity Number" style="width:90%; padding:1%">
-                            </div>  
+                            </div>
                             <div class="form-group">
                                 <b>Province</b>
                                 <input required type="text" ng-model="location" placeholder="Province" style="width:90%; padding:1%">
@@ -38,7 +42,7 @@
                                 <b>Enter Physical Address</b>
                                 <textarea required type="text" ng-model="address" placeholder="Physical Address" style="width:90%; padding:1%"></textarea>
                             </div>
-                            <hr/>
+                            <hr />
                             <div class="form-group">
                                 <b>Enter Employer Name</b>
                                 <input required type="text" ng-model="employername" placeholder="Name of employer" style="width:90%; padding:1%"></input>
@@ -50,13 +54,14 @@
                             <div class="form-group">
                                 <b>Employer Address</b>
                                 <textarea required type="text" ng-model="workaddress" placeholder="Work Address" style="width:90%; padding:1%"></textarea>
-                            </div>                                                                          
+                            </div>
                         </div>
-                        <div class="col-md-6 col-sm-12"> 
+                        <div class="col-md-6 col-sm-12">
+
                             <div class="form-group">
-                                <b>enter Department</b>
+                                <b>Enter Department</b>
                                 <input required type="text" ng-model="department" placeholder="Department / Unit" style="width:90%; padding:1%">
-                            </div>  
+                            </div>
                             <div class="form-group">
                                 <b>Enter Stationed Area</b>
                                 <textarea required type="text" ng-model="stationedarea" placeholder="Stationed Area Address" style="width:90%; padding:1%"></textarea>
@@ -64,10 +69,10 @@
                             <div class="form-group">
                                 <b>Enter Service No.</b>
                                 <input required type="text" ng-model="callsign" placeholder="Service Number /Call Sign" style="width:90%; padding:1%">
-                            </div> 
-                            <hr/>                                               
+                            </div>
+                            <hr/>
                             <div class="form-group">
-                                <b>Enter BankName</b>
+                                <b>Enter Bank Name</b>
                                 <input required type="text" ng-model="bankname" placeholder="Bank Name" style="width:90%; padding:1%">
                             </div>
                             <div class="form-group">
@@ -82,7 +87,7 @@
                                 <b>Enter Account Type</b>
                                 <input required type="text"  ng-model="accounttype" placeholder="Account Type" style="width:90%; padding:1%">
                             </div>
-                            <hr />   
+                            <hr />
                             <div class="form-group">
                                 <b>Enter Next Of Keen</b>
                                 <input required type="text" ng-model="nokname" placeholder="Next Of Keen Name" style="width:90%; padding:1%">
@@ -94,22 +99,22 @@
                             <div class="form-group">
                                 <b>Next Of Keen contact Number</b>
                                 <input required type="text" ng-model="nokcontactnumber" placeholder="Next Of Keen Contact Numbers" style="width:90%; padding:1%">
-                            </div> 
+                            </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary" ng-click="addCustomer()">Register</button> <button type="reset" class="btn btn-warning" style="background-color:orange;border-color:orange;" ng-click="reset()">Reset</button>
                             </div>
-                            <p><a href="#/home">Abort</a></p>   
-                        </div> 
-                                                                 
+                            <p><a href="#/home">Abort</a></p>
+                        </div>
+
                     </div>
                     <div class="row">
-                       
-                    </div>  
+
+                    </div>
                     <p style="color:red;">{{message}}</p>
-                </div>    
-                
+                </div>
+
             </div>
             <div class="clearfix"> </div>
-        </div>     
+        </div>
     </div>
 </div>

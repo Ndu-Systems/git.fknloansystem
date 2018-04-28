@@ -27,7 +27,8 @@ $data = json_decode(file_get_contents("php://input"));
              $NOKAddress = $data -> NOKAddress;
              $StationedArea = $data -> StationedArea;
              $EmployerCellNumber = $data -> EmployerCellNumber;
-             $EmployerName = $data -> EmployerName;                
+             $EmployerName = $data -> EmployerName;   
+			 $AlternativeNumber = $data -> AlternativeNumber;
                           
 										 $result = $conn -> prepare( "
 											UPDATE  customer  SET	 
@@ -53,14 +54,15 @@ $data = json_decode(file_get_contents("php://input"));
 											 NOKAddress =?,
 											 stationedarea = ?,
 											 EmployerCellNumber =?,
-											 EmployerName = ?            
+											 EmployerName = ?  ,
+											 AlternativeNumber= ?
 
 											WHERE CustomerId= ? 		
 											");								
 								
 				if ($result->execute(array($FirstName,$LastName,$CellNumber,$EmailAddress,$IdNumber,$Location,$Address,$BankName
 						,$AccountNumber,$BranchCode,$AccountType,$IsActive,$userId,$CallSign,$WorkAddress,$Department,$NOKName,$NOKContactNumber,$NOKAddress,
-						$StationedArea,$EmployerCellNumber,$EmployerName,$CustomerId))) {
+						$StationedArea,$EmployerCellNumber,$EmployerName,$AlternativeNumber,$CustomerId))) {
 					echo 1;
 				} else {
 				   echo "Error: He's Dead Jim!";

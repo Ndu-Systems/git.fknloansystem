@@ -19,6 +19,9 @@ $data = json_decode(file_get_contents("php://input"));
 	$MeansOfPayment=$data ->MeansOfPayment;
 	$WOI = $data -> WOI;
 	$Referrer = $data -> Referrer;
+	$LoanDate = $data -> LoanDate;
+	$Description = $data -> Description;
+	$DefaultedInterest = $data -> DefaultedInterest;
 
         $result = $conn -> prepare( " UPDATE `loan` SET 
 				`CustomerId`=?,
@@ -34,11 +37,14 @@ $data = json_decode(file_get_contents("php://input"));
 				`WOI`=?,	
 				`Referrer`=?,					
 				`ModifyDate`=NOW(),
-				`ModifyUserId`=? 
+				`ModifyUserId`=? ,
+				LoanDate =?, 
+				Description =?,
+				DefaultedInterest =?
                 WHERE `LoanId`=  ?
                ");        
         
-        if ($result->execute(array($CustomerId,$LoanAmount,$PaidInterest,$AdditionalLoan,$Reciever,$MeansOfPayment,$PaidLoan,$Balance,$Interest,$Status,$WOI,$Referrer,$userId,$LoanId))) {
+        if ($result->execute(array($CustomerId,$LoanAmount,$PaidInterest,$AdditionalLoan,$Reciever,$MeansOfPayment,$PaidLoan,$Balance,$Interest,$Status,$WOI,$Referrer,$userId,$LoanDate,$Description,$DefaultedInterest,$LoanId))) {
             echo 1;
             require 'EditTransaction.php';
         }

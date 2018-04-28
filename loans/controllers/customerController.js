@@ -12,6 +12,7 @@
     };
     $scope.location = "Kwa-Zulu Natal";
 
+
     $scope.addCustomer = function () {
         $scope.message = undefined;
         var data = {
@@ -37,7 +38,8 @@
 			CallSign: $scope.callsign,
 			StationedArea: $scope.stationedarea,
 			EmployerCellNumber: $scope.employercellnumber,
-			EmployerName: $scope.employername
+            EmployerName: $scope.employername,
+            AlternativeNumber: $scope.alternativeNumber
         };
 
         if (data.NOKName === undefined ||data.NOKContactNumber === undefined ||data.NOKAddress === undefined ||data.WorkAddress === undefined ||data.Department === undefined ||data.CallSign === undefined ||data.FirstName === undefined || data.LastName === undefined || data.CellNumber === undefined || data.EmailAddress === undefined || data.Location === undefined || data.Address === undefined || data.BankName === undefined || data.AccountNumber === undefined || data.BranchCode === undefined || data.AccountType === undefined)
@@ -46,9 +48,15 @@
         }
         else {
             $http.post(GetApiUrl("AddCustomer"), data)
-              .success(function (response, status) {
-                  if (parseFloat(response) === 1) {
-                      $window.location.href = "#home";
+                .success(function (response, status) {
+                    if (response > 0) {                  
+                        localStorage.setItem("CustomerId", parseInt(response));
+                        localStorage.setItem("FirstName", data.FirstName);
+                        localStorage.setItem("LastName", data.LastName);
+                        localStorage.setItem("CellNumber", data.CellNumber);
+                        localStorage.setItem("EmailAddress", data.EmailAddress);
+                        localStorage.setItem("IdNumber", data.IdNumber);
+                        $window.location.href = "#addLoan";
                       $scope.message = undefined;
                   }
                   else {
@@ -63,6 +71,13 @@
     $scope.FirstName = localStorage.getItem("FirstName");
     $scope.LastName = localStorage.getItem("LastName");
     $scope.CellNumber = localStorage.getItem("CellNumber");
+    $scope.AlternativeNumber = localStorage.getItem("AlternativeNumber");
+    if ($scope.AlternativeNumber !== null && $scope.AlternativeNumber !== "" & $scope.AlternativeNumber !== "null" && $scope.AlternativeNumber !== "Null") {
+        $scope.AlternativeNumber = " /" + $scope.AlternativeNumber;
+    }
+    else {
+        $scope.AlternativeNumber = "";
+    }
     $scope.EmailAddress = localStorage.getItem("EmailAddress");
     $scope.IdNumber = localStorage.getItem("IdNumber");
     $scope.Location = localStorage.getItem("Location");
@@ -176,7 +191,15 @@ Load();
         if (response.data !== undefined) {
             $scope.Documents = response.data;
 
-            $scope.numDocuments = $scope.Documents.length;;
+            //For each check Loan ID
+            angular.forEach($scope.Documents, function (item) {
+                if (item.LoanId === null) {
+
+                    item.LoanId = "n/a";
+                }
+            })
+
+            $scope.numDocuments = $scope.Documents.length;
             $scope.totalItems = $scope.Documents.length;
             $scope.dcurrentPage = 1;
             $scope.ditemsPerPage = 5;
@@ -262,6 +285,7 @@ app.controller('editController', function ($http, $scope, $window, $route) {
     $scope.FirstName = localStorage.getItem("FirstName");
     $scope.LastName = localStorage.getItem("LastName");
     $scope.CellNumber = localStorage.getItem("CellNumber");
+    $scope.AlternativeNumber = localStorage.getItem("AlternativeNumber");
     $scope.EmailAddress = localStorage.getItem("EmailAddress");
     $scope.IdNumber = localStorage.getItem("IdNumber");
     $scope.Location = localStorage.getItem("Location");
@@ -290,6 +314,7 @@ app.controller('editController', function ($http, $scope, $window, $route) {
         $scope.message = undefined
         $route.reload();
     };
+
     //Profile Pic Upload
     $scope.filesChanged = function (eml) {
         $scope.errorP = undefined;
@@ -363,7 +388,8 @@ app.controller('editController', function ($http, $scope, $window, $route) {
             EmployerName: $scope.EmployerName,
             NOKName: $scope.NOKName,
             NOKAddress: $scope.NOKAddress,
-            NOKContactNumber: $scope.NOKContactNumber
+            NOKContactNumber: $scope.NOKContactNumber,
+            AlternativeNumber : $scope.AlternativeNumber
         };
         if (data!==undefined) {
             $http.post(GetApiUrl("EditCustomer"), data).success(function (data, status) {
@@ -371,9 +397,9 @@ app.controller('editController', function ($http, $scope, $window, $route) {
 
                     localStorage.setItem("CustomerId", $scope.CustomerId);
                     localStorage.setItem("FirstName", $scope.FirstName);
-                    localStorage.setItem("LastName", $scope.LastName);
+                    localStorage.setItem("LastName", $scope.LastName); 
                     localStorage.setItem("CellNumber", $scope.CellNumber);
-
+                    localStorage.setItem("AlternativeNumber", $scope.AlternativeNumber);
 
                     localStorage.setItem("EmailAddress", $scope.EmailAddress);
                     localStorage.setItem("IdNumber", $scope.IdNumber);

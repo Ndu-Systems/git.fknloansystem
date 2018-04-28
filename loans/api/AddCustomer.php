@@ -29,13 +29,15 @@ if (isset($data->EmailAddress) ){
     $StationedArea = $data -> StationedArea;
     $EmployerCellNumber = $data -> EmployerCellNumber;
     $EmployerName = $data -> EmployerName;
+	$AlternativeNumber = $data -> AlternativeNumber;
     
-        $result = $conn -> prepare( "INSERT INTO `customer`( `FirstName`, `LastName`, `CellNumber`, `EmailAddress`, `IdNumber`, `Location`, `Address`, `BankName`, `AccountNumber`, `BranchCode`, `AccountType`, `IsActive`, `url`,`EmployerName`, `EmployerCellNumber`, `WorkAddress`, `Department`, `CallSign`, `stationedarea`, `NOKName`,`NOKContactNumber`,`NOKAddress`,`CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`)
-                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),?,NOW(),?)");        
+        $result = $conn -> prepare( "INSERT INTO `customer`( `FirstName`, `LastName`, `CellNumber`, `AlternativeNumber`, `EmailAddress`, `IdNumber`, `Location`, `Address`, `BankName`, `AccountNumber`, `BranchCode`, `AccountType`, `IsActive`, `url`,`EmployerName`, `EmployerCellNumber`, `WorkAddress`, `Department`, `CallSign`, `stationedarea`, `NOKName`,`NOKContactNumber`,`NOKAddress`,`CreateDate`, `CreateUserId`, `ModifyDate`, `ModifyUserId`)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),?,NOW(),?)");        
 
         
-        if ($result->execute(array($FirstName,$LastName,$CellNumber,$EmailAddress,$IdNumber,$Location,$Address,$BankName,$AccountNumber,$BranchCode,$AccountType,$IsActive,$url,$EmployerName,$EmployerCellNumber,$WorkAddress,$Department,$CallSign,$StationedArea,$NOKName,$NOKContactNumber,$NOKAddress,$userId,$userId))) {
-            echo 1;
+        if ($result->execute(array($FirstName,$LastName,$CellNumber,$AlternativeNumber,$EmailAddress,$IdNumber,$Location,$Address,$BankName,$AccountNumber,$BranchCode,$AccountType,$IsActive,$url,$EmployerName,$EmployerCellNumber,$WorkAddress,$Department,$CallSign,$StationedArea,$NOKName,$NOKContactNumber,$NOKAddress,$userId,$userId))) {
+            $id = $conn-> lastInsertId();
+			echo $id;
         }
         else {
             //echo json_encode('failed');

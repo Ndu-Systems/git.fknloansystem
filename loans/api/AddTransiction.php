@@ -1,5 +1,5 @@
 <?php
-$Description      = 'New Load deposit';
+$Description      = $Description;
 // $LoanId           = $LoanId;
 $TransactionDate  = date("l jS \of F Y h:i:s A") ;
 $CreateDate       = date("l jS \of F Y h:i:s A") ;
@@ -13,14 +13,17 @@ $MeansOfPayment = $MeansOfPayment;
 $PayedAmount = $PaidLoan;
 $AdditionalLoan = 0; 
 $PaidInterest = $PaidInterest;
+$LoanDate = $LoanDate;
+$Interest = $Interest;
+$LoanId = $LoanId;
 
 
 $result = $conn -> prepare( "
-INSERT INTO  transaction (Description ,  LoanId ,  CustomerId ,  TransactionDate ,  LoanAmount ,  PayedAmount ,  Balance  ,  Interest , WOI,MeansOfPayment, Referrer, Reciever,AdditionalLoan,PaidInterest, CreateDate ,  CreateUserId ,  ModifyDate ,  ModifyUserId )
+INSERT INTO  transaction (Description ,  LoanId , LoanDate, CustomerId ,  TransactionDate ,  LoanAmount ,  PayedAmount ,  Balance  ,  Interest , WOI,MeansOfPayment, Referrer, Reciever,AdditionalLoan,PaidInterest, CreateDate ,  CreateUserId ,  ModifyDate ,  ModifyUserId )
 VALUES
-(?, ?, ?, ?, ?, ?,?, ?,?,?,?,?,?,?, now(), ?, ?, ?)");
+(?, ?, ?, ?, ?,?, ?,?,?,?,?,?,?,?,?, now(), ?, ?, ?)");
 
-  if ($result->execute(array($Description, null, $CustomerId, $TransactionDate,$LoanAmount, $PaidLoan, $Balance, $Interest,$WOI,$MeansOfPayment,$Referrer,$Reciever,$AdditionalLoan,$PaidInterest, $CreateUserId, $ModifyDate, $ModifyUserId))) {
+  if ($result->execute(array($Description, $LoanId, $LoanDate,$CustomerId, $TransactionDate,$LoanAmount, $PaidLoan, $Balance, $Interest,$WOI,$MeansOfPayment,$Referrer,$Reciever,$AdditionalLoan,$PaidInterest, $CreateUserId, $ModifyDate, $ModifyUserId))) {
 
         }
         else {

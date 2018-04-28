@@ -36,21 +36,26 @@ app.controller('addLoanController', function ($http, $scope, $window, $route) {
 	$scope.total = function () {
 	    $scope.amountWithInterest = $scope.LoanAmount * ($scope.Interest / 100);
 	    amount = $scope.LoanAmount + $scope.amountWithInterest;
-	    if ($scope.PaidInterest !== undefined) {
-	        if ($scope.PaidInterest !== 0) {
-	            amount = amount - $scope.PaidInterest;
-	        }
-	    }
+        if ($scope.PaidInterest !== undefined) {
+            if ($scope.PaidInterest !== 0) {
+                amount = amount - $scope.PaidInterest;
+            }
+        }
+        else {
+            $scope.PaidInterest = 0;
+        }
 	    return amount;
 	};
 	
 
     $scope.addLoan = function () {
-        if ($scope.PaidInterest !== $scope.amountWithInterest) {
-            $scope.validateInterest = "Please provide valid interest payment";
-        } else {
+        //if ($scope.PaidInterest !== $scope.amountWithInterest) {
+        //    $scope.validateInterest = "Please provide valid interest payment";
+        //}
+        //else {
             $scope.validateInterest = undefined;
 
+            
 
             var data = {
                 CustomerId: $scope.CustomerId,
@@ -59,12 +64,15 @@ app.controller('addLoanController', function ($http, $scope, $window, $route) {
                 Referrer: $scope.Referrer,
                 WOI: $scope.WOI,
                 MeansOfPayment: $scope.MeansOfPayment,
-                Balance: $scope.LoanAmount,
+                Balance: $scope.total(),
                 Interest: $scope.Interest,
                 AmountPayable: $scope.LoanAmount,
                 userId: userId,
                 PaidInterest: $scope.PaidInterest,
-                Reciever: $scope.Reciever
+                Reciever: $scope.Reciever,
+                LoanDate: $scope.LoanDate,
+                Description: $scope.Description
+
             };
             $http.post(GetApiUrl("AddLoan"), data).success(function (data, status) {
                 if (parseFloat(data) === 1) {
@@ -74,7 +82,7 @@ app.controller('addLoanController', function ($http, $scope, $window, $route) {
                     $scope.errorP = "Something went wrong, please try again.";
                 }
             });
-        }   
+        //}   
 
     };
 
@@ -117,7 +125,7 @@ app.controller('editLoanController', function ($http, $scope, $window, $route) {
     var amount = 0;
 	var defaultInterest = 0;
 	$scope.PaidInterest = 0;
-	$scope.Reciever = "";
+    $scope.Reciever = localStorage.getItem("Reciever");
 	var totalCount = 0;	
     //Calculate Balance after amount paid and Add Additional Loan
 	$scope.totalBalance = function () { 
@@ -224,7 +232,10 @@ app.controller('editLoanController', function ($http, $scope, $window, $route) {
 					AdditionalLoan: $scope.AdditionalLoan ,
 					Reciever: $scope.Reciever,
 					Referrer:$scope.Referrer,
-					WOI:$scope.WOI
+                    WOI: $scope.WOI,
+                    LoanDate: $scope.LoanDate,
+                    Description: $scope.Description,
+                    DefaultedInterest: $scope.defaultedInterest
                 };
                 $http.post(GetApiUrl("EditLoan"), data).success(function (data, status) {
                     if (parseFloat(data) === 1) {
